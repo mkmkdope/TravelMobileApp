@@ -287,6 +287,136 @@
             color: #f5c842;
         }
 
+        /* ----- FLOATING CHAT BUTTON ----- */
+        .chat-fab {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f5c842, #e6b02e);
+            color: #1A1A2E;
+            border: none;
+            font-size: 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 30px rgba(245, 200, 66, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 100;
+            animation: fabPulse 2s ease-in-out infinite;
+        }
+        .chat-fab.visible {
+            display: flex;
+        }
+        .chat-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 40px rgba(245, 200, 66, 0.5);
+        }
+        .chat-fab:active {
+            transform: scale(0.92);
+        }
+        .chat-fab .badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #ff6b6b;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #1A1A2E;
+        }
+
+        @keyframes fabPulse {
+            0%, 100% {
+                box-shadow: 0 6px 30px rgba(245, 200, 66, 0.3);
+            }
+            50% {
+                box-shadow: 0 6px 50px rgba(245, 200, 66, 0.6);
+            }
+        }
+
+        /* ----- CHAT LIST ----- */
+        .chat-list-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .chat-list-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(245, 200, 66, 0.1);
+        }
+        .chat-list-item .chat-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .chat-list-item .chat-info .name {
+            color: #fff;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .chat-list-item .chat-info .last-msg {
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 13px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .chat-list-item .chat-meta {
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .chat-list-item .chat-meta .time {
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 11px;
+        }
+        .chat-list-item .chat-meta .unread {
+            background: #f5c842;
+            color: #1A1A2E;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 30px;
+            margin-top: 4px;
+            display: inline-block;
+        }
+        .chat-list-item .chat-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+            color: #fff;
+        }
+        .chat-list-item .chat-avatar.group {
+            background: linear-gradient(135deg, #3dd6d0, #2ab0aa);
+        }
+        .chat-list-item .chat-avatar.solo {
+            background: linear-gradient(135deg, #f5c842, #e6b02e);
+        }
+        .chat-list-item .chat-avatar.public {
+            background: linear-gradient(135deg, #a78bfa, #7c3aed);
+        }
+
         /* ----- ONBOARDING ----- */
         .welcome-screen {
             display: flex;
@@ -868,6 +998,13 @@
             body {
                 padding: 0;
             }
+            .chat-fab {
+                bottom: 16px;
+                right: 16px;
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
         }
 
         /* small scroll fix */
@@ -884,6 +1021,12 @@
 
     <!-- ===== PHONE ===== -->
     <div class="phone">
+
+        <!-- Floating Chat Button -->
+        <button class="chat-fab" id="chatFab" onclick="navigateTo('screen-chat-list')">
+            <i class="fas fa-comment"></i>
+            <span class="badge">5</span>
+        </button>
 
         <div class="screen-container" id="appContainer">
 
@@ -1124,7 +1267,7 @@
                     <button class="btn-ghost" style="margin-top:8px;" onclick="showToast('Code copied!')"><i class="fas fa-copy"></i> Copy</button>
                     <p style="color:rgba(255,255,255,0.3);font-size:12px;margin-top:6px;">Share this code with friends to let them join your group</p>
                 </div>
-                <button class="btn-primary" onclick="showToast('Group created!'); navigateTo('screen-group-approval')">
+                <button class="btn-primary" onclick="createNewChat()">
                     <i class="fas fa-users"></i> Create Group & Continue
                 </button>
                 <button class="btn-outline mt-12" onclick="showToast('Join with code form opened')">
@@ -1168,6 +1311,39 @@
                 <button class="btn-primary mt-16" onclick="showToast('All approved! Proceeding to Blind Box'); navigateTo('screen-blind-box')">
                     <i class="fas fa-arrow-right"></i> Proceed to Adventure
                 </button>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- SCREEN: CHAT LIST — Show all team chats                      -->
+            <!-- ============================================================ -->
+            <div class="screen" id="screen-chat-list">
+                <div class="page-header">
+                    <button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Chats</h2>
+                    <span class="header-action" onclick="showToast('New chat started')"><i class="fas fa-plus"></i></span>
+                </div>
+
+                <div id="chatListContainer">
+                    <!-- Chat list items will be dynamically rendered here -->
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- SCREEN: CHAT DETAIL — Individual chat view                   -->
+            <!-- ============================================================ -->
+            <div class="screen" id="screen-chat-detail">
+                <div class="page-header">
+                    <button class="back-btn" onclick="navigateTo('screen-chat-list')"><i class="fas fa-arrow-left"></i></button>
+                    <h2 id="chatDetailTitle"># Mystery Squad</h2>
+                    <span style="color:rgba(255,255,255,0.3);font-size:12px;" id="chatDetailMembers">3 members</span>
+                </div>
+                <div style="flex:1;overflow-y:auto;padding-bottom:10px;" id="chatMessagesContainer">
+                    <!-- Messages will be dynamically rendered here -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="Type a message..." id="chatDetailInput" />
+                    <button onclick="sendChatDetailMessage()"><i class="fas fa-paper-plane"></i></button>
+                </div>
             </div>
 
             <!-- ============================================================ -->
@@ -1495,42 +1671,6 @@
                 </div>
             </div>
 
-            <!-- ============================================================ -->
-            <!-- SCREEN: GROUP CHAT (auto-generated)                          -->
-            <!-- ============================================================ -->
-            <div class="screen" id="screen-chat">
-                <div class="page-header">
-                    <button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button>
-                    <h2># Mystery Squad</h2>
-                    <span style="color:rgba(255,255,255,0.3);font-size:12px;">3 members</span>
-                </div>
-                <div style="flex:1;overflow-y:auto;padding-bottom:10px;">
-                    <div class="chat-system">— Today —</div>
-                    <div class="chat-message">
-                        <div class="avatar avatar-sm">JD</div>
-                        <div><div class="bubble">Hey everyone! Ready for Mont Blanc?</div><div class="time">10:32 AM</div></div>
-                    </div>
-                    <div class="chat-message self">
-                        <div class="avatar avatar-sm" style="background:linear-gradient(135deg,#f5c842,#e6b02e);">A</div>
-                        <div><div class="bubble">Absolutely! I've got the mission details.</div><div class="time">10:34 AM</div></div>
-                    </div>
-                    <div class="chat-system">[ Sam Miles joined the group ]</div>
-                    <div class="chat-message">
-                        <div class="avatar avatar-sm" style="background:linear-gradient(135deg,#3dd6d0,#2ab0aa);">SM</div>
-                        <div><div class="bubble">Count me in! When do we start?</div><div class="time">10:45 AM</div></div>
-                    </div>
-                    <div class="chat-message">
-                        <div class="avatar avatar-sm">JD</div>
-                        <div><div class="bubble">I'll share the checkpoint location in 10 min</div><div class="time">10:50 AM</div></div>
-                    </div>
-                    <div class="chat-system">[ Group photo captured — 3/4 members detected ]</div>
-                </div>
-                <div class="chat-input">
-                    <input type="text" placeholder="Type a message..." id="chatInput" />
-                    <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
-                </div>
-            </div>
-
         </div><!-- /screen-container -->
     </div><!-- /phone -->
 
@@ -1544,20 +1684,97 @@
         let userEmail = 'alex@example.com';
         let userPhone = '+1 234 567 890';
         let isLoggedIn = false;
+        let currentChatId = null;
+
+        // ============================================================
+        // CHAT DATA — Multiple team chats with history
+        // ============================================================
+        let chatData = {
+            'chat1': {
+                id: 'chat1',
+                name: 'Mystery Squad',
+                type: 'private',
+                members: 3,
+                avatar: 'MS',
+                lastMessage: 'I\'ll share the checkpoint location in 10 min',
+                timestamp: '10:50 AM',
+                unread: 2,
+                messages: [
+                    { sender: 'Jamie Doe', text: 'Hey everyone! Ready for Mont Blanc?', time: '10:32 AM', self: false },
+                    { sender: 'You', text: 'Absolutely! I\'ve got the mission details.', time: '10:34 AM', self: true },
+                    { sender: 'system', text: 'Sam Miles joined the group', time: '10:40 AM' },
+                    { sender: 'Sam Miles', text: 'Count me in! When do we start?', time: '10:45 AM', self: false },
+                    { sender: 'Jamie Doe', text: 'I\'ll share the checkpoint location in 10 min', time: '10:50 AM', self: false },
+                ]
+            },
+            'chat2': {
+                id: 'chat2',
+                name: 'Paris Explorers',
+                type: 'public',
+                members: 8,
+                avatar: 'PE',
+                lastMessage: 'Anyone up for a Seine river cruise?',
+                timestamp: '9:15 AM',
+                unread: 0,
+                messages: [
+                    { sender: 'Emma Wilson', text: 'Who\'s joining the Eiffel Tower tour?', time: '8:00 AM', self: false },
+                    { sender: 'You', text: 'Count me in! What time?', time: '8:15 AM', self: true },
+                    { sender: 'Lucas Chen', text: 'I\'ll be there at 2pm', time: '8:30 AM', self: false },
+                    { sender: 'Emma Wilson', text: 'Anyone up for a Seine river cruise?', time: '9:15 AM', self: false },
+                ]
+            },
+            'chat3': {
+                id: 'chat3',
+                name: 'Alpine Adventures',
+                type: 'private',
+                members: 5,
+                avatar: 'AA',
+                lastMessage: 'Weather forecast looks clear for tomorrow',
+                timestamp: 'Yesterday',
+                unread: 1,
+                messages: [
+                    { sender: 'Mark Torres', text: 'Just booked the Mont Blanc guide', time: 'Yesterday 4:20 PM', self: false },
+                    { sender: 'You', text: 'Amazing! What\'s the plan?', time: 'Yesterday 4:25 PM', self: true },
+                    { sender: 'Sarah Lee', text: 'I\'ll bring the gear', time: 'Yesterday 4:30 PM', self: false },
+                    { sender: 'Mark Torres', text: 'Weather forecast looks clear for tomorrow', time: 'Yesterday 5:00 PM', self: false },
+                ]
+            },
+            'chat4': {
+                id: 'chat4',
+                name: 'Asia Dream Team',
+                type: 'public',
+                members: 12,
+                avatar: 'AD',
+                lastMessage: 'Check out these photos from Kyoto! 📸',
+                timestamp: 'Aug 3',
+                unread: 0,
+                messages: [
+                    { sender: 'Maya Patel', text: 'Has anyone been to Tokyo before?', time: 'Aug 3 2:10 PM', self: false },
+                    { sender: 'Alex Rivera', text: 'Yes! I can share some tips', time: 'Aug 3 2:15 PM', self: true },
+                    { sender: 'Maya Patel', text: 'Check out these photos from Kyoto! 📸', time: 'Aug 3 3:00 PM', self: false },
+                ]
+            }
+        };
 
         // ============================================================
         // NAVIGATION
         // ============================================================
         function navigateTo(screenId) {
-            // hide all
             document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
-            // show target
             const target = document.getElementById(screenId);
             if (target) {
                 target.classList.add('active');
                 currentScreen = screenId;
-                // scroll to top
                 document.getElementById('appContainer').scrollTop = 0;
+                
+                // Render chat list when navigating to it
+                if (screenId === 'screen-chat-list') {
+                    renderChatList();
+                }
+                // If navigating back to chat list from detail, refresh
+                if (screenId === 'screen-chat-list' && currentChatId) {
+                    currentChatId = null;
+                }
             }
         }
 
@@ -1570,6 +1787,32 @@
             t.classList.add('show');
             clearTimeout(t._hide);
             t._hide = setTimeout(() => t.classList.remove('show'), 2200);
+        }
+
+        // ============================================================
+        // FLOATING CHAT BUTTON
+        // ============================================================
+        function updateChatFab() {
+            const fab = document.getElementById('chatFab');
+            if (isLoggedIn) {
+                fab.classList.add('visible');
+                // Count total unread messages
+                let totalUnread = 0;
+                Object.values(chatData).forEach(chat => {
+                    totalUnread += chat.unread || 0;
+                });
+                const badge = fab.querySelector('.badge');
+                if (badge) {
+                    badge.textContent = totalUnread > 0 ? totalUnread : '';
+                    if (totalUnread === 0) {
+                        badge.style.display = 'none';
+                    } else {
+                        badge.style.display = 'flex';
+                    }
+                }
+            } else {
+                fab.classList.remove('visible');
+            }
         }
 
         // ============================================================
@@ -1591,6 +1834,7 @@
             userPhone = phone;
             isLoggedIn = true;
             updateProfileUI();
+            updateChatFab();
             showToast('Account created! Welcome ' + name);
             navigateTo('screen-home');
         }
@@ -1600,14 +1844,15 @@
             const pass = document.getElementById('loginPass').value;
             if (!email || !pass) { showToast('Please enter email and password'); return; }
             isLoggedIn = true;
-            // use stored name or fallback
             updateProfileUI();
+            updateChatFab();
             showToast('Welcome back, ' + userName);
             navigateTo('screen-home');
         }
 
         function handleLogout() {
             isLoggedIn = false;
+            updateChatFab();
             showToast('Logged out');
             navigateTo('screen-welcome');
         }
@@ -1647,6 +1892,171 @@
         }
 
         // ============================================================
+        // CREATE NEW CHAT
+        // ============================================================
+        function createNewChat() {
+            const groupName = document.getElementById('groupNameInput').value.trim() || 'Mystery Squad';
+            const chatId = 'chat' + Date.now();
+            chatData[chatId] = {
+                id: chatId,
+                name: groupName,
+                type: 'private',
+                members: 1,
+                avatar: groupName.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase(),
+                lastMessage: 'Group created! Welcome everyone! 🎉',
+                timestamp: 'Just now',
+                unread: 0,
+                messages: [
+                    { sender: 'system', text: 'Group "' + groupName + '" created', time: 'Just now' },
+                    { sender: 'You', text: 'Group created! Welcome everyone! 🎉', time: 'Just now', self: true },
+                ]
+            };
+            showToast('Group "' + groupName + '" created!');
+            updateChatFab();
+            navigateTo('screen-group-approval');
+        }
+
+        // ============================================================
+        // RENDER CHAT LIST
+        // ============================================================
+        function renderChatList() {
+            const container = document.getElementById('chatListContainer');
+            if (!container) return;
+            
+            let html = '';
+            const chats = Object.values(chatData);
+            
+            if (chats.length === 0) {
+                html = `
+                    <div style="text-align:center;padding:40px 20px;">
+                        <i class="fas fa-comments" style="font-size:48px;color:rgba(255,255,255,0.1);"></i>
+                        <p style="color:rgba(255,255,255,0.3);margin-top:12px;">No chats yet</p>
+                        <p style="color:rgba(255,255,255,0.2);font-size:13px;">Create a group or join one to start chatting</p>
+                    </div>
+                `;
+            } else {
+                chats.forEach(chat => {
+                    const initials = chat.avatar || chat.name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+                    const typeIcon = chat.type === 'private' ? '🔒' : '🌐';
+                    html += `
+                        <div class="chat-list-item" onclick="openChat('${chat.id}')">
+                            <div class="chat-avatar ${chat.type}">${initials}</div>
+                            <div class="chat-info">
+                                <div class="name">${typeIcon} ${chat.name}</div>
+                                <div class="last-msg">${chat.lastMessage || 'No messages yet'}</div>
+                            </div>
+                            <div class="chat-meta">
+                                <div class="time">${chat.timestamp || ''}</div>
+                                ${chat.unread > 0 ? `<div class="unread">${chat.unread}</div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            container.innerHTML = html;
+        }
+
+        // ============================================================
+        // OPEN CHAT
+        // ============================================================
+        function openChat(chatId) {
+            currentChatId = chatId;
+            const chat = chatData[chatId];
+            if (!chat) return;
+            
+            // Reset unread count
+            chat.unread = 0;
+            updateChatFab();
+            
+            // Update header
+            document.getElementById('chatDetailTitle').textContent = '# ' + chat.name;
+            document.getElementById('chatDetailMembers').textContent = chat.members + ' members';
+            
+            // Render messages
+            const container = document.getElementById('chatMessagesContainer');
+            let html = '';
+            chat.messages.forEach(msg => {
+                if (msg.sender === 'system') {
+                    html += `<div class="chat-system">${msg.text}</div>`;
+                } else {
+                    const isSelf = msg.self || (msg.sender === 'You');
+                    const senderInitials = isSelf ? 'A' : msg.sender.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+                    const bubbleClass = isSelf ? 'self' : '';
+                    html += `
+                        <div class="chat-message ${bubbleClass}">
+                            <div class="avatar avatar-sm">${senderInitials}</div>
+                            <div>
+                                <div class="bubble">${msg.text}</div>
+                                <div class="time">${msg.time || 'Just now'}</div>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            container.innerHTML = html;
+            
+            navigateTo('screen-chat-detail');
+            setTimeout(() => {
+                document.getElementById('appContainer').scrollTop = document.getElementById('appContainer').scrollHeight;
+            }, 100);
+        }
+
+        // ============================================================
+        // SEND CHAT MESSAGE
+        // ============================================================
+        function sendChatDetailMessage() {
+            const input = document.getElementById('chatDetailInput');
+            const text = input.value.trim();
+            if (!text || !currentChatId) return;
+            
+            const chat = chatData[currentChatId];
+            if (!chat) return;
+            
+            const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            chat.messages.push({
+                sender: 'You',
+                text: text,
+                time: time,
+                self: true
+            });
+            chat.lastMessage = text;
+            chat.timestamp = 'Just now';
+            
+            // Update chat list and re-render
+            renderChatList();
+            
+            // Re-render messages
+            const container = document.getElementById('chatMessagesContainer');
+            const html = chat.messages.map(msg => {
+                if (msg.sender === 'system') {
+                    return `<div class="chat-system">${msg.text}</div>`;
+                } else {
+                    const isSelf = msg.self || (msg.sender === 'You');
+                    const senderInitials = isSelf ? 'A' : msg.sender.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+                    const bubbleClass = isSelf ? 'self' : '';
+                    return `
+                        <div class="chat-message ${bubbleClass}">
+                            <div class="avatar avatar-sm">${senderInitials}</div>
+                            <div>
+                                <div class="bubble">${msg.text}</div>
+                                <div class="time">${msg.time || 'Just now'}</div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }).join('');
+            container.innerHTML = html;
+            
+            input.value = '';
+            setTimeout(() => {
+                document.getElementById('appContainer').scrollTop = document.getElementById('appContainer').scrollHeight;
+            }, 100);
+            
+            updateChatFab();
+            showToast('Message sent');
+        }
+
+        // ============================================================
         // GROUP APPROVAL
         // ============================================================
         function approveRequest(btn) {
@@ -1655,7 +2065,6 @@
             showToast(name + ' approved ✅');
             card.style.opacity = '0.4';
             card.style.pointerEvents = 'none';
-            // update member count
             const badge = document.querySelector('.badge-gold');
             if (badge) {
                 const match = badge.textContent.match(/\d+/);
@@ -1715,42 +2124,13 @@
         }
 
         // ============================================================
-        // CHAT
-        // ============================================================
-        function sendChatMessage() {
-            const input = document.getElementById('chatInput');
-            const text = input.value.trim();
-            if (!text) return;
-            const chatContainer = document.querySelector('.screen#screen-chat .chat-message:last-child');
-            // find the parent container for messages
-            const parent = document.getElementById('screen-chat');
-            const msgDiv = document.createElement('div');
-            msgDiv.className = 'chat-message self';
-            msgDiv.innerHTML = `
-                    <div class="avatar avatar-sm" style="background:linear-gradient(135deg,#f5c842,#e6b02e);">A</div>
-                    <div>
-                        <div class="bubble">${text}</div>
-                        <div class="time">Just now</div>
-                    </div>
-                `;
-            // insert before chat input
-            const chatInput = parent.querySelector('.chat-input');
-            parent.insertBefore(msgDiv, chatInput);
-            input.value = '';
-            showToast('Message sent');
-            // scroll
-            const container = document.getElementById('appContainer');
-            setTimeout(() => { container.scrollTop = container.scrollHeight; }, 50);
-        }
-
-        // ============================================================
         // KEYBOARD SHORTCUT (enter for chat)
         // ============================================================
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && document.getElementById('screen-chat').classList.contains('active')) {
-                const input = document.getElementById('chatInput');
+            if (e.key === 'Enter' && document.getElementById('screen-chat-detail').classList.contains('active')) {
+                const input = document.getElementById('chatDetailInput');
                 if (input && document.activeElement === input) {
-                    sendChatMessage();
+                    sendChatDetailMessage();
                 }
             }
         });
@@ -1758,12 +2138,14 @@
         // ============================================================
         // INIT
         // ============================================================
-        // Set initial mode selection
         selectMode('solo');
         updateProfileUI();
+        updateChatFab();
+        renderChatList();
 
-        console.log('✦ MYsteryLane mockup loaded');
-        console.log('Flow: Trip Planner → Mode Selection → Blind Box → Mission → Puzzle → Achievements');
+        console.log('✦ MYsteryLane mockup loaded with multi-chat support');
+        console.log('💬 Multiple team chats with history now available!');
+        console.log('📋 Chat list shows all past and active team conversations');
     </script>
 
 </body>
