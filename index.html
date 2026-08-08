@@ -318,6 +318,7 @@
         .page-header {
             display: flex;
             align-items: center;
+
             gap: 12px;
             margin-bottom: 22px;
         }
@@ -637,6 +638,7 @@
             color: var(--text-muted);
             font-size: 10px;
         }
+
 
         /* ----- REQUEST LIST ----- */
         .request-item {
@@ -958,6 +960,7 @@
             border: none;
             color: #fff;
             font-weight: 700;
+
             font-size: 18px;
             padding: 16px 40px;
             border-radius: 60px;
@@ -1061,29 +1064,33 @@
         /* ----- ACHIEVEMENTS ----- */
         .badge-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 12px;
             margin: 16px 0;
         }
         .badge-item {
-            text-align: center;
-            padding: 12px 4px;
+            position: relative;
+            text-align: left;
+            padding: 14px;
             border-radius: 16px;
             background: var(--bg-card);
             border: 1px solid var(--border-light);
+            cursor: pointer;
+            transition: 0.2s;
         }
         .badge-item .icon {
-            font-size: 32px;
-            margin-bottom: 4px;
+            font-size: 30px;
+            margin-bottom: 8px;
         }
         .badge-item .name {
-            font-size: 10px;
-            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text);
         }
         .badge-item.locked {
-            opacity: 0.3;
-            filter: grayscale(1);
+            opacity: 0.72;
         }
+        .badge-item:hover{transform:translateY(-2px);border-color:rgba(74,58,107,.18)}.badge-item .achievement-title{font-size:10px;color:var(--text-muted);margin-top:3px;min-height:25px}.badge-item .badge-state{position:absolute;right:10px;top:10px;font-size:9px;font-weight:700;color:#2e7d5e;background:rgba(46,125,94,.12);padding:3px 7px;border-radius:20px}.badge-item .badge-state.progressing{color:var(--accent);background:rgba(201,122,90,.12)}.badge-progress{height:5px;border-radius:5px;background:rgba(74,58,107,.09);overflow:hidden;margin-top:9px}.badge-progress span{display:block;height:100%;border-radius:inherit;background:var(--primary)}.badge-progress-label{font-size:9px;color:var(--text-muted);margin-top:4px;text-align:right}.achievement-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}.achievement-summary .summary-card{padding:14px 7px;text-align:center;border-radius:15px;background:linear-gradient(145deg,rgba(74,58,107,.07),rgba(255,255,255,.5));border:1px solid var(--border)}.achievement-summary .summary-card:nth-child(2){background:linear-gradient(145deg,rgba(201,122,90,.09),rgba(255,255,255,.5))}.achievement-summary .num{font-size:22px;font-weight:800;color:var(--primary)}.achievement-summary .label{font-size:9px;color:var(--text-muted);margin-top:3px}.achievement-detail-icon{width:104px;height:104px;border-radius:30px;background:var(--bg-card);display:grid;place-items:center;font-size:52px;margin:20px auto 14px;border:1px solid var(--border)}.requirement-row{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border)}.requirement-row i{color:var(--primary);margin-top:2px}.requirement-row b,.requirement-row span{display:block}.requirement-row b{font-size:13px}.requirement-row span{font-size:11px;color:var(--text-muted);margin-top:3px}
 
         .contribution-item {
             display: flex;
@@ -1092,6 +1099,7 @@
             padding: 12px 0;
             border-bottom: 1px solid var(--border);
         }
+        .planner-map{position:relative;height:255px;border-radius:20px;overflow:hidden;background:#e9e4df;border:1px solid var(--border);margin:2px 0 16px}.planner-map:before{content:"";position:absolute;inset:-20%;background:linear-gradient(32deg,transparent 45%,rgba(255,255,255,.9) 46% 49%,transparent 50%),linear-gradient(122deg,transparent 42%,rgba(255,255,255,.75) 43% 47%,transparent 48%),linear-gradient(8deg,transparent 60%,rgba(201,122,90,.12) 61% 64%,transparent 65%);background-size:170px 120px,140px 160px,220px 150px}.map-water{position:absolute;right:-25px;top:-15px;width:115px;height:300px;background:rgba(107,161,187,.18);border-radius:50%;transform:rotate(12deg)}.map-route{position:absolute;left:62px;top:52px;width:220px;height:128px;border:3px dashed rgba(74,58,107,.35);border-color:rgba(74,58,107,.4) transparent rgba(74,58,107,.4) rgba(74,58,107,.4);border-radius:55% 35% 45% 40%;transform:rotate(8deg)}.map-pin{position:absolute;width:34px;height:34px;border:3px solid var(--bg);border-radius:50% 50% 50% 8px;transform:rotate(-45deg);display:grid;place-items:center;background:var(--primary);color:#fff;box-shadow:0 5px 15px rgba(44,26,46,.25);cursor:pointer;z-index:3}.map-pin i{transform:rotate(45deg);font-size:11px}.map-pin.popular{background:var(--accent)}.map-pin.completed{background:#2e7d5e}.map-pin.selected{outline:4px solid rgba(74,58,107,.2);transform:rotate(-45deg) scale(1.1)}.map-user{position:absolute;left:48%;top:47%;width:18px;height:18px;border-radius:50%;background:#4285f4;border:4px solid white;box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:2}.map-legend{position:absolute;left:10px;right:10px;bottom:9px;display:flex;gap:10px;padding:7px 9px;border-radius:12px;background:rgba(251,246,239,.92);font-size:8px;color:var(--text-muted);z-index:4}.map-legend b{font-size:12px}.checkpoint-preview{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:14px;margin:-6px 0 16px}.checkpoint-preview h4{font-size:14px;margin-bottom:4px}.checkpoint-preview p{font-size:10px;color:var(--text-muted)}.checkpoint-preview .meta{display:flex;gap:12px;margin-top:9px;font-size:9px;color:var(--text-secondary)}
         .contribution-item .status {
             font-size: 12px;
             font-weight: 600;
@@ -1278,6 +1286,7 @@
             .phone {
                 border-radius: 28px;
                 height: 100vh;
+
                 max-height: 100vh;
             }
             .phone::before {
@@ -1414,7 +1423,7 @@
                 <div class="page-header">
                     <button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button>
                     <h2>Profile</h2>
-                    <span class="header-action" onclick="showToast('Edit profile coming soon')"><i class="fas fa-pen"></i></span>
+                    <span class="header-action" onclick="editProfile()"><i class="fas fa-pen"></i></span>
                 </div>
                 <div style="text-align:center;padding:10px 0 18px;">
                     <div class="avatar" style="width:72px;height:72px;font-size:32px;margin:0 auto 10px;border:2px solid rgba(74,58,107,0.15);">A</div>
@@ -1435,7 +1444,18 @@
                         <span style="color:var(--text);" id="profilePhone">+1 234 567 890</span>
                     </div>
                 </div>
-                <button class="btn-outline" onclick="showToast('Edit profile form would open')" style="margin-top:6px;">
+                <div class="card" id="profileEditPanel" style="display:none;">
+                    <label style="color:var(--text-muted);font-size:13px;display:block;margin-bottom:4px;">Full Name</label>
+                    <input class="input-field" id="editProfileName" type="text" />
+                    <div class="mt-12"></div>
+                    <label style="color:var(--text-muted);font-size:13px;display:block;margin-bottom:4px;">Phone Number</label>
+                    <input class="input-field" id="editProfilePhone" type="tel" />
+                    <div style="display:flex;gap:10px;margin-top:14px;">
+                        <button class="btn-primary" style="flex:1;" onclick="saveProfileEdit()"><i class="fas fa-check"></i> Save</button>
+                        <button class="btn-outline" style="flex:1;" onclick="cancelProfileEdit()">Cancel</button>
+                    </div>
+                </div>
+                <button id="profileEditButton" class="btn-outline" onclick="editProfile()" style="margin-top:6px;">
                     <i class="fas fa-edit"></i> Edit Profile
                 </button>
                 <button class="btn-outline" style="margin-top:10px;border-color:rgba(200,60,60,0.2);color:#c0392b;" onclick="handleLogout()">
@@ -1450,7 +1470,7 @@
                 <div class="page-header">
                     <button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button>
                     <h2>Trip Planner</h2>
-                    <span class="header-action" onclick="showToast('Map view opened')"><i class="fas fa-map"></i></span>
+                    <span class="header-action" onclick="document.getElementById('plannerMap').scrollIntoView({behavior:'smooth'})"><i class="fas fa-map"></i></span>
                 </div>
 
                 <div class="trip-summary">
@@ -1469,6 +1489,17 @@
                         <span>Add New Location</span>
                     </div>
                 </div>
+
+                <div style="display:flex;justify-content:space-between;align-items:center;margin:4px 0 8px;"><span style="font-weight:700;font-size:14px;">🗺️ Checkpoint Map</span><span class="text-muted">within 5 km</span></div>
+                <div class="planner-map" id="plannerMap">
+                    <div class="map-water"></div><div class="map-route"></div><div class="map-user" title="Your location"></div>
+                    <button class="map-pin completed selected" style="left:18%;top:23%;" onclick="selectPlannerPin(this,'eiffel')" aria-label="Eiffel Tower checkpoint"><i class="fas fa-check"></i></button>
+                    <button class="map-pin popular" style="left:63%;top:18%;" onclick="selectPlannerPin(this,'louvre')" aria-label="Louvre Museum checkpoint"><i class="fas fa-star"></i></button>
+                    <button class="map-pin" style="left:69%;top:58%;" onclick="selectPlannerPin(this,'mont')" aria-label="Mont Blanc checkpoint"><i class="fas fa-flag"></i></button>
+                    <button class="map-pin popular" style="left:28%;top:62%;" onclick="selectPlannerPin(this,'geneva')" aria-label="Lake Geneva checkpoint"><i class="fas fa-star"></i></button>
+                    <div class="map-legend"><span><b style="color:#2e7d5e;">●</b> Completed</span><span><b style="color:var(--accent);">●</b> Popular</span><span><b style="color:var(--primary);">●</b> Available</span><span>🔵 You</span></div>
+                </div>
+                <div class="checkpoint-preview" id="checkpointPreview"><h4>🗼 Eiffel Tower Checkpoint</h4><p>Capture the tower from the Trocadéro viewpoint.</p><div class="meta"><span>📍 1.2 km</span><span>◎ 80 m radius</span><span>★ +120 pts</span></div></div>
 
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
                     <span style="color:var(--text-secondary);font-weight:600;font-size:14px;">📅 Itinerary</span>
@@ -1496,7 +1527,7 @@
                 </div>
 
                 <div style="display:flex;gap:10px;margin:10px 0 16px;">
-                    <button class="btn-ghost" style="flex:1;" onclick="showToast('Route planning with Google Maps')"><i class="fas fa-route"></i> Plan Route</button>
+                    <button class="btn-ghost" style="flex:1;" onclick="document.getElementById('plannerMap').scrollIntoView({behavior:'smooth'});showToast('Efficient route displayed on the map')"><i class="fas fa-route"></i> Plan Route</button>
                     <button class="btn-ghost" style="flex:1;" onclick="showToast('AI report generated')"><i class="fas fa-robot"></i> AI Report</button>
                     <button class="btn-ghost" style="flex:1;" onclick="showToast('PDF downloaded')"><i class="fas fa-file-pdf"></i> Export PDF</button>
                 </div>
@@ -1598,6 +1629,7 @@
                 </button>
                 <p style="color:var(--text-muted);font-size:12px;text-align:center;margin-top:8px;">Your request will be sent to the team owner for approval</p>
                 <button class="btn-outline mt-12" onclick="navigateTo('screen-private-group')">
+
                     <i class="fas fa-arrow-left"></i> Back
                 </button>
             </div>
@@ -1907,10 +1939,10 @@
                         </div>
                     </div>
                     <div style="display:flex;gap:10px;">
-                        <button class="btn-primary" style="flex:1;" onclick="showToast('Destination confirmed!'); navigateTo('screen-mission')"><i class="fas fa-check"></i> Confirm</button>
-                        <button class="btn-outline" style="flex:1;" onclick="showToast('Redraw costs 200 exploration points')"><i class="fas fa-sync-alt"></i> Redraw</button>
+                        <button class="btn-primary" style="flex:1;" onclick="confirmDestination()"><i class="fas fa-check"></i> Confirm</button>
+                        <button class="btn-outline" style="flex:1;" onclick="redrawDestination()"><i class="fas fa-sync-alt"></i> Redraw</button>
                     </div>
-                    <button class="btn-ghost" style="width:100%;margin-top:8px;" onclick="showToast('Saved to wishlist')"><i class="fas fa-heart"></i> Save to Wishlist</button>
+                    <button class="btn-ghost" style="width:100%;margin-top:8px;" onclick="saveDestination()"><i class="fas fa-heart"></i> Save to Wishlist</button>
                     <p style="color:var(--text-muted);font-size:12px;text-align:center;margin-top:6px;">Redraws remaining: 3/10</p>
                 </div>
 
@@ -1918,6 +1950,7 @@
                     <div style="display:flex;justify-content:space-between;color:var(--text-muted);font-size:13px;">
                         <span>Exploration Radius</span>
                         <span id="radiusLabel">10 km</span>
+
                     </div>
                     <input type="range" min="5" max="20" value="10" step="1" style="width:100%;margin-top:6px;accent-color:var(--primary);background:rgba(74,58,107,0.06);height:4px;border-radius:10px;"
                     oninput="document.getElementById('radiusLabel').textContent = this.value + ' km'" />
@@ -1929,7 +1962,7 @@
             <!-- ============================================================ -->
             <div class="screen" id="screen-mission">
                 <div class="page-header">
-                    <button class="back-btn" onclick="navigateTo('screen-blind-box')"><i class="fas fa-arrow-left"></i></button>
+                    <button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button>
                     <h2>Checkpoint Mission</h2>
                     <span class="header-action" onclick="showToast('Exploration points: 450')"><i class="fas fa-coins"></i> 450</span>
                 </div>
@@ -1955,7 +1988,8 @@
                     </div>
                 </div>
 
-                <div class="photo-upload-area" onclick="showToast('Image picker opened (JPG, PNG up to 10MB)')">
+                <div class="photo-upload-area" onclick="document.getElementById('missionPhoto').click()">
+                    <input id="missionPhoto" type="file" accept="image/jpeg,image/png" style="display:none" onchange="handleMissionPhoto(this)" />
                     <i class="fas fa-cloud-upload-alt"></i>
                     <p>Tap to capture mission evidence</p>
                     <p style="font-size:11px;color:var(--text-muted);">JPG, JPEG, PNG · max 10MB</p>
@@ -1991,10 +2025,12 @@
                         <span style="color:var(--accent);font-weight:600;">#42</span>
                     </div>
                 </div>
-                <div style="display:flex;gap:10px;margin-top:16px;">
-                    <button class="btn-primary" style="flex:1;" onclick="navigateTo('screen-puzzle')"><i class="fas fa-puzzle-piece"></i> Next Puzzle</button>
-                    <button class="btn-outline" style="flex:1;" onclick="navigateTo('screen-home')"><i class="fas fa-home"></i> Home</button>
+                <button class="btn-primary" style="margin-top:16px;" onclick="navigateTo('screen-achievements')"><i class="fas fa-trophy"></i> View Achievements</button>
+                <div style="display:flex;gap:10px;margin-top:10px;">
+                    <button class="btn-outline" style="flex:1;" onclick="navigateTo('screen-puzzle')"><i class="fas fa-puzzle-piece"></i> Play Puzzle</button>
+                    <button class="btn-outline" style="flex:1;" onclick="navigateTo('screen-mission')"><i class="fas fa-map-marker-alt"></i> Checkpoint</button>
                 </div>
+                <button class="btn-ghost" style="width:100%;margin-top:10px;" onclick="navigateTo('screen-trip-planner')"><i class="fas fa-map"></i> Planner Map</button>
             </div>
 
             <!-- ============================================================ -->
@@ -2046,38 +2082,23 @@
                     <span class="header-action" onclick="showToast('Leaderboard #42')"><i class="fas fa-trophy"></i> #42</span>
                 </div>
 
-                <div style="display:flex;gap:12px;margin-bottom:16px;">
-                    <div class="stat" style="flex:1;background:rgba(74,58,107,0.04);border:1px solid rgba(74,58,107,0.06);">
-                        <div class="num" style="color:var(--primary);">570</div>
-                        <div class="label">Total Points</div>
-                    </div>
-                    <div class="stat" style="flex:1;background:rgba(201,122,90,0.04);border:1px solid rgba(201,122,90,0.06);">
-                        <div class="num" style="color:var(--accent);">7</div>
-                        <div class="label">Badges</div>
-                    </div>
-                    <div class="stat" style="flex:1;background:var(--bg-card);border:1px solid var(--border-light);">
-                        <div class="num" style="color:var(--text);">42</div>
-                        <div class="label">Rank</div>
-                    </div>
+                <div class="achievement-summary">
+                    <div class="summary-card"><div class="num">570</div><div class="label">TOTAL POINTS</div></div>
+                    <div class="summary-card"><div class="num" style="color:var(--accent);">7</div><div class="label">BADGES</div></div>
+                    <div class="summary-card"><div class="num" style="color:var(--text);">#42</div><div class="label">GLOBAL RANK</div></div>
                 </div>
 
                 <div style="color:var(--text-muted);font-size:13px;margin-bottom:8px;">Badges</div>
                 <div class="badge-grid">
-                    <div class="badge-item"><div class="icon">🏔️</div><div class="name">Summit</div></div>
-                    <div class="badge-item"><div class="icon">🗺️</div><div class="name">Explorer</div></div>
-                    <div class="badge-item"><div class="icon">🧩</div><div class="name">Puzzle</div></div>
-                    <div class="badge-item locked"><div class="icon">🌟</div><div class="name">Legend</div></div>
-                    <div class="badge-item"><div class="icon">👥</div><div class="name">Team</div></div>
-                    <div class="badge-item locked"><div class="icon">🏆</div><div class="name">Champion</div></div>
-                    <div class="badge-item"><div class="icon">📸</div><div class="name">Photog</div></div>
-                    <div class="badge-item locked"><div class="icon">🌍</div><div class="name">Globetrotter</div></div>
+                    <div class="badge-item" onclick="showAchievementDetail('summit')"><span class="badge-state">UNLOCKED</span><div class="icon">🏔️</div><div class="name">Summit Explorer</div><div class="achievement-title">Reach your first checkpoint summit</div><div class="badge-progress"><span style="width:100%"></span></div><div class="badge-progress-label">1 / 1</div></div>
+                    <div class="badge-item" onclick="showAchievementDetail('explorer')"><span class="badge-state">UNLOCKED</span><div class="icon">🗺️</div><div class="name">City Explorer</div><div class="achievement-title">Discover 10 destinations</div><div class="badge-progress"><span style="width:100%"></span></div><div class="badge-progress-label">10 / 10</div></div>
+                    <div class="badge-item" onclick="showAchievementDetail('puzzle')"><span class="badge-state">UNLOCKED</span><div class="icon">🧩</div><div class="name">Puzzle Starter</div><div class="achievement-title">Solve your first travel puzzle</div><div class="badge-progress"><span style="width:100%"></span></div><div class="badge-progress-label">1 / 1</div></div>
+                    <div class="badge-item locked" onclick="showAchievementDetail('legend')"><span class="badge-state progressing">50%</span><div class="icon">🌟</div><div class="name">Travel Legend</div><div class="achievement-title">Complete 20 missions</div><div class="badge-progress"><span style="width:50%"></span></div><div class="badge-progress-label">10 / 20</div></div>
+                    <div class="badge-item" onclick="showAchievementDetail('team')"><span class="badge-state">UNLOCKED</span><div class="icon">👥</div><div class="name">Team Player</div><div class="achievement-title">Complete a team adventure</div><div class="badge-progress"><span style="width:100%"></span></div><div class="badge-progress-label">1 / 1</div></div>
+                    <div class="badge-item locked" onclick="showAchievementDetail('champion')"><span class="badge-state progressing">40%</span><div class="icon">🏆</div><div class="name">Mission Champion</div><div class="achievement-title">Earn 1,500 mission points</div><div class="badge-progress"><span style="width:40%"></span></div><div class="badge-progress-label">600 / 1,500</div></div>
+                    <div class="badge-item" onclick="showAchievementDetail('photog')"><span class="badge-state">UNLOCKED</span><div class="icon">📸</div><div class="name">Travel Photographer</div><div class="achievement-title">Verify 5 missions with photos</div><div class="badge-progress"><span style="width:100%"></span></div><div class="badge-progress-label">5 / 5</div></div>
+                    <div class="badge-item locked" onclick="showAchievementDetail('globetrotter')"><span class="badge-state progressing">10%</span><div class="icon">🌍</div><div class="name">Globetrotter</div><div class="achievement-title">Explore 10 different cities</div><div class="badge-progress"><span style="width:10%"></span></div><div class="badge-progress-label">1 / 10</div></div>
                 </div>
-
-                <div class="divider"></div>
-
-                <button class="btn-primary" style="background:var(--accent);box-shadow:0 6px 24px rgba(201,122,90,0.2);" onclick="showToast('Travel spot contribution form opened')">
-                    <i class="fas fa-map-pin"></i> Contribute Travel Spot
-                </button>
 
                 <div class="divider"></div>
 
@@ -2106,6 +2127,25 @@
                     <span class="status rejected">Rejected</span>
                     <span style="color:var(--text-muted);font-size:13px;">—</span>
                 </div>
+            </div>
+
+            <div class="screen" id="screen-achievement-detail">
+                <div class="page-header">
+                    <button class="back-btn" onclick="navigateTo('screen-achievements')"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Achievement Details</h2>
+                </div>
+                <div class="achievement-detail-icon" id="achievementDetailIcon">🏔️</div>
+                <div style="text-align:center;">
+                    <span class="badge-approved" id="achievementDetailState">Unlocked</span>
+                    <h3 id="achievementDetailName" style="font-size:22px;margin:10px 0 5px;">Summit Explorer</h3>
+                    <p id="achievementDetailDescription" class="text-muted">Reach your first checkpoint summit.</p>
+                </div>
+                <div class="card" style="margin-top:20px;">
+                    <div class="flex-between"><b>Progress</b><span id="achievementDetailProgress" class="gold-text">1 / 1</span></div>
+                    <div class="badge-progress" style="height:8px;"><span id="achievementDetailBar" style="width:100%"></span></div>
+                    <div id="achievementRequirementList"></div>
+                </div>
+                <button class="btn-outline" onclick="navigateTo('screen-achievements')"><i class="fas fa-arrow-left"></i> Back to Achievements</button>
             </div>
 
             <!-- ============================================================ -->
@@ -2199,6 +2239,12 @@
         let pendingRequests = 3;
         let approvedRequests = 5;
         let rejectedRequests = 2;
+        let explorationPoints = 450;
+        let missionPhotoReady = false;
+        let missionRewardClaimed = false;
+        let redrawsRemaining = 3;
+        let wishlist = [];
+        let destinationIndex = 0;
 
         // ============================================================
         // CHAT DATA
@@ -2238,6 +2284,7 @@
                 ]
             },
             'chat3': {
+
                 id: 'chat3',
                 name: 'Alpine Adventures',
                 type: 'private',
@@ -2338,21 +2385,29 @@
                 showToast('Please fill in all fields');
                 return;
             }
+            if (!/^\S+@\S+\.\S+$/.test(email)) { showToast('Please enter a valid email address'); return; }
+            if (!/^\+?[0-9 ]{8,15}$/.test(phone)) { showToast('Please enter a valid phone number'); return; }
+            if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/.test(pass)) { showToast('Password needs 8+ characters, upper/lowercase, a number and symbol'); return; }
             if (pass !== pass2) { showToast('Passwords do not match'); return; }
             userName = name;
             userEmail = email;
             userPhone = phone;
-            isLoggedIn = true;
+            isLoggedIn = false;
             updateProfileUI();
             updateChatFab();
-            showToast('Account created! Welcome ' + name);
-            navigateTo('screen-home');
+            document.getElementById('loginEmail').value = email;
+            document.getElementById('loginPass').value = '';
+            navigateTo('screen-login');
+            showToast('Registration completed. Please log in.');
         }
 
         function handleLogin() {
             const email = document.getElementById('loginEmail').value.trim();
             const pass = document.getElementById('loginPass').value;
             if (!email || !pass) { showToast('Please enter email and password'); return; }
+            if (!/^\S+@\S+\.\S+$/.test(email)) { showToast('Please enter a valid email address'); return; }
+            if (email.toLowerCase() !== userEmail.toLowerCase()) { showToast('Incorrect email address or password'); return; }
+            if (pass !== 'password123' && pass !== document.getElementById('regPass').value) { showToast('Incorrect email address or password'); return; }
             isLoggedIn = true;
             updateProfileUI();
             updateChatFab();
@@ -2377,6 +2432,31 @@
             emailEls.forEach(el => el.textContent = userEmail);
             const phoneEl = document.getElementById('profilePhone');
             if (phoneEl) phoneEl.textContent = userPhone;
+        }
+
+        function editProfile() {
+            document.getElementById('editProfileName').value = userName;
+            document.getElementById('editProfilePhone').value = userPhone;
+            document.getElementById('profileEditPanel').style.display = 'block';
+            document.getElementById('profileEditButton').style.display = 'none';
+        }
+
+        function cancelProfileEdit() {
+            document.getElementById('profileEditPanel').style.display = 'none';
+            document.getElementById('profileEditButton').style.display = 'block';
+        }
+
+        function saveProfileEdit() {
+            const name = document.getElementById('editProfileName').value.trim();
+            const phone = document.getElementById('editProfilePhone').value.trim();
+            if (!name) { showToast('Full name is required'); return; }
+            if (name.length < 2 || name.length > 50) { showToast('Full name must contain 2–50 characters'); return; }
+            if (!/^\+?[0-9 ]{8,15}$/.test(phone)) { showToast('Please enter a valid phone number with 8–15 digits'); return; }
+            userName = name;
+            userPhone = phone;
+            updateProfileUI();
+            cancelProfileEdit();
+            showToast('Profile updated successfully');
         }
 
         // ============================================================
@@ -2558,6 +2638,7 @@
             if (pendingEl) pendingEl.textContent = pendingRequests;
             if (approvedEl) approvedEl.textContent = approvedRequests;
             if (rejectedEl) rejectedEl.textContent = rejectedRequests;
+
             if (requestCountEl) requestCountEl.textContent = pendingRequests + ' pending';
         }
 
@@ -2737,6 +2818,11 @@
         // BLIND BOX
         // ============================================================
         let destRevealed = false;
+        const destinations = [
+            { name: '🏔️ Mont Blanc', detail: 'Chamonix, France · 12.4 km away' },
+            { name: '🌲 KL Forest Eco Park', detail: 'Kuala Lumpur · 4.8 km away' },
+            { name: '🏯 Thean Hou Temple', detail: 'Kuala Lumpur · 9.2 km away' }
+        ];
 
         function revealDestination() {
             if (destRevealed) {
@@ -2749,14 +2835,94 @@
             showToast('🎉 Mystery revealed: Mont Blanc!');
         }
 
+        function redrawDestination() {
+            if (!destRevealed) { showToast('Reveal a destination first'); return; }
+            if (redrawsRemaining > 0) redrawsRemaining--;
+            else if (explorationPoints >= 200) explorationPoints -= 200;
+            else { showToast('Insufficient Exploration Points'); return; }
+            destinationIndex = (destinationIndex + 1) % destinations.length;
+            const next = destinations[destinationIndex];
+            document.querySelector('.dest-name').textContent = next.name;
+            document.querySelector('.dest-desc').textContent = next.detail;
+            const status = document.querySelector('#destRevealContainer p[style*="text-align:center"]');
+            if (status) status.textContent = 'Redraws remaining: ' + redrawsRemaining + '/10';
+            showToast('New mystery destination generated');
+        }
+
+        function saveDestination() {
+            const name = destinations[destinationIndex].name;
+            if (!wishlist.includes(name)) wishlist.push(name);
+            showToast('Destination added to Wishlist!');
+        }
+
+        function confirmDestination() {
+            if (!destRevealed) { showToast('Reveal a destination first'); return; }
+            missionPhotoReady = false;
+            navigateTo('screen-mission');
+            showToast('Destination confirmed. Complete the checkpoint mission.');
+        }
+
         // ============================================================
         // MISSION
         // ============================================================
+        function handleMissionPhoto(input) {
+            const file = input.files && input.files[0];
+            if (!file) return;
+            if (!['image/jpeg','image/png'].includes(file.type)) { input.value=''; showToast('Only JPG, JPEG or PNG images are allowed'); return; }
+            if (file.size > 10 * 1024 * 1024) { input.value=''; showToast('Photo must be 10MB or smaller'); return; }
+            missionPhotoReady = true;
+            const area = document.querySelector('.photo-upload-area');
+            area.querySelector('p').textContent = '✓ Photo ready for verification';
+            showToast('Mission photo selected');
+        }
+
         function submitMission() {
+            if (!missionPhotoReady) { showToast('Please upload a mission photo before submitting'); return; }
             showToast('📸 Mission evidence submitted! Verifying...');
             setTimeout(() => {
+                if (!missionRewardClaimed) { explorationPoints += 120; missionRewardClaimed = true; }
                 navigateTo('screen-mission-result');
             }, 800);
+        }
+
+        const plannerCheckpoints = {
+            eiffel:{title:'🗼 Eiffel Tower Checkpoint',description:'Capture the tower from the Trocadéro viewpoint.',distance:'1.2 km',radius:'80 m radius',reward:'+120 pts'},
+            louvre:{title:'🎨 Louvre Museum Checkpoint',description:'Photograph the glass pyramid from the main courtyard.',distance:'2.4 km',radius:'60 m radius',reward:'+100 pts'},
+            mont:{title:'🏔️ Mont Blanc Checkpoint',description:'Reach the summit viewpoint and capture the mountain marker.',distance:'4.8 km',radius:'100 m radius',reward:'+180 pts'},
+            geneva:{title:'🌊 Lake Geneva Checkpoint',description:'Find the lakeside marker near the Jet d’Eau viewpoint.',distance:'3.6 km',radius:'80 m radius',reward:'+140 pts'}
+        };
+
+        function selectPlannerPin(pin,id) {
+            document.querySelectorAll('.map-pin').forEach(item=>item.classList.remove('selected'));
+            pin.classList.add('selected');
+            const checkpoint=plannerCheckpoints[id];
+            document.getElementById('checkpointPreview').innerHTML='<h4>'+checkpoint.title+'</h4><p>'+checkpoint.description+'</p><div class="meta"><span>📍 '+checkpoint.distance+'</span><span>◎ '+checkpoint.radius+'</span><span>★ '+checkpoint.reward+'</span></div>';
+        }
+
+        const achievementData = {
+            summit:{icon:'🏔️',name:'Summit Explorer',description:'Reach your first checkpoint summit.',progress:'1 / 1',percent:100,unlocked:true,requirements:['Confirm a Blind Box destination','Reach the destination checkpoint','Upload a valid checkpoint photo']},
+            explorer:{icon:'🗺️',name:'City Explorer',description:'Discover ten unique destinations.',progress:'10 / 10',percent:100,unlocked:true,requirements:['Reveal destinations using Blind Box','Confirm 10 different destinations','Each destination must be within your selected radius']},
+            puzzle:{icon:'🧩',name:'Puzzle Starter',description:'Solve your first destination puzzle.',progress:'1 / 1',percent:100,unlocked:true,requirements:['Complete a checkpoint mission','Open the destination puzzle','Submit one correct answer']},
+            legend:{icon:'🌟',name:'Travel Legend',description:'Complete twenty verified missions.',progress:'10 / 20',percent:50,unlocked:false,requirements:['Complete 20 checkpoint missions','Every mission requires photo verification','Current progress: 10 missions completed']},
+            team:{icon:'👥',name:'Team Player',description:'Complete an adventure with a travel team.',progress:'1 / 1',percent:100,unlocked:true,requirements:['Join or create a travel team','Receive owner approval','Complete one team adventure']},
+            champion:{icon:'🏆',name:'Mission Champion',description:'Earn 1,500 points from checkpoint missions.',progress:'600 / 1,500',percent:40,unlocked:false,requirements:['Earn points from verified missions','Puzzle points do not count','900 additional mission points required']},
+            photog:{icon:'📸',name:'Travel Photographer',description:'Verify five missions using photo evidence.',progress:'5 / 5',percent:100,unlocked:true,requirements:['Upload JPG or PNG evidence','Photo must meet the checkpoint requirement','Complete photo verification five times']},
+            globetrotter:{icon:'🌍',name:'Globetrotter',description:'Explore ten different cities.',progress:'1 / 10',percent:10,unlocked:false,requirements:['Confirm destinations in 10 unique cities','Complete at least one mission in each city','Current progress: 1 city explored']}
+        };
+
+        function showAchievementDetail(id) {
+            const item = achievementData[id];
+            if (!item) return;
+            document.getElementById('achievementDetailIcon').textContent = item.icon;
+            document.getElementById('achievementDetailName').textContent = item.name;
+            document.getElementById('achievementDetailDescription').textContent = item.description;
+            document.getElementById('achievementDetailProgress').textContent = item.progress;
+            document.getElementById('achievementDetailBar').style.width = item.percent + '%';
+            const state = document.getElementById('achievementDetailState');
+            state.textContent = item.unlocked ? 'Unlocked' : 'In Progress';
+            state.className = item.unlocked ? 'badge-approved' : 'badge-pending';
+            document.getElementById('achievementRequirementList').innerHTML = '<div style="font-size:12px;font-weight:700;margin-top:18px;">How to unlock</div>' + item.requirements.map((requirement,index)=>'<div class="requirement-row"><i class="fas '+(item.unlocked?'fa-check-circle':'fa-circle')+'"></i><div><b>Requirement '+(index+1)+'</b><span>'+requirement+'</span></div></div>').join('');
+            navigateTo('screen-achievement-detail');
         }
 
         // ============================================================
@@ -2765,6 +2931,7 @@
         function solvePuzzle() {
             const input = document.getElementById('puzzleAnswer');
             const answer = input.value.trim().toUpperCase();
+            if (!answer) { showToast('Please enter an answer before submitting'); return; }
             if (answer === 'BLANC' || answer === 'MONT BLANC' || answer === 'MONTBLANC') {
                 showToast('🧠 Correct! +50 exploration points!');
                 setTimeout(() => navigateTo('screen-achievements'), 600);
