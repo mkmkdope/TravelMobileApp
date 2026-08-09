@@ -30,9 +30,6 @@
             --shadow-btn: 0 6px 24px rgba(201, 122, 90, 0.25);
             --shadow-btn-hover: 0 8px 32px rgba(201, 122, 90, 0.35);
             --radius: 20px;
-            --success: #2e7d5e;
-            --danger: #c0392b;
-            --warning: #e67e22;
         }
 
         * {
@@ -321,6 +318,7 @@
         .page-header {
             display: flex;
             align-items: center;
+
             gap: 12px;
             margin-bottom: 22px;
         }
@@ -640,6 +638,7 @@
             color: var(--text-muted);
             font-size: 10px;
         }
+
 
         /* ----- REQUEST LIST ----- */
         .request-item {
@@ -961,6 +960,7 @@
             border: none;
             color: #fff;
             font-weight: 700;
+
             font-size: 18px;
             padding: 16px 40px;
             border-radius: 60px;
@@ -1099,7 +1099,7 @@
             padding: 12px 0;
             border-bottom: 1px solid var(--border);
         }
-        .planner-map{position:relative;height:255px;border-radius:20px;overflow:hidden;background:#e9e4df;border:1px solid var(--border);margin:2px 0 16px}.planner-map:before{content:"";position:absolute;inset:-20%;background:linear-gradient(32deg,transparent 45%,rgba(255,255,255,.9) 46% 49%,transparent 50%),linear-gradient(122deg,transparent 42%,rgba(255,255,255,.75) 43% 47%,transparent 48%),linear-gradient(8deg,transparent 60%,rgba(201,122,90,.12) 61% 64%,transparent 65%);background-size:170px 120px,140px 160px,220px 150px}.map-water{position:absolute;right:-25px;top:-15px;width:115px;height:300px;background:rgba(107,161,187,.18);border-radius:50%;transform:rotate(12deg)}.map-route{position:absolute;left:62px;top:52px;width:220px;height:128px;border:3px dashed rgba(74,58,107,.35);border-color:rgba(74,58,107,.4) transparent rgba(74,58,107,.4) rgba(74,58,107,.4);border-radius:55% 35% 45% 40%;transform:rotate(8deg)}.map-pin{position:absolute;width:34px;height:34px;border:3px solid var(--bg);border-radius:50% 50% 50% 8px;transform:rotate(-45deg);display:grid;place-items:center;background:var(--primary);color:#fff;box-shadow:0 5px 15px rgba(44,26,46,.25);cursor:pointer;z-index:3}.map-pin i{transform:rotate(45deg);font-size:11px}.map-pin.popular{background:var(--accent)}.map-pin.completed{background:#2e7d5e}.map-pin.selected{outline:4px solid rgba(74,58,107,.2);transform:rotate(-45deg) scale(1.1)}.map-user{position:absolute;left:48%;top:47%;width:18px;height:18px;border-radius:50%;background:#4285f4;border:4px solid white;box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:2}.map-legend{position:absolute;left:10px;right:10px;bottom:9px;display:flex;gap:10px;padding:7px 9px;border-radius:12px;background:rgba(251,246,239,.92);font-size:8px;color:var(--text-muted);z-index:4}.map-legend b{font-size:12px}.checkpoint-preview{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:14px;margin:-6px 0 16px}.checkpoint-preview h4{font-size:14px;margin-bottom:4px}.checkpoint-preview p{font-size:10px;color:var(--text-muted)}.checkpoint-preview .meta{display:flex;gap:12px;margin-top:9px;font-size:9px;color:var(--text-secondary)}
+        .planner-map{position:relative;height:255px;border-radius:20px;overflow:hidden;background:#e9e4df;border:1px solid var(--border);margin:2px 0 16px}.planner-map:before{content:"";position:absolute;inset:-20%;background:linear-gradient(32deg,transparent 45%,rgba(255,255,255,.9) 46% 49%,transparent 50%),linear-gradient(122deg,transparent 42%,rgba(255,255,255,.75) 43% 47%,transparent 48%),linear-gradient(8deg,transparent 60%,rgba(201,122,90,.12) 61% 64%,transparent 65%);background-size:170px 120px,140px 160px,220px 150px}.map-water{position:absolute;right:-25px;top:-15px;width:115px;height:300px;background:rgba(107,161,187,.18);border-radius:50%;transform:rotate(12deg)}.map-route{position:absolute;left:62px;top:52px;width:220px;height:128px;border:3px dashed rgba(74,58,107,.35);border-color:rgba(74,58,107,.4) transparent rgba(74,58,107,.4) rgba(74,58,107,.4);border-radius:55% 35% 45% 40%;transform:rotate(8deg)}.map-pin{position:absolute;width:34px;height:34px;border:3px solid var(--bg);border-radius:50% 50% 50% 8px;transform:rotate(-45deg);display:grid;place-items:center;background:var(--primary);color:#fff;box-shadow:0 5px 15px rgba(44,26,46,.25);cursor:pointer;z-index:3}.map-pin i{transform:rotate(45deg);font-size:11px}.map-pin.popular{background:var(--accent)}.map-pin.completed{background:#2e7d5e}.map-pin.selected{outline:4px solid rgba(74,58,107,.2);transform:rotate(-45deg) scale(1.1)}.map-user{position:absolute;left:48%;top:47%;width:18px;height:18px;border-radius:50%;background:#4285f4;border:4px solid white;box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:2}.map-legend{position:absolute;left:10px;right:10px;bottom:9px;display:flex;gap:10px;padding:7px 9px;border-radius:12px;background:rgba(251,246,239,.92);font-size:8px;color:var(--text-muted);z-index:4}.map-legend b{font-size:12px}.checkpoint-preview{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:14px;margin:-6px 0 16px}.checkpoint-preview h4{font-size:14px;margin-bottom:4px}.checkpoint-preview p{font-size:10px;color:var(--text-muted)}.checkpoint-preview .meta{display:flex;gap:12px;margin-top:9px;font-size:9px;color:var(--text-secondary)}.checkpoint-map-actions{display:flex;gap:10px;margin-top:10px}.mission-evidence{display:none}.mission-evidence.visible{display:block}.inline-alert{padding:10px 12px;border-radius:12px;background:rgba(74,58,107,.06);color:var(--text-secondary);font-size:11px;margin:10px 0}.field-invalid{border-color:#c0392b!important;background:rgba(192,57,43,.04)!important}
         .contribution-item .status {
             font-size: 12px;
             font-weight: 600;
@@ -1256,72 +1256,6 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* ----- STATUS BANNER (Visual Feedback) ----- */
-        .status-banner {
-            padding: 12px 16px;
-            border-radius: 14px;
-            margin-bottom: 16px;
-            display: none;
-            align-items: center;
-            gap: 12px;
-            border: 1px solid var(--border);
-            animation: slideDown 0.4s ease;
-        }
-        .status-banner.show {
-            display: flex;
-        }
-        .status-banner .icon {
-            font-size: 22px;
-            flex-shrink: 0;
-        }
-        .status-banner .content {
-            flex: 1;
-        }
-        .status-banner .content .title {
-            font-weight: 600;
-            font-size: 14px;
-            color: var(--text);
-        }
-        .status-banner .content .sub {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-        .status-banner .dismiss {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 18px;
-            cursor: pointer;
-            padding: 4px;
-        }
-        .status-banner .dismiss:hover {
-            color: var(--text);
-        }
-
-        .status-banner.pending {
-            background: rgba(201, 122, 90, 0.08);
-            border-color: rgba(201, 122, 90, 0.2);
-        }
-        .status-banner.approved {
-            background: rgba(46, 125, 94, 0.08);
-            border-color: rgba(46, 125, 94, 0.2);
-        }
-        .status-banner.rejected {
-            background: rgba(192, 57, 43, 0.08);
-            border-color: rgba(192, 57, 43, 0.2);
-        }
-
-        @keyframes slideDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-12px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .glow-btn {
             background: var(--primary);
             border: none;
@@ -1352,6 +1286,7 @@
             .phone {
                 border-radius: 28px;
                 height: 100vh;
+
                 max-height: 100vh;
             }
             .phone::before {
@@ -1390,70 +1325,17 @@
             }
         }
 
+        /* Dream Map planner */
+        .planner-plan-switch{border:0;background:transparent;color:var(--primary);font-size:18px}.planner-plan-head{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#4a3a6b,#6c568a);color:#fff;border-radius:20px;padding:16px 18px;margin-bottom:12px;box-shadow:0 10px 24px rgba(74,58,107,.18)}.planner-plan-head small,.planner-section-head small{display:block;font-size:8px;letter-spacing:.14em;font-weight:800;opacity:.72}.planner-plan-head h3{margin:4px 0 0;font-size:19px}.planner-chip{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;border-radius:20px;padding:8px 13px;font-size:10px;font-weight:700}.planner-summary{margin-bottom:18px}.planner-summary .num{font-size:18px!important}.planner-section-head{display:flex;align-items:center;justify-content:space-between;margin:14px 2px 9px}.planner-section-head b{display:block;font-size:14px;margin-top:3px}.planner-section-head button{width:34px;height:34px;border:0;border-radius:50%;background:var(--lav);color:var(--primary)}
+        .planner-search{height:44px;border:1px solid var(--border);border-radius:14px;background:#fff;display:flex;align-items:center;padding-left:13px;margin-bottom:9px}.planner-search i{color:var(--text-muted);font-size:12px}.planner-search input{min-width:0;flex:1;border:0;outline:0;padding:0 10px;font-size:11px;background:transparent}.planner-search button{align-self:stretch;border:0;background:var(--primary);color:#fff;padding:0 14px;border-radius:0 13px 13px 0;font-size:10px;font-weight:700}.planner-filters{display:flex;gap:7px;margin-bottom:9px}.planner-filters button{border:1px solid var(--border);background:#fff;color:var(--text-muted);padding:7px 12px;border-radius:18px;font-size:9px}.planner-filters button.active{background:var(--primary);border-color:var(--primary);color:#fff}.dream-planner-map{height:285px!important;margin-bottom:9px!important}.map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(74,58,107,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(74,58,107,.045) 1px,transparent 1px);background-size:26px 26px}.dream-planner-map .map-pin.wishlist{background:#7b4ba5}.dream-planner-map .map-pin.plan{background:#397bc2}.dream-planner-map .map-pin.temp{background:#d17b52}.legend-purple,.legend-blue,.legend-user{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:3px}.legend-purple{background:#7b4ba5}.legend-blue{background:#397bc2}.legend-user{background:#4285f4;border:2px solid #fff}
+        .planner-map-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}.planner-map-actions button{border:0;background:#f1ece9;color:var(--primary);border-radius:13px;padding:11px 7px;font-size:10px;font-weight:700}.planner-place-card{display:none;margin:0 0 15px!important;padding:13px!important}.planner-place-card.visible{display:block}.planner-place-card h4{margin:0 0 4px}.planner-place-card .place-actions{display:flex;gap:7px;margin-top:10px}.planner-place-card .place-actions button{flex:1;border:0;border-radius:12px;padding:9px 6px;font-size:9px;font-weight:700}.planner-place-card .place-actions .add{background:var(--primary);color:#fff}.planner-place-card .place-actions .remove{background:#fbe4e4;color:#b84444}.itinerary-heading{margin-top:18px}.itinerary-heading>span{font-size:8px;color:var(--text-muted)}.planner-itinerary-row{display:flex;align-items:center;background:#f2edeb;border-left:3px solid var(--primary);border-radius:13px;padding:11px 10px;margin:7px 0}.planner-itinerary-row .day{width:47px;color:var(--primary);font-weight:800;font-size:10px}.planner-itinerary-row .place{flex:1}.planner-itinerary-row .place b,.planner-itinerary-row .place small{display:block}.planner-itinerary-row .place b{font-size:11px}.planner-itinerary-row .place small{font-size:8px;color:var(--text-muted);margin-top:3px}.planner-itinerary-row button{border:0;background:transparent;color:var(--text-muted)}.planner-tools-new{margin:13px 0 16px}.planner-tools-new button{border-radius:14px!important;padding:12px 5px!important;color:var(--primary);font-size:17px!important}.planner-tools-new span{display:block;font-size:8px;color:var(--text);margin-top:5px}.planner-footnote{text-align:center;color:var(--text-muted);font-size:9px;margin-top:6px}
+        .trip-plan-card{background:#fff;border:1px solid var(--border);border-radius:17px;padding:15px;margin:10px 0;display:flex;align-items:center;gap:12px}.trip-plan-card.active{border-color:var(--primary);box-shadow:0 0 0 2px rgba(74,58,107,.08)}.trip-plan-card>i{width:40px;height:40px;display:grid;place-items:center;border-radius:13px;background:var(--lav);color:var(--primary)}.trip-plan-card div{flex:1}.trip-plan-card b,.trip-plan-card small{display:block}.trip-plan-card small{font-size:9px;color:var(--text-muted);margin-top:4px}.trip-plan-card button{border:0;background:transparent;color:var(--primary);font-size:10px}.trip-plan-card .delete-plan{color:#b84444}.planner-form{background:#f2edeb;border-radius:18px;padding:15px;margin-top:12px}.planner-form label{display:block;font-size:10px;font-weight:700;margin-bottom:10px}.planner-form input{width:100%;height:44px;border:1px solid var(--border);border-radius:13px;background:#fff;padding:0 12px;margin-top:6px}.planner-report-hero{background:linear-gradient(145deg,#4a3a6b,#806a9c);color:#fff;border-radius:24px;padding:30px 22px;text-align:center}.planner-report-hero>i{font-size:34px;margin-bottom:18px}.planner-report-hero small{display:block;letter-spacing:.15em;font-size:8px;opacity:.75}.planner-report-hero h3{font-size:22px;margin:7px 0 14px}.planner-report-hero p{font-size:11px;line-height:1.65;margin:0}.report-memory{background:#fff;border:1px solid var(--border);border-radius:18px;padding:17px;margin:14px 0}.report-memory>b{display:block;margin-bottom:9px}.report-memory div{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--border);font-size:10px}.report-memory span{font-weight:800;color:var(--primary)}.planner-route-dialog{position:absolute;inset:0;background:rgba(44,26,46,.46);z-index:80;display:grid;place-items:end center;padding:18px}.planner-route-dialog>div{width:100%;background:var(--bg-card);border-radius:22px;padding:20px}.planner-route-dialog h3{margin-bottom:7px}.planner-route-dialog p{font-size:11px;color:var(--text-muted)}
+
+        .profile-photo-wrap{position:relative;width:88px;margin:0 auto 5px}.profile-photo-wrap .avatar{overflow:hidden;border:3px solid #fff;box-shadow:0 0 0 2px rgba(74,58,107,.14),0 8px 20px rgba(74,58,107,.14);background-size:cover;background-position:center}.profile-camera-btn{position:absolute;right:-2px;bottom:0;width:30px;height:30px;border:3px solid var(--bg);border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:11px;box-shadow:0 4px 10px rgba(44,26,46,.2)}.profile-photo-help{font-size:9px!important;margin:0 0 10px!important;color:var(--text-muted)!important}.profile-photo-wrap.photo-pending .avatar{box-shadow:0 0 0 3px var(--accent),0 8px 20px rgba(74,58,107,.14)}
+
         .screen-container {
             scrollbar-width: thin;
             scrollbar-color: rgba(74, 58, 107, 0.2) transparent;
-        }
-
-        /* Role toggle button styles */
-        .role-toggle-btn {
-            flex: 1;
-            padding: 8px 16px;
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            background: transparent;
-            color: var(--text-muted);
-        }
-        .role-toggle-btn.active {
-            background: var(--primary);
-            color: #fff;
-            box-shadow: 0 2px 12px rgba(74, 58, 107, 0.2);
-        }
-        .role-toggle-btn:not(.active):hover {
-            background: var(--bg-card-hover);
-        }
-
-        /* Member list item */
-        .member-list-item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px 16px;
-            background: var(--bg-card);
-            border-radius: 16px;
-            margin-bottom: 10px;
-            border: 1px solid var(--border-light);
-            transition: 0.2s;
-        }
-        .member-list-item .member-info {
-            flex: 1;
-        }
-        .member-list-item .member-info .name {
-            color: var(--text);
-            font-weight: 600;
-            font-size: 15px;
-        }
-        .member-list-item .member-info .role {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-        .member-list-item .role-badge {
-            font-size: 10px;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 30px;
-        }
-        .member-list-item .role-badge.owner {
-            background: rgba(74, 58, 107, 0.12);
-            color: var(--primary);
-        }
-        .member-list-item .role-badge.member {
-            background: rgba(74, 58, 107, 0.05);
-            color: var(--text-muted);
         }
     </style>
 </head>
@@ -1552,7 +1434,12 @@
                     <span class="header-action" onclick="editProfile()"><i class="fas fa-pen"></i></span>
                 </div>
                 <div style="text-align:center;padding:10px 0 18px;">
-                    <div class="avatar" style="width:72px;height:72px;font-size:32px;margin:0 auto 10px;border:2px solid rgba(74,58,107,0.15);">A</div>
+                    <div class="profile-photo-wrap">
+                        <div class="avatar user-profile-avatar" id="profileAvatar" style="width:82px;height:82px;font-size:30px;">A</div>
+                        <button class="profile-camera-btn" id="profileCameraButton" onclick="document.getElementById('profilePhotoInput').click()" aria-label="Change profile picture"><i class="fas fa-camera"></i></button>
+                        <input id="profilePhotoInput" type="file" accept="image/jpeg,image/png,image/webp" style="display:none" onchange="handleProfilePhoto(this)" />
+                    </div>
+                    <p class="profile-photo-help" id="profilePhotoHelp">Tap the camera to change photo</p>
                     <h3 style="color:var(--text);font-size:20px;" id="profileName">Alex Rivera</h3>
                     <p style="color:var(--text-muted);font-size:14px;" id="profileEmail">alex@example.com</p>
                 </div>
@@ -1592,7 +1479,7 @@
             <!-- ============================================================ -->
             <!-- SCREEN: TRIP PLANNER                                          -->
             <!-- ============================================================ -->
-            <div class="screen" id="screen-trip-planner">
+            <div class="screen" id="screen-trip-planner-legacy">
                 <div class="page-header">
                     <button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button>
                     <h2>Trip Planner</h2>
@@ -1669,6 +1556,48 @@
             </div>
 
             <!-- ============================================================ -->
+            <div class="screen" id="screen-trip-planner">
+                <div class="page-header">
+                    <button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Trip Planner</h2>
+                    <button class="header-action planner-plan-switch" onclick="openTripPlans()" aria-label="Switch trip plan"><i class="fas fa-layer-group"></i></button>
+                </div>
+                <div class="planner-plan-head"><div><small>ACTIVE TRIP</small><h3 id="plannerTripName">European Dream</h3></div><button class="planner-chip" onclick="openTripPlans()">Switch</button></div>
+                <div class="trip-summary planner-summary">
+                    <div class="stat"><div class="num" id="plannerDestinationCount">4</div><div class="label">Destinations</div></div>
+                    <div class="stat"><div class="num" id="plannerDayCount">3</div><div class="label">Days</div></div>
+                    <div class="stat"><div class="num" id="plannerDuration">7h 30m</div><div class="label">Est. travel</div></div>
+                </div>
+                <div class="planner-section-head"><div><small>DREAM MAP</small><b>Places around your trip</b></div><button onclick="locateTraveller()"><i class="fas fa-location-crosshairs"></i></button></div>
+                <div class="planner-search"><i class="fas fa-search"></i><input id="plannerSearch" placeholder="Search destination" onkeydown="if(event.key==='Enter')searchPlannerDestination()"><button onclick="searchPlannerDestination()">Search</button></div>
+                <div class="planner-filters" id="plannerFilters"><button class="active" onclick="setPlannerFilter('all',this)">My Plan</button><button onclick="setPlannerFilter('plan',this)">In Plan</button><button onclick="setPlannerFilter('wishlist',this)">Wishlist</button></div>
+                <div class="planner-map dream-planner-map" id="dreamPlannerMap" onclick="handlePlannerMapTap(event)">
+                    <div class="map-grid"></div><div class="map-water"></div><div class="map-route" id="plannerRoute"></div><div class="map-user" title="Your current location"></div><div id="plannerPins"></div>
+                    <div class="map-legend"><span><b class="legend-purple"></b> Wishlist</span><span><b class="legend-blue"></b> In trip plan</span><span><b class="legend-user"></b> You</span></div>
+                </div>
+                <div class="planner-map-actions"><button onclick="exploreNearby()"><i class="fas fa-compass"></i> Explore nearby</button><button onclick="promptMapLocation()"><i class="fas fa-map-pin"></i> Add on map</button></div>
+                <div class="checkpoint-preview planner-place-card" id="plannerPlaceCard"></div>
+                <div class="planner-section-head itinerary-heading"><div><small>SMART ITINERARY</small><b>Day-by-day plan</b></div><span>Max 3–4 places/day</span></div>
+                <div id="plannerItinerary"></div>
+                <div class="planner-tools planner-tools-new"><button onclick="planPlannerRoute()"><i class="fas fa-route"></i><span>Plan route</span></button><button onclick="generatePlannerReport()"><i class="fas fa-wand-magic-sparkles"></i><span>AI report</span></button><button onclick="downloadPlannerPdf()"><i class="fas fa-file-arrow-down"></i><span>Download PDF</span></button></div>
+                <button class="glow-btn" onclick="navigateTo('screen-mode-select')"><i class="fas fa-rocket"></i> Start Your Adventure</button>
+                <p class="planner-footnote">Your trip is planned — time to choose your adventure mode!</p>
+            </div>
+
+            <div class="screen" id="screen-trip-plans">
+                <div class="page-header"><button class="back-btn" onclick="navigateTo('screen-trip-planner')"><i class="fas fa-arrow-left"></i></button><h2>My Trip Plans</h2></div>
+                <div id="tripPlanList"></div>
+                <button class="glow-btn" onclick="showCreateTripForm()"><i class="fas fa-plus"></i> Create New Trip Plan</button>
+                <div class="planner-form" id="createTripForm" style="display:none"><label>Trip name<input id="newTripName" maxlength="50" placeholder="e.g. Penang Weekend"></label><label>Number of days<input id="newTripDays" type="number" min="1" max="30" placeholder="Optional"></label><div class="split"><button class="btn-outline" onclick="hideCreateTripForm()">Cancel</button><button class="btn-primary" onclick="createTripPlan()">Create Plan</button></div></div>
+            </div>
+
+            <div class="screen" id="screen-planner-report">
+                <div class="page-header"><button class="back-btn" onclick="navigateTo('screen-trip-planner')"><i class="fas fa-arrow-left"></i></button><h2>Travel Story</h2></div>
+                <div class="planner-report-hero"><i class="fas fa-wand-magic-sparkles"></i><small>AI TRAVEL SUMMARY</small><h3 id="reportTripTitle">European Dream</h3><p id="plannerReportText"></p></div>
+                <div class="report-memory"><b>Trip highlights</b><div><span>4</span> places planned</div><div><span>1</span> mission completed</div><div><span>2</span> countries explored</div></div>
+                <button class="btn-outline" onclick="downloadPlannerPdf()"><i class="fas fa-file-pdf"></i> Download Trip PDF</button>
+            </div>
+
             <!-- SCREEN: MODE SELECTION                                        -->
             <!-- ============================================================ -->
             <div class="screen" id="screen-mode-select">
@@ -1746,7 +1675,7 @@
                 <div class="card">
                     <label style="color:var(--text-muted);font-size:13px;display:block;margin-bottom:6px;">Enter 7-digit group code</label>
                     <div class="join-code-input">
-                        <input class="input-field" type="text" placeholder="e.g. MYST-202" id="joinCodeInput" maxlength="8" style="text-align:center;font-size:20px;letter-spacing:2px;font-weight:700;" />
+                        <input class="input-field" type="text" placeholder="•••••••" id="joinCodeInput" maxlength="7" style="text-align:center;font-size:20px;letter-spacing:4px;font-weight:700;" />
                     </div>
                     <p style="color:var(--text-muted);font-size:11px;margin-top:6px;text-align:center;">Enter the code shared by your team organizer</p>
                 </div>
@@ -1755,6 +1684,7 @@
                 </button>
                 <p style="color:var(--text-muted);font-size:12px;text-align:center;margin-top:8px;">Your request will be sent to the team owner for approval</p>
                 <button class="btn-outline mt-12" onclick="navigateTo('screen-private-group')">
+
                     <i class="fas fa-arrow-left"></i> Back
                 </button>
             </div>
@@ -1764,7 +1694,7 @@
             <!-- ============================================================ -->
             <div class="screen" id="screen-owner-approval">
                 <div class="page-header">
-                    <button class="back-btn" onclick="navigateTo('screen-trip-detail')"><i class="fas fa-arrow-left"></i></button>
+                    <button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button>
                     <h2>Team Requests</h2>
                     <span style="color:var(--text-muted);font-size:12px;" id="requestCount">3 pending</span>
                 </div>
@@ -1837,7 +1767,7 @@
                     </div>
                     <div class="team-meta">
                         <div class="members">👥 24 members</div>
-                        <button class="join-btn" onclick="requestToJoin('Global Explorers', this)">Request to Join</button>
+                        <button class="join-btn" onclick="requestToJoin('Global Explorers')">Request to Join</button>
                     </div>
                 </div>
 
@@ -1848,7 +1778,7 @@
                     </div>
                     <div class="team-meta">
                         <div class="members">👥 18 members</div>
-                        <button class="join-btn" onclick="requestToJoin('Summit Hunters', this)">Request to Join</button>
+                        <button class="join-btn" onclick="requestToJoin('Summit Hunters')">Request to Join</button>
                     </div>
                 </div>
 
@@ -1859,7 +1789,7 @@
                     </div>
                     <div class="team-meta">
                         <div class="members">👥 12 members</div>
-                        <button class="join-btn" onclick="requestToJoin('Island Tribe', this)">Request to Join</button>
+                        <button class="join-btn" onclick="requestToJoin('Island Tribe')">Request to Join</button>
                     </div>
                 </div>
 
@@ -1870,7 +1800,7 @@
                     </div>
                     <div class="team-meta">
                         <div class="members">👥 9 members</div>
-                        <button class="join-btn" onclick="requestToJoin('Cultural Nomads', this)">Request to Join</button>
+                        <button class="join-btn" onclick="requestToJoin('Cultural Nomads')">Request to Join</button>
                     </div>
                 </div>
 
@@ -1922,87 +1852,15 @@
             </div>
 
             <!-- ============================================================ -->
-            <!-- SCREEN: TEAM MEMBERS                                          -->
-            <!-- ============================================================ -->
-            <div class="screen" id="screen-team-members">
-                <div class="page-header">
-                    <button class="back-btn" onclick="navigateTo('screen-trip-detail')"><i class="fas fa-arrow-left"></i></button>
-                    <h2>Team Members</h2>
-                    <span style="color:var(--text-muted);font-size:12px;" id="memberCountLabel">3 members</span>
-                </div>
-
-                <div id="memberListContainer">
-                    <!-- Dynamically rendered -->
-                    <div class="member-list-item">
-                        <div class="avatar">AR</div>
-                        <div class="member-info">
-                            <div class="name">Alex Rivera</div>
-                            <div class="role">👑 Team Owner</div>
-                        </div>
-                        <span class="role-badge owner">OWNER</span>
-                    </div>
-                    <div class="member-list-item">
-                        <div class="avatar" style="background:var(--accent);">JD</div>
-                        <div class="member-info">
-                            <div class="name">Jamie Doe</div>
-                            <div class="role">Member since Mar 12</div>
-                        </div>
-                        <span class="role-badge member">MEMBER</span>
-                    </div>
-                    <div class="member-list-item">
-                        <div class="avatar" style="background:var(--primary-light);">SM</div>
-                        <div class="member-info">
-                            <div class="name">Sam Miles</div>
-                            <div class="role">Member since Mar 10</div>
-                        </div>
-                        <span class="role-badge member">MEMBER</span>
-                    </div>
-                    <div class="member-list-item">
-                        <div class="avatar" style="background:#6B8FA0;">TC</div>
-                        <div class="member-info">
-                            <div class="name">Taylor Chen</div>
-                            <div class="role">Member since Mar 8</div>
-                        </div>
-                        <span class="role-badge member">MEMBER</span>
-                    </div>
-                </div>
-
-                <button class="btn-outline mt-12" onclick="navigateTo('screen-trip-detail')">
-                    <i class="fas fa-arrow-left"></i> Back to Trip Details
-                </button>
-            </div>
-
-            <!-- ============================================================ -->
-            <!-- SCREEN: TRIP DETAIL (with Owner/Member Toggle)               -->
+            <!-- SCREEN: TRIP DETAIL (after joining/creating team)            -->
             <!-- ============================================================ -->
             <div class="screen" id="screen-trip-detail">
                 <div class="page-header">
                     <button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button>
                     <h2>Trip Details</h2>
-                    <span class="header-action" onclick="navigateTo('screen-team-members')"><i class="fas fa-users"></i></span>
+                    <span class="header-action" onclick="showToast('Share trip with team')"><i class="fas fa-share-alt"></i></span>
                 </div>
 
-                <!-- ===== STATUS BANNER (Visual Feedback) ===== -->
-                <div id="statusBanner" class="status-banner">
-                    <span class="icon" id="bannerIcon">✅</span>
-                    <div class="content">
-                        <div class="title" id="bannerTitle">Request Approved!</div>
-                        <div class="sub" id="bannerSub">You can now join the team chat and start exploring.</div>
-                    </div>
-                    <button class="dismiss" onclick="dismissBanner()"><i class="fas fa-times"></i></button>
-                </div>
-
-                <!-- ===== ROLE TOGGLE (Showcases both views) ===== -->
-                <div style="display:flex; gap:6px; margin-bottom:16px; background:var(--bg-card); padding:5px; border-radius:60px; border:1px solid var(--border);">
-                    <button class="role-toggle-btn active" id="ownerViewBtn" onclick="setRoleView('owner')">
-                        👑 Owner View
-                    </button>
-                    <button class="role-toggle-btn" id="memberViewBtn" onclick="setRoleView('member')">
-                        👤 Member View
-                    </button>
-                </div>
-
-                <!-- ===== TRIP CARD ===== -->
                 <div class="trip-detail-card">
                     <div class="trip-header">
                         <h3 id="tripDetailTeamName">🌏 Global Explorers</h3>
@@ -2013,77 +1871,65 @@
                     <div class="trip-dest">
                         <div class="dest-item">
                             <span class="icon">🗼</span>
-                            <div class="info"><div class="name">Eiffel Tower</div><div class="addr">Paris, France</div></div>
+                            <div class="info">
+                                <div class="name">Eiffel Tower</div>
+                                <div class="addr">Paris, France</div>
+                            </div>
                             <span class="day">Day 1</span>
                         </div>
                         <div class="dest-item">
                             <span class="icon">🎨</span>
-                            <div class="info"><div class="name">Louvre Museum</div><div class="addr">Paris, France</div></div>
+                            <div class="info">
+                                <div class="name">Louvre Museum</div>
+                                <div class="addr">Paris, France</div>
+                            </div>
                             <span class="day">Day 1</span>
                         </div>
                         <div class="dest-item">
                             <span class="icon">🏔️</span>
-                            <div class="info"><div class="name">Mont Blanc</div><div class="addr">Chamonix, France</div></div>
+                            <div class="info">
+                                <div class="name">Mont Blanc</div>
+                                <div class="addr">Chamonix, France</div>
+                            </div>
                             <span class="day">Day 2</span>
                         </div>
                         <div class="dest-item">
                             <span class="icon">🌊</span>
-                            <div class="info"><div class="name">Lake Geneva</div><div class="addr">Switzerland</div></div>
+                            <div class="info">
+                                <div class="name">Lake Geneva</div>
+                                <div class="addr">Switzerland</div>
+                            </div>
                             <span class="day">Day 3</span>
                         </div>
                     </div>
 
                     <div class="trip-footer">
-                        <div class="stat"><div class="num">4</div><div class="label">Destinations</div></div>
-                        <div class="stat"><div class="num">3</div><div class="label">Days</div></div>
-                        <div class="stat"><div class="num" id="tripDetailMembers">4</div><div class="label">Team Members</div></div>
-                        <div class="stat"><div class="num">🏆</div><div class="label">Rank #42</div></div>
-                    </div>
-                </div>
-
-                <!-- ===== OWNER-ONLY ACTIONS ===== -->
-                <div id="ownerActions" style="display:block; margin-bottom:12px;">
-                    <!-- Private Code Display -->
-                    <div style="background:var(--bg-card); border-radius:14px; padding:14px; margin-bottom:14px; border:1px dashed var(--primary);">
-                        <div style="color:var(--text-muted); font-size:12px;">🔑 Share this code with friends to join</div>
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
-                            <span style="font-weight:800; font-size:20px; letter-spacing:2px; color:var(--primary);" id="displayActiveCode">MYST-202</span>
-                            <button class="btn-ghost" onclick="copyDisplayCode()"><i class="fas fa-copy"></i> Copy</button>
+                        <div class="stat">
+                            <div class="num">4</div>
+                            <div class="label">Destinations</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">3</div>
+                            <div class="label">Days</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num" id="tripDetailMembers">24</div>
+                            <div class="label">Team Members</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">🏆</div>
+                            <div class="label">Rank #42</div>
                         </div>
                     </div>
+                </div>
 
-                    <button class="btn-primary" style="background:var(--accent); box-shadow:0 6px 24px rgba(201,122,90,0.2);" onclick="navigateTo('screen-owner-approval')">
-                        <i class="fas fa-user-check"></i> Manage Join Requests (<span id="pendingCountBadge">3</span>)
+                <!-- Owner Actions -->
+                <div style="margin-bottom:12px;">
+                    <button class="btn-primary" style="background:var(--accent);box-shadow:0 6px 24px rgba(201,122,90,0.2);" onclick="navigateTo('screen-owner-approval')">
+                        <i class="fas fa-user-check"></i> Manage Join Requests
                     </button>
                 </div>
 
-                <!-- ===== MEMBER-ONLY ACTIONS ===== -->
-                <div id="memberActions" style="display:none; gap:10px; margin-bottom:12px; flex-wrap:wrap;">
-                    <button class="btn-outline" style="flex:1;" onclick="navigateTo('screen-team-members')">
-                        <i class="fas fa-users"></i> View Members (<span id="memberCountBadge">4</span>)
-                    </button>
-                    <button class="btn-outline" style="flex:1; border-color:rgba(200,60,60,0.2); color:#c0392b;" onclick="leaveTeam()">
-                        <i class="fas fa-sign-out-alt"></i> Leave Team
-                    </button>
-                </div>
-
-                <!-- ===== CANCEL REQUEST BUTTON (for pending status) ===== -->
-                <div id="pendingActions" style="display:none; margin-bottom:12px;">
-                    <div style="background:rgba(201,122,90,0.06); border-radius:14px; padding:14px; border:1px solid rgba(201,122,90,0.15); margin-bottom:12px;">
-                        <div style="display:flex; align-items:center; gap:12px;">
-                            <span style="font-size:24px;">⏳</span>
-                            <div style="flex:1;">
-                                <div style="font-weight:600; color:var(--text);">Waiting for Approval</div>
-                                <div style="font-size:12px; color:var(--text-muted);">Your request is pending. Cancel it anytime.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn-danger" onclick="cancelJoinRequest()" style="width:100%;">
-                        <i class="fas fa-times"></i> Cancel Join Request
-                    </button>
-                </div>
-
-                <!-- ===== SHARED ACTIONS ===== -->
                 <button class="btn-primary" onclick="navigateTo('screen-mission')">
                     <i class="fas fa-flag-checkered"></i> Start First Mission
                 </button>
@@ -2127,7 +1973,7 @@
                 <div class="page-header">
                     <button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button>
                     <h2>Blind Box</h2>
-                    <span class="header-action" onclick="showToast('Exploration points: 450')"><i class="fas fa-coins"></i> 450</span>
+                    <span class="header-action" onclick="showToast('Exploration points: '+explorationPoints)"><i class="fas fa-coins"></i> <span id="blindPoints">450</span></span>
                 </div>
 
                 <div class="blind-box" id="blindBoxContainer">
@@ -2159,10 +2005,24 @@
                     <div style="display:flex;justify-content:space-between;color:var(--text-muted);font-size:13px;">
                         <span>Exploration Radius</span>
                         <span id="radiusLabel">10 km</span>
+
                     </div>
                     <input type="range" min="5" max="20" value="10" step="1" style="width:100%;margin-top:6px;accent-color:var(--primary);background:rgba(74,58,107,0.06);height:4px;border-radius:10px;"
                     oninput="document.getElementById('radiusLabel').textContent = this.value + ' km'" />
                 </div>
+            </div>
+
+            <div class="screen" id="screen-checkpoint-map">
+                <div class="page-header"><button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button><h2>Checkpoint Missions</h2><span class="header-action"><i class="fas fa-location-arrow"></i></span></div>
+                <p class="text-muted" style="margin-bottom:12px;">Available checkpoints within 5 km of your current location</p>
+                <div class="planner-map"><div class="map-water"></div><div class="map-route"></div><div class="map-user"></div>
+                    <button class="map-pin completed" style="left:18%;top:23%;" onclick="selectCheckpointPin(this,'heritage')"><i class="fas fa-check"></i></button>
+                    <button class="map-pin popular selected" style="left:63%;top:18%;" onclick="selectCheckpointPin(this,'summit')"><i class="fas fa-star"></i></button>
+                    <button class="map-pin" style="left:69%;top:58%;" onclick="selectCheckpointPin(this,'forest')"><i class="fas fa-flag"></i></button>
+                    <button class="map-pin popular" style="left:28%;top:62%;" onclick="selectCheckpointPin(this,'temple')"><i class="fas fa-star"></i></button>
+                    <div class="map-legend"><span><b style="color:#2e7d5e;">●</b> Completed</span><span><b style="color:var(--accent);">●</b> Popular</span><span><b style="color:var(--primary);">●</b> Available</span><span>🔵 You</span></div>
+                </div>
+                <div class="checkpoint-preview" id="missionCheckpointPreview"><h4>🏔️ Summit Explorer</h4><p>Reach the peak viewpoint and capture the trail marker.</p><div class="meta"><span>📍 2.4 km</span><span>Popular</span><span>★ +120 pts</span></div><div class="checkpoint-map-actions"><button class="btn-primary" onclick="viewSelectedMission()"><i class="fas fa-flag"></i> View Mission</button></div></div>
             </div>
 
             <!-- ============================================================ -->
@@ -2170,9 +2030,9 @@
             <!-- ============================================================ -->
             <div class="screen" id="screen-mission">
                 <div class="page-header">
-                    <button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button>
+                    <button class="back-btn" onclick="backFromMission()"><i class="fas fa-arrow-left"></i></button>
                     <h2>Checkpoint Mission</h2>
-                    <span class="header-action" onclick="showToast('Exploration points: 450')"><i class="fas fa-coins"></i> 450</span>
+                    <span class="header-action" onclick="showToast('Exploration points: '+explorationPoints)"><i class="fas fa-coins"></i> <span id="missionPoints">450</span></span>
                 </div>
 
                 <div class="mission-progress">
@@ -2196,6 +2056,9 @@
                     </div>
                 </div>
 
+                <div class="inline-alert" id="missionInstruction">Select Start Mission to begin location verification.</div>
+                <button class="btn-primary" id="startMissionButton" onclick="startMission()"><i class="fas fa-play"></i> Start Mission</button>
+                <div class="mission-evidence" id="missionEvidence">
                 <div class="photo-upload-area" onclick="document.getElementById('missionPhoto').click()">
                     <input id="missionPhoto" type="file" accept="image/jpeg,image/png" style="display:none" onchange="handleMissionPhoto(this)" />
                     <i class="fas fa-cloud-upload-alt"></i>
@@ -2203,7 +2066,7 @@
                     <p style="font-size:11px;color:var(--text-muted);">JPG, JPEG, PNG · max 10MB</p>
                 </div>
 
-                <button class="btn-primary mt-8" onclick="submitMission()"><i class="fas fa-check-circle"></i> Submit Mission</button>
+                <button class="btn-primary mt-8" onclick="submitMission()"><i class="fas fa-check-circle"></i> Submit Mission</button></div>
             </div>
 
             <!-- ============================================================ -->
@@ -2226,7 +2089,7 @@
                     </div>
                     <div class="flex-between" style="margin-top:8px;">
                         <span style="color:var(--text-muted);">Total Points</span>
-                        <span style="color:var(--text);font-weight:600;">570</span>
+                        <span id="resultTotalPoints" style="color:var(--text);font-weight:600;">570</span>
                     </div>
                     <div class="flex-between" style="margin-top:8px;">
                         <span style="color:var(--text-muted);">Leaderboard</span>
@@ -2236,7 +2099,7 @@
                 <button class="btn-primary" style="margin-top:16px;" onclick="navigateTo('screen-achievements')"><i class="fas fa-trophy"></i> View Achievements</button>
                 <div style="display:flex;gap:10px;margin-top:10px;">
                     <button class="btn-outline" style="flex:1;" onclick="navigateTo('screen-puzzle')"><i class="fas fa-puzzle-piece"></i> Play Puzzle</button>
-                    <button class="btn-outline" style="flex:1;" onclick="navigateTo('screen-mission')"><i class="fas fa-map-marker-alt"></i> Checkpoint</button>
+                    <button class="btn-outline" style="flex:1;" onclick="openCheckpointMap()"><i class="fas fa-map-marker-alt"></i> Checkpoint</button>
                 </div>
                 <button class="btn-ghost" style="width:100%;margin-top:10px;" onclick="navigateTo('screen-trip-planner')"><i class="fas fa-map"></i> Planner Map</button>
             </div>
@@ -2248,37 +2111,27 @@
                 <div class="page-header">
                     <button class="back-btn" onclick="navigateTo('screen-mission-result')"><i class="fas fa-arrow-left"></i></button>
                     <h2>Puzzle Challenge</h2>
-                    <span class="header-action" onclick="showToast('Hint: Think of a famous peak')"><i class="fas fa-lightbulb"></i></span>
+                    <span class="header-action" onclick="usePuzzleHint()"><i class="fas fa-lightbulb"></i></span>
                 </div>
 
-                <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
-                    <span class="badge-gold"><i class="fas fa-brain"></i> Guess the Word</span>
-                    <span class="badge-gold" style="background:rgba(201,122,90,0.12);color:var(--accent);"><i class="fas fa-star"></i> +50 pts</span>
+                <div style="display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;padding-bottom:4px;">
+                    <button class="btn-ghost" onclick="selectPuzzleCategory('Image Guessing')">Image</button><button class="btn-ghost" onclick="selectPuzzleCategory('Scrambled Word')">Scrambled</button><button class="btn-ghost" onclick="selectPuzzleCategory('Guess the Word')">Word</button><button class="btn-ghost" onclick="selectPuzzleCategory('Multiple Choice')">MCQ</button><button class="btn-ghost" onclick="selectPuzzleCategory('True or False')">True/False</button>
                 </div>
+                <div class="card" style="padding:10px 14px;display:flex;justify-content:space-between;"><span id="puzzleQuestionMeta">Question 1 / 10</span><span id="puzzleScore">Score 0</span><b id="puzzleTimer" style="color:var(--accent);">00:30</b></div>
 
                 <div class="card" style="text-align:center;padding:30px 20px;">
-                    <div style="font-size:14px;color:var(--text-muted);letter-spacing:2px;margin-bottom:16px;">— ··· — ··· —</div>
-                    <div style="display:flex;gap:8px;justify-content:center;margin-bottom:16px;flex-wrap:wrap;">
-                        <span style="background:var(--bg-card);border-radius:8px;padding:8px 16px;color:var(--text);font-size:20px;font-weight:600;border-bottom:3px solid var(--primary);">M</span>
-                        <span style="background:var(--bg-card);border-radius:8px;padding:8px 16px;color:var(--text);font-size:20px;font-weight:600;border-bottom:3px solid var(--primary);">O</span>
-                        <span style="background:var(--bg-card);border-radius:8px;padding:8px 16px;color:var(--text);font-size:20px;font-weight:600;border-bottom:3px solid var(--primary);">N</span>
-                        <span style="background:var(--bg-card);border-radius:8px;padding:8px 16px;color:var(--text);font-size:20px;font-weight:600;border-bottom:3px solid var(--primary);">T</span>
-                        <span style="background:var(--bg-card);border-radius:8px;padding:8px 16px;color:var(--text);font-size:20px;font-weight:600;border-bottom:3px solid var(--border);">_</span>
-                        <span style="background:var(--bg-card);border-radius:8px;padding:8px 16px;color:var(--text);font-size:20px;font-weight:600;border-bottom:3px solid var(--border);">_</span>
-                        <span style="background:var(--bg-card);border-radius:8px;padding:8px 16px;color:var(--text);font-size:20px;font-weight:600;border-bottom:3px solid var(--border);">_</span>
-                    </div>
-                    <p style="color:var(--text-muted);font-size:13px;">Clue: "The roof of the Alps"</p>
+                    <div id="puzzlePrompt" style="font-size:18px;color:var(--text);font-weight:700;margin-bottom:14px;">Which mountain is called “the roof of the Alps”?</div>
+                    <p id="puzzleClue" style="color:var(--text-muted);font-size:13px;">Select a category to begin, then answer all ten questions.</p>
                     <div style="display:flex;gap:8px;margin-top:16px;max-width:280px;margin-left:auto;margin-right:auto;">
                         <input class="input-field" type="text" placeholder="Your answer" id="puzzleAnswer" style="flex:1;" />
-                        <button class="btn-primary" style="width:auto;padding:14px 24px;" onclick="solvePuzzle()"><i class="fas fa-arrow-right"></i></button>
+                        <button class="btn-primary" style="width:auto;padding:14px 24px;" onclick="submitPuzzleAnswer()"><i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
 
-                <div style="display:flex;gap:10px;">
-                    <button class="btn-ghost" style="flex:1;" onclick="showToast('Scrambled Word puzzle loaded')"><i class="fas fa-random"></i> Scrambled</button>
-                    <button class="btn-ghost" style="flex:1;" onclick="showToast('Picture Guessing puzzle loaded')"><i class="fas fa-image"></i> Picture</button>
-                </div>
+                <div class="inline-alert" id="puzzleHintStatus">Hints available: 3 / 3</div>
             </div>
+
+            <div class="screen" id="screen-puzzle-result"><div class="page-header"><button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button><h2>Puzzle Result</h2></div><div style="text-align:center;padding:24px 0;"><div style="font-size:58px;">🧠</div><h3 style="font-size:23px;margin:8px 0;">Challenge Complete!</h3></div><div class="card"><div class="flex-between"><span>Total Score</span><b id="puzzleFinalScore">0 / 1000</b></div><div class="flex-between" style="margin-top:9px;"><span>Exploration Points</span><b id="puzzlePointsEarned" class="gold-text">+0</b></div><div class="flex-between" style="margin-top:9px;"><span>Daily Leaderboard</span><b style="color:var(--accent);">#42</b></div></div><button class="btn-primary" onclick="resetPuzzle();navigateTo('screen-puzzle')">Play Another Puzzle</button><button class="btn-outline" style="margin-top:9px;" onclick="navigateTo('screen-achievements')">Continue to Achievements</button><button class="btn-ghost" style="width:100%;margin-top:9px;" onclick="showToast('Daily Leaderboard: You are ranked #42')">View Leaderboard</button></div>
 
             <!-- ============================================================ -->
             <!-- SCREEN: ACHIEVEMENTS                                          -->
@@ -2291,7 +2144,7 @@
                 </div>
 
                 <div class="achievement-summary">
-                    <div class="summary-card"><div class="num">570</div><div class="label">TOTAL POINTS</div></div>
+                    <div class="summary-card"><div class="num" id="achievementTotalPoints">570</div><div class="label">TOTAL POINTS</div></div>
                     <div class="summary-card"><div class="num" style="color:var(--accent);">7</div><div class="label">BADGES</div></div>
                     <div class="summary-card"><div class="num" style="color:var(--text);">#42</div><div class="label">GLOBAL RANK</div></div>
                 </div>
@@ -2366,19 +2219,9 @@
                         <div style="color:var(--text);font-size:22px;font-weight:700;" id="homeUserName">Alex 👋</div>
                     </div>
                     <div style="display:flex;gap:12px;align-items:center;">
-                        <span style="color:var(--primary);font-weight:600;"><i class="fas fa-coins"></i> 570</span>
-                        <div class="avatar avatar-sm" style="cursor:pointer;" onclick="navigateTo('screen-profile')">A</div>
+                        <span style="color:var(--primary);font-weight:600;"><i class="fas fa-coins"></i> <span id="homePoints">570</span></span>
+                        <div class="avatar avatar-sm user-profile-avatar" id="homeProfileAvatar" style="cursor:pointer;" onclick="navigateTo('screen-profile')">A</div>
                     </div>
-                </div>
-
-                <!-- ===== STATUS BANNER on Home ===== -->
-                <div id="homeStatusBanner" class="status-banner" style="display:none;">
-                    <span class="icon" id="homeBannerIcon">✅</span>
-                    <div class="content">
-                        <div class="title" id="homeBannerTitle">Request Approved!</div>
-                        <div class="sub" id="homeBannerSub">You can now join the team chat and start exploring.</div>
-                    </div>
-                    <button class="dismiss" onclick="dismissHomeBanner()"><i class="fas fa-times"></i></button>
                 </div>
 
                 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:18px;">
@@ -2407,7 +2250,7 @@
                         <div style="color:var(--text);font-weight:600;margin-top:6px;">Blind Box</div>
                         <div style="color:var(--text-muted);font-size:11px;">Reveal your mystery</div>
                     </div>
-                    <div class="card" style="cursor:pointer;text-align:center;padding:20px 12px;" onclick="navigateTo('screen-mission')">
+                    <div class="card" style="cursor:pointer;text-align:center;padding:20px 12px;" onclick="openCheckpointMap()">
                         <i class="fas fa-flag-checkered" style="font-size:28px;color:var(--primary);"></i>
                         <div style="color:var(--text);font-weight:600;margin-top:6px;">Missions</div>
                         <div style="color:var(--text-muted);font-size:11px;">Complete & earn</div>
@@ -2427,22 +2270,6 @@
                     <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
                         <span class="badge-gold" style="background:var(--bg-card);color:var(--text-muted);"><i class="fas fa-user"></i> You</span>
                         <span style="color:var(--text-muted);font-size:13px;" id="teamStatusSub">+ join a team to collaborate</span>
-                    </div>
-                </div>
-
-                <!-- ===== CANCEL REQUEST CARD (on Home) ===== -->
-                <div id="homePendingActions" style="display:none; margin-top:12px;">
-                    <div class="card" style="border:1px solid rgba(201,122,90,0.2); background:rgba(201,122,90,0.04);">
-                        <div style="display:flex; align-items:center; gap:12px;">
-                            <span style="font-size:24px;">⏳</span>
-                            <div style="flex:1;">
-                                <div style="font-weight:600; color:var(--text);">Pending Approval</div>
-                                <div style="font-size:12px; color:var(--text-muted);">Your request is awaiting owner approval.</div>
-                            </div>
-                            <button class="btn-danger" style="width:auto; padding:6px 16px; font-size:12px;" onclick="cancelJoinRequest()">
-                                Cancel
-                            </button>
-                        </div>
                     </div>
                 </div>
 
@@ -2469,7 +2296,7 @@
         let isLoggedIn = false;
         let currentChatId = null;
         let currentTeam = 'Solo Mode';
-        let currentTeamMembers = 4;
+        let currentTeamMembers = 0;
         let pendingRequests = 3;
         let approvedRequests = 5;
         let rejectedRequests = 2;
@@ -2479,17 +2306,12 @@
         let redrawsRemaining = 3;
         let wishlist = [];
         let destinationIndex = 0;
-        let isTeamOwner = true;
-        let joinRequestStatus = null; // 'pending' | 'approved' | 'rejected' | null
-        let bannerDismissed = false;
-
-        // Mock team members
-        const teamMembers = [
-            { name: 'Alex Rivera', initials: 'AR', role: 'owner', joined: 'Mar 1' },
-            { name: 'Jamie Doe', initials: 'JD', role: 'member', joined: 'Mar 12' },
-            { name: 'Sam Miles', initials: 'SM', role: 'member', joined: 'Mar 10' },
-            { name: 'Taylor Chen', initials: 'TC', role: 'member', joined: 'Mar 8' }
-        ];
+        let totalRedraws = 0;
+        let missionEntry = 'home';
+        let missionStarted = false;
+        let selectedCheckpoint = 'summit';
+        let userProfilePhoto = '';
+        let pendingProfilePhoto = '';
 
         // ============================================================
         // CHAT DATA
@@ -2499,7 +2321,7 @@
                 id: 'chat1',
                 name: 'Mystery Squad',
                 type: 'private',
-                members: 4,
+                members: 3,
                 avatar: 'MS',
                 lastMessage: 'I\'ll share the checkpoint location in 10 min',
                 timestamp: '10:50 AM',
@@ -2529,6 +2351,7 @@
                 ]
             },
             'chat3': {
+
                 id: 'chat3',
                 name: 'Alpine Adventures',
                 type: 'private',
@@ -2581,17 +2404,8 @@
                 if (screenId === 'screen-owner-approval') {
                     updateRequestCounts();
                 }
-                if (screenId === 'screen-trip-detail') {
-                    setRoleView(currentRoleView);
-                    updatePendingActions();
-                    updateBannerVisibility();
-                }
-                if (screenId === 'screen-team-members') {
-                    renderMemberList();
-                }
-                if (screenId === 'screen-home') {
-                    updateHomePendingActions();
-                    updateHomeBannerVisibility();
+                if (screenId === 'screen-trip-planner' && typeof renderPlanner === 'function') {
+                    renderPlanner();
                 }
             }
         }
@@ -2637,14 +2451,19 @@
             const phone = document.getElementById('regPhone').value.trim();
             const pass = document.getElementById('regPass').value;
             const pass2 = document.getElementById('regPass2').value;
+            const fields=['regName','regEmail','regPhone','regPass','regPass2'];
+            fields.forEach(id=>document.getElementById(id).classList.remove('field-invalid'));
             if (!name || !email || !phone || !pass || !pass2) {
-                showToast('Please fill in all fields');
+                fields.forEach(id=>{if(!document.getElementById(id).value.trim())document.getElementById(id).classList.add('field-invalid')});
+                showToast('Please complete all required fields.');
                 return;
             }
+            if (name.length < 2 || name.length > 50) { document.getElementById('regName').classList.add('field-invalid'); showToast('Please enter a valid full name (2–50 characters).'); return; }
             if (!/^\S+@\S+\.\S+$/.test(email)) { showToast('Please enter a valid email address'); return; }
             if (!/^\+?[0-9 ]{8,15}$/.test(phone)) { showToast('Please enter a valid phone number'); return; }
-            if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/.test(pass)) { showToast('Password needs 8+ characters, upper/lowercase, a number and symbol'); return; }
-            if (pass !== pass2) { showToast('Passwords do not match'); return; }
+            if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/.test(pass)) { showToast('Password must contain at least 8 characters, including uppercase letters, lowercase letters, numbers and special characters.'); return; }
+            if (pass !== pass2) { showToast('Password and confirmation password do not match.'); return; }
+            if (email.toLowerCase() === 'alex@example.com') { showToast('This email address has already been registered.'); return; }
             userName = name;
             userEmail = email;
             userPhone = phone;
@@ -2654,20 +2473,21 @@
             document.getElementById('loginEmail').value = email;
             document.getElementById('loginPass').value = '';
             navigateTo('screen-login');
-            showToast('Registration completed. Please log in.');
+            showToast('Registration completed successfully. Please log in using your registered email address and password.');
         }
 
         function handleLogin() {
             const email = document.getElementById('loginEmail').value.trim();
             const pass = document.getElementById('loginPass').value;
-            if (!email || !pass) { showToast('Please enter email and password'); return; }
+            document.getElementById('loginEmail').classList.remove('field-invalid'); document.getElementById('loginPass').classList.remove('field-invalid');
+            if (!email || !pass) { if(!email)document.getElementById('loginEmail').classList.add('field-invalid');if(!pass)document.getElementById('loginPass').classList.add('field-invalid');showToast('Please complete all required login fields.'); return; }
             if (!/^\S+@\S+\.\S+$/.test(email)) { showToast('Please enter a valid email address'); return; }
-            if (email.toLowerCase() !== userEmail.toLowerCase()) { showToast('Incorrect email address or password'); return; }
-            if (pass !== 'password123' && pass !== document.getElementById('regPass').value) { showToast('Incorrect email address or password'); return; }
+            if (email.toLowerCase() !== userEmail.toLowerCase()) { showToast('This email address is not registered. Please enter a registered email address.'); return; }
+            if (pass !== 'password123' && pass !== document.getElementById('regPass').value) { showToast('Incorrect email address or password. Please try again.'); return; }
             isLoggedIn = true;
             updateProfileUI();
             updateChatFab();
-            showToast('Welcome back, ' + userName);
+            showToast('Login successful. Welcome to MYsteryLane!');
             navigateTo('screen-home');
         }
 
@@ -2688,31 +2508,70 @@
             emailEls.forEach(el => el.textContent = userEmail);
             const phoneEl = document.getElementById('profilePhone');
             if (phoneEl) phoneEl.textContent = userPhone;
+            const initials = userName.split(' ').map(part => part[0]).join('').substring(0, 2).toUpperCase();
+            document.querySelectorAll('.user-profile-avatar').forEach(avatar => {
+                avatar.style.backgroundImage = userProfilePhoto ? 'url("' + userProfilePhoto + '")' : '';
+                avatar.textContent = userProfilePhoto ? '' : initials;
+                avatar.setAttribute('aria-label', userName + ' profile picture');
+            });
         }
 
         function editProfile() {
             document.getElementById('editProfileName').value = userName;
             document.getElementById('editProfilePhone').value = userPhone;
+            pendingProfilePhoto = userProfilePhoto;
             document.getElementById('profileEditPanel').style.display = 'block';
             document.getElementById('profileEditButton').style.display = 'none';
+            document.getElementById('profileCameraButton').style.display = 'grid';
+            document.getElementById('profilePhotoHelp').textContent = 'JPG, PNG or WEBP · max 5MB';
+        }
+
+        function handleProfilePhoto(input) {
+            const file = input.files && input.files[0];
+            if (!file) return;
+            const allowed = ['image/jpeg','image/png','image/webp'];
+            if (!allowed.includes(file.type)) { input.value=''; showToast('Profile picture must be JPG, PNG or WEBP.'); return; }
+            if (file.size > 5 * 1024 * 1024) { input.value=''; showToast('Profile picture must be 5MB or smaller.'); return; }
+            if (document.getElementById('profileEditPanel').style.display === 'none') editProfile();
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                pendingProfilePhoto = event.target.result;
+                const avatar = document.getElementById('profileAvatar');
+                avatar.style.backgroundImage = 'url("' + pendingProfilePhoto + '")';
+                avatar.textContent = '';
+                document.querySelector('.profile-photo-wrap').classList.add('photo-pending');
+                document.getElementById('profilePhotoHelp').textContent = 'New photo ready — tap Save to apply';
+                showToast('Profile picture selected. Save your profile to apply it.');
+            };
+            reader.onerror = function(){ input.value=''; showToast('Unable to read this image. Please choose another file.'); };
+            reader.readAsDataURL(file);
         }
 
         function cancelProfileEdit() {
+            pendingProfilePhoto = userProfilePhoto;
+            document.querySelector('.profile-photo-wrap').classList.remove('photo-pending');
+            document.getElementById('profilePhotoInput').value = '';
             document.getElementById('profileEditPanel').style.display = 'none';
             document.getElementById('profileEditButton').style.display = 'block';
+            document.getElementById('profilePhotoHelp').textContent = 'Tap the camera to change photo';
+            updateProfileUI();
         }
 
         function saveProfileEdit() {
             const name = document.getElementById('editProfileName').value.trim();
             const phone = document.getElementById('editProfilePhone').value.trim();
-            if (!name) { showToast('Full name is required'); return; }
-            if (name.length < 2 || name.length > 50) { showToast('Full name must contain 2–50 characters'); return; }
-            if (!/^\+?[0-9 ]{8,15}$/.test(phone)) { showToast('Please enter a valid phone number with 8–15 digits'); return; }
+            document.getElementById('editProfileName').classList.remove('field-invalid');document.getElementById('editProfilePhone').classList.remove('field-invalid');
+            if (!name || !phone) {if(!name)document.getElementById('editProfileName').classList.add('field-invalid');if(!phone)document.getElementById('editProfilePhone').classList.add('field-invalid');showToast('Please complete all required fields before saving your profile.'); return; }
+            if (name.length < 2 || name.length > 50) { showToast('Please enter a valid full name (2–50 characters).'); return; }
+            if (!/^\+?[0-9 ]{8,15}$/.test(phone)) { showToast('Please enter a valid phone number.'); return; }
+            if (name === userName && phone === userPhone && pendingProfilePhoto === userProfilePhoto) { cancelProfileEdit(); showToast('No changes were detected in your profile information.'); return; }
             userName = name;
             userPhone = phone;
+            userProfilePhoto = pendingProfilePhoto;
             updateProfileUI();
+            document.querySelector('.profile-photo-wrap').classList.remove('photo-pending');
             cancelProfileEdit();
-            showToast('Profile updated successfully');
+            showToast('Your profile has been updated successfully.');
         }
 
         // ============================================================
@@ -2764,17 +2623,10 @@
             };
             currentTeam = groupName + ' (Private)';
             currentTeamMembers = 1;
-            isTeamOwner = true;
-            joinRequestStatus = null;
-            bannerDismissed = false;
             updateTeamStatus();
             showToast('Group "' + groupName + '" created! Code: ' + code);
             updateChatFab();
             showTripDetail(groupName, 'Private Team', 1);
-            currentRoleView = 'owner';
-            setRoleView('owner');
-            updatePendingActions();
-            updateBannerVisibility();
             navigateTo('screen-trip-detail');
         }
 
@@ -2789,57 +2641,30 @@
 
         function joinWithCode() {
             const code = document.getElementById('joinCodeInput').value.trim();
-            const validCode = document.getElementById('groupCodeDisplay')?.textContent || 'MYST-202';
-            
-            if (!code) {
-                showToast('Please enter a valid code');
+            if (!code || code.length < 7) {
+                showToast('Please enter a valid 7-digit code');
                 return;
             }
-            
-            if (code !== validCode) {
-                showToast('❌ Invalid code. Please check with your team owner.');
-                return;
-            }
-            
             // Send request to owner (simulated)
             showToast('📨 Join request sent to team owner for approval');
+            // Simulate pending request
             pendingRequests++;
             updateRequestCounts();
+            // Navigate to home with pending status
             currentTeam = 'Pending Approval (Private)';
-            isTeamOwner = false;
-            joinRequestStatus = 'pending';
-            bannerDismissed = false;
             updateTeamStatus();
-            currentRoleView = 'member';
-            setRoleView('member');
-            updatePendingActions();
-            updateBannerVisibility();
-            updateHomePendingActions();
             navigateTo('screen-home');
         }
 
         // ============================================================
         // PUBLIC TEAM
         // ============================================================
-        function requestToJoin(teamName, btn) {
-            if (btn) {
-                btn.textContent = 'Pending ⏳';
-                btn.className = 'join-btn pending';
-                btn.disabled = true;
-            }
+        function requestToJoin(teamName) {
             showToast('📨 Join request sent to "' + teamName + '" owner for approval');
             pendingRequests++;
             updateRequestCounts();
             currentTeam = 'Pending Approval: ' + teamName;
-            isTeamOwner = false;
-            joinRequestStatus = 'pending';
-            bannerDismissed = false;
             updateTeamStatus();
-            currentRoleView = 'member';
-            setRoleView('member');
-            updatePendingActions();
-            updateBannerVisibility();
-            updateHomePendingActions();
             navigateTo('screen-home');
         }
 
@@ -2870,17 +2695,10 @@
             };
             currentTeam = name + ' (Public)';
             currentTeamMembers = 1;
-            isTeamOwner = true;
-            joinRequestStatus = null;
-            bannerDismissed = false;
             updateTeamStatus();
             showToast('🎉 Team "' + name + '" created!');
             updateChatFab();
             showTripDetail(name, 'Public Team', 1);
-            currentRoleView = 'owner';
-            setRoleView('owner');
-            updatePendingActions();
-            updateBannerVisibility();
             navigateTo('screen-trip-detail');
         }
 
@@ -2894,16 +2712,8 @@
             requestItem.style.pointerEvents = 'none';
             pendingRequests--;
             approvedRequests++;
-            currentTeamMembers++;
             updateRequestCounts();
             showToast('✅ ' + name + ' approved — they can now join the team');
-            
-            // Update member count on trip detail
-            const membersEl = document.getElementById('tripDetailMembers');
-            if (membersEl) membersEl.textContent = currentTeamMembers;
-            const badgeEl = document.getElementById('memberCountBadge');
-            if (badgeEl) badgeEl.textContent = currentTeamMembers;
-            
             // Add to chat
             const chatId = 'chat' + Date.now();
             chatData[chatId] = {
@@ -2939,13 +2749,12 @@
             const approvedEl = document.getElementById('approvedCount');
             const rejectedEl = document.getElementById('rejectedCount');
             const requestCountEl = document.getElementById('requestCount');
-            const pendingBadge = document.getElementById('pendingCountBadge');
             
             if (pendingEl) pendingEl.textContent = pendingRequests;
             if (approvedEl) approvedEl.textContent = approvedRequests;
             if (rejectedEl) rejectedEl.textContent = rejectedRequests;
+
             if (requestCountEl) requestCountEl.textContent = pendingRequests + ' pending';
-            if (pendingBadge) pendingBadge.textContent = pendingRequests;
         }
 
         // ============================================================
@@ -2955,16 +2764,6 @@
             document.getElementById('tripDetailTeamName').textContent = teamName;
             document.getElementById('tripDetailDesc').textContent = teamType + ' · ' + members + ' members';
             document.getElementById('tripDetailMembers').textContent = members;
-            document.getElementById('memberCountBadge').textContent = members;
-            
-            const codeDisplay = document.getElementById('displayActiveCode');
-            if (codeDisplay) {
-                codeDisplay.textContent = document.getElementById('groupCodeDisplay')?.textContent || 'MYST-202';
-            }
-            
-            const badge = document.getElementById('pendingCountBadge');
-            if (badge) badge.textContent = pendingRequests || 0;
-            
             const statusBadge = document.getElementById('tripDetailStatus');
             if (currentTeam.includes('Pending')) {
                 statusBadge.textContent = '⏳ Pending Approval';
@@ -2973,218 +2772,6 @@
                 statusBadge.textContent = '✅ Approved';
                 statusBadge.className = 'status-badge approved';
             }
-        }
-
-        // ============================================================
-        // ROLE TOGGLE LOGIC
-        // ============================================================
-        let currentRoleView = 'owner';
-
-        function setRoleView(role) {
-            currentRoleView = role;
-            
-            const ownerBtn = document.getElementById('ownerViewBtn');
-            const memberBtn = document.getElementById('memberViewBtn');
-            
-            if (role === 'owner') {
-                ownerBtn.classList.add('active');
-                memberBtn.classList.remove('active');
-                document.getElementById('ownerActions').style.display = 'block';
-                document.getElementById('memberActions').style.display = 'none';
-            } else {
-                memberBtn.classList.add('active');
-                ownerBtn.classList.remove('active');
-                document.getElementById('ownerActions').style.display = 'none';
-                document.getElementById('memberActions').style.display = 'flex';
-            }
-        }
-
-        // ============================================================
-        // PENDING ACTIONS (Cancel Request)
-        // ============================================================
-        function updatePendingActions() {
-            const pendingActions = document.getElementById('pendingActions');
-            if (pendingActions) {
-                if (joinRequestStatus === 'pending' && currentTeam.includes('Pending')) {
-                    pendingActions.style.display = 'block';
-                } else {
-                    pendingActions.style.display = 'none';
-                }
-            }
-        }
-
-        function updateHomePendingActions() {
-            const homePending = document.getElementById('homePendingActions');
-            if (homePending) {
-                if (joinRequestStatus === 'pending' && currentTeam.includes('Pending')) {
-                    homePending.style.display = 'block';
-                } else {
-                    homePending.style.display = 'none';
-                }
-            }
-        }
-
-        function cancelJoinRequest() {
-            if (confirm('Are you sure you want to cancel your join request?')) {
-                joinRequestStatus = null;
-                currentTeam = 'Solo Mode';
-                isTeamOwner = false;
-                updateTeamStatus();
-                showToast('❌ Join request cancelled.');
-                updatePendingActions();
-                updateHomePendingActions();
-                navigateTo('screen-home');
-            }
-        }
-
-        // ============================================================
-        // STATUS BANNER (Visual Feedback)
-        // ============================================================
-        function updateBannerVisibility() {
-            const banner = document.getElementById('statusBanner');
-            if (!banner) return;
-            
-            const icon = document.getElementById('bannerIcon');
-            const title = document.getElementById('bannerTitle');
-            const sub = document.getElementById('bannerSub');
-            
-            if (joinRequestStatus === 'approved' && !bannerDismissed) {
-                banner.className = 'status-banner approved show';
-                icon.textContent = '✅';
-                title.textContent = 'Request Approved!';
-                sub.textContent = 'You can now join the team chat and start exploring.';
-                banner.style.display = 'flex';
-            } else if (joinRequestStatus === 'rejected' && !bannerDismissed) {
-                banner.className = 'status-banner rejected show';
-                icon.textContent = '❌';
-                title.textContent = 'Request Declined';
-                sub.textContent = 'The team owner has declined your request.';
-                banner.style.display = 'flex';
-            } else {
-                banner.style.display = 'none';
-                banner.className = 'status-banner';
-            }
-        }
-
-        function updateHomeBannerVisibility() {
-            const banner = document.getElementById('homeStatusBanner');
-            if (!banner) return;
-            
-            const icon = document.getElementById('homeBannerIcon');
-            const title = document.getElementById('homeBannerTitle');
-            const sub = document.getElementById('homeBannerSub');
-            
-            if (joinRequestStatus === 'approved' && !bannerDismissed) {
-                banner.className = 'status-banner approved show';
-                icon.textContent = '✅';
-                title.textContent = 'Request Approved!';
-                sub.textContent = 'You can now join the team chat and start exploring.';
-                banner.style.display = 'flex';
-            } else if (joinRequestStatus === 'rejected' && !bannerDismissed) {
-                banner.className = 'status-banner rejected show';
-                icon.textContent = '❌';
-                title.textContent = 'Request Declined';
-                sub.textContent = 'The team owner has declined your request.';
-                banner.style.display = 'flex';
-            } else {
-                banner.style.display = 'none';
-                banner.className = 'status-banner';
-            }
-        }
-
-        function dismissBanner() {
-            bannerDismissed = true;
-            document.getElementById('statusBanner').style.display = 'none';
-        }
-
-        function dismissHomeBanner() {
-            bannerDismissed = true;
-            document.getElementById('homeStatusBanner').style.display = 'none';
-        }
-
-        // Simulate approval/rejection for the user's own request
-        function simulateRequestStatus(status) {
-            joinRequestStatus = status;
-            bannerDismissed = false;
-            if (status === 'approved') {
-                currentTeam = 'Mystery Squad (Private)';
-                isTeamOwner = false;
-                currentTeamMembers = 4;
-                updateTeamStatus();
-                showToast('🎉 Your request was approved!');
-            } else if (status === 'rejected') {
-                showToast('❌ Your request was declined.');
-            }
-            updateBannerVisibility();
-            updateHomeBannerVisibility();
-            updatePendingActions();
-            updateHomePendingActions();
-        }
-
-        // ============================================================
-        // MEMBER LIST
-        // ============================================================
-        function renderMemberList() {
-            const container = document.getElementById('memberListContainer');
-            if (!container) return;
-            
-            const countLabel = document.getElementById('memberCountLabel');
-            if (countLabel) countLabel.textContent = teamMembers.length + ' members';
-            
-            let html = '';
-            teamMembers.forEach(member => {
-                const isOwner = member.role === 'owner';
-                const roleLabel = isOwner ? '👑 Team Owner' : 'Member since ' + member.joined;
-                const badgeClass = isOwner ? 'owner' : 'member';
-                const badgeText = isOwner ? 'OWNER' : 'MEMBER';
-                const avatarBg = isOwner ? 'var(--primary)' : (member.initials === 'JD' ? 'var(--accent)' : (member.initials === 'SM' ? 'var(--primary-light)' : '#6B8FA0'));
-                
-                html += `
-                    <div class="member-list-item">
-                        <div class="avatar" style="background:${avatarBg};">${member.initials}</div>
-                        <div class="member-info">
-                            <div class="name">${member.name}</div>
-                            <div class="role">${roleLabel}</div>
-                        </div>
-                        <span class="role-badge ${badgeClass}">${badgeText}</span>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-        }
-
-        // ============================================================
-        // MEMBER ACTIONS
-        // ============================================================
-        function viewMembers() {
-            navigateTo('screen-team-members');
-        }
-
-        function leaveTeam() {
-            if (confirm('Are you sure you want to leave this team?')) {
-                currentTeam = 'Solo Mode';
-                currentTeamMembers = 0;
-                isTeamOwner = false;
-                joinRequestStatus = null;
-                bannerDismissed = false;
-                updateTeamStatus();
-                showToast('You left the team.');
-                updatePendingActions();
-                updateHomePendingActions();
-                navigateTo('screen-home');
-            }
-        }
-
-        // ============================================================
-        // COPY DISPLAY CODE
-        // ============================================================
-        function copyDisplayCode() {
-            const code = document.getElementById('displayActiveCode').textContent;
-            navigator.clipboard?.writeText(code).then(() => {
-                showToast('📋 Code copied: ' + code);
-            }).catch(() => {
-                showToast('📋 Code: ' + code);
-            });
         }
 
         // ============================================================
@@ -3202,8 +2789,7 @@
                 } else if (currentTeam.includes('Pending')) {
                     sub.textContent = '⏳ Waiting for owner approval...';
                 } else {
-                    const roleBadge = isTeamOwner ? '👑 Owner' : '👤 Member';
-                    sub.textContent = '🎯 ' + roleBadge + ' — tap to view trip details';
+                    sub.textContent = '🎯 Active team — tap to view trip details';
                 }
             }
         }
@@ -3346,6 +2932,21 @@
         // ============================================================
         // BLIND BOX
         // ============================================================
+        const checkpointData = {
+            heritage:{title:'🏛️ Heritage Trail',description:'This checkpoint was already completed.',distance:'1.1 km',popularity:'Popular',reward:'+80 pts',completed:true},
+            summit:{title:'🏔️ Summit Explorer',description:'Reach the peak viewpoint and capture the trail marker.',distance:'2.4 km',popularity:'Popular',reward:'+120 pts',completed:false},
+            forest:{title:'🌲 Forest Discovery',description:'Find the marked rainforest viewpoint.',distance:'3.7 km',popularity:'Standard',reward:'+100 pts',completed:false},
+            temple:{title:'🏯 Temple Stories',description:'Capture the main gate and heritage plaque.',distance:'4.6 km',popularity:'Popular',reward:'+140 pts',completed:false}
+        };
+
+        function openCheckpointMap(){missionEntry='home';selectedCheckpoint='summit';navigateTo('screen-checkpoint-map')}
+        function updatePointsUI(){['blindPoints','missionPoints','resultTotalPoints','achievementTotalPoints','homePoints'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=explorationPoints})}
+        function selectCheckpointPin(pin,id){document.querySelectorAll('#screen-checkpoint-map .map-pin').forEach(item=>item.classList.remove('selected'));pin.classList.add('selected');selectedCheckpoint=id;const c=checkpointData[id];document.getElementById('missionCheckpointPreview').innerHTML='<h4>'+c.title+'</h4><p>'+c.description+'</p><div class="meta"><span>📍 '+c.distance+'</span><span>'+c.popularity+'</span><span>★ '+c.reward+'</span></div><div class="checkpoint-map-actions"><button class="btn-primary" onclick="viewSelectedMission()"><i class="fas fa-flag"></i> '+(c.completed?'Completed Mission':'View Mission')+'</button></div>'}
+        function viewSelectedMission(){const c=checkpointData[selectedCheckpoint];if(c.completed){showToast('This checkpoint mission has already been completed. Reward was previously awarded.');return}missionEntry='map';prepareMission();navigateTo('screen-mission')}
+        function prepareMission(){missionStarted=false;missionPhotoReady=false;const evidence=document.getElementById('missionEvidence');if(evidence)evidence.classList.remove('visible');const start=document.getElementById('startMissionButton');if(start)start.style.display='flex';const info=document.getElementById('missionInstruction');if(info)info.textContent='Select Start Mission to begin location verification.';const input=document.getElementById('missionPhoto');if(input)input.value=''}
+        function startMission(){missionStarted=true;document.getElementById('startMissionButton').style.display='none';document.getElementById('missionEvidence').classList.add('visible');document.getElementById('missionInstruction').textContent='✓ In Progress · You are within the 80 m verification radius. Capture the required photo.';showToast('Mission started. Status changed to In Progress.')}
+        function backFromMission(){navigateTo(missionEntry==='map'?'screen-checkpoint-map':missionEntry==='blind'?'screen-blind-box':'screen-home')}
+
         let destRevealed = false;
         const destinations = [
             { name: '🏔️ Mont Blanc', detail: 'Chamonix, France · 12.4 km away' },
@@ -3366,35 +2967,37 @@
 
         function redrawDestination() {
             if (!destRevealed) { showToast('Reveal a destination first'); return; }
+            if (totalRedraws >= 10) { showToast('You have reached the maximum redraw limit for this session!'); return; }
             if (redrawsRemaining > 0) redrawsRemaining--;
-            else if (explorationPoints >= 200) explorationPoints -= 200;
-            else { showToast('Insufficient Exploration Points'); return; }
+            else {if(!confirm('You have no free redraws left. Spend 200 Exploration Points to redraw?'))return;if(explorationPoints<200){showToast('Insufficient Exploration Points! Complete puzzles or checkpoint missions to earn more points.');return}explorationPoints-=200;updatePointsUI()}
+            totalRedraws++;
             destinationIndex = (destinationIndex + 1) % destinations.length;
             const next = destinations[destinationIndex];
             document.querySelector('.dest-name').textContent = next.name;
             document.querySelector('.dest-desc').textContent = next.detail;
             const status = document.querySelector('#destRevealContainer p[style*="text-align:center"]');
             if (status) status.textContent = 'Redraws remaining: ' + redrawsRemaining + '/10';
-            showToast('New mystery destination generated');
+            showToast('New mystery destination generated. Redraw '+totalRedraws+' of 10.');
         }
 
         function saveDestination() {
             const name = destinations[destinationIndex].name;
             if (!wishlist.includes(name)) wishlist.push(name);
-            showToast('Destination added to Wishlist!');
+            showToast('Destination successfully added to your Wishlist! You can plan a trip there later.');
         }
 
         function confirmDestination() {
             if (!destRevealed) { showToast('Reveal a destination first'); return; }
-            missionPhotoReady = false;
+            missionEntry = 'blind'; prepareMission();
             navigateTo('screen-mission');
-            showToast('Destination confirmed. Complete the checkpoint mission.');
+            showToast('Mystery destination successfully saved to your journey!');
         }
 
         // ============================================================
         // MISSION
         // ============================================================
         function handleMissionPhoto(input) {
+            if(!missionStarted){input.value='';showToast('Select Start Mission before capturing evidence.');return}
             const file = input.files && input.files[0];
             if (!file) return;
             if (!['image/jpeg','image/png'].includes(file.type)) { input.value=''; showToast('Only JPG, JPEG or PNG images are allowed'); return; }
@@ -3406,10 +3009,11 @@
         }
 
         function submitMission() {
+            if (!missionStarted) { showToast('Start the mission before submitting evidence.'); return; }
             if (!missionPhotoReady) { showToast('Please upload a mission photo before submitting'); return; }
             showToast('📸 Mission evidence submitted! Verifying...');
             setTimeout(() => {
-                if (!missionRewardClaimed) { explorationPoints += 120; missionRewardClaimed = true; }
+                if (!missionRewardClaimed) { explorationPoints += 120; missionRewardClaimed = true; updatePointsUI(); }
                 navigateTo('screen-mission-result');
             }, 800);
         }
@@ -3427,6 +3031,58 @@
             const checkpoint=plannerCheckpoints[id];
             document.getElementById('checkpointPreview').innerHTML='<h4>'+checkpoint.title+'</h4><p>'+checkpoint.description+'</p><div class="meta"><span>📍 '+checkpoint.distance+'</span><span>◎ '+checkpoint.radius+'</span><span>★ '+checkpoint.reward+'</span></div>';
         }
+
+        // ============================================================
+        // DREAM MAP + SMART TRIP PLANNER
+        // ============================================================
+        let plannerFilter='all', selectedPlannerPlace='eiffel', completedTripCount=1;
+        let plannerPlaces=[
+            {id:'eiffel',name:'Eiffel Tower',location:'Paris, France',description:'Paris landmark with panoramic city views.',distance:'1.2 km',rating:'4.8',status:'plan',day:1,time:'2h',x:18,y:22},
+            {id:'louvre',name:'Louvre Museum',location:'Paris, France',description:'World-renowned museum and glass pyramid.',distance:'2.4 km',rating:'4.9',status:'plan',day:1,time:'3h',x:63,y:18},
+            {id:'mont',name:'Mont Blanc',location:'Chamonix, France',description:'Alpine scenery and unforgettable summit viewpoints.',distance:'4.8 km',rating:'4.8',status:'plan',day:2,time:'5h',x:69,y:58},
+            {id:'geneva',name:'Lake Geneva',location:'Switzerland',description:'A peaceful lakeside stop beside the Alps.',distance:'3.6 km',rating:'4.7',status:'plan',day:3,time:'2h',x:28,y:62},
+            {id:'sacre',name:'Sacré-Cœur',location:'Paris, France',description:'Hilltop basilica with a sweeping city view.',distance:'5.2 km',rating:'4.6',status:'wishlist',day:null,time:'1h',x:46,y:34},
+            {id:'seine',name:'Seine River Walk',location:'Paris, France',description:'A scenic walk along the river and historic bridges.',distance:'3.1 km',rating:'4.5',status:'wishlist',day:null,time:'1h 30m',x:40,y:70}
+        ];
+        let tripPlans=[{id:'TRIP-2401',name:'European Dream',days:3,active:true,count:4},{id:'TRIP-2402',name:'Penang Heritage',days:2,active:false,count:3}];
+
+        function renderPlanner(){
+            const active=tripPlans.find(p=>p.active)||tripPlans[0]; if(!active)return;
+            document.getElementById('plannerTripName').textContent=active.name;
+            const inPlan=plannerPlaces.filter(p=>p.status==='plan');
+            document.getElementById('plannerDestinationCount').textContent=inPlan.length;
+            document.getElementById('plannerDayCount').textContent=Math.max(0,...inPlan.map(p=>p.day||1));
+            const pins=plannerPlaces.filter(p=>plannerFilter==='all'||p.status===plannerFilter).map(p=>'<button class="map-pin '+p.status+(p.id===selectedPlannerPlace?' selected':'')+'" style="left:'+p.x+'%;top:'+p.y+'%;" onclick="event.stopPropagation();selectDreamMapPin(this,\''+p.id+'\')" aria-label="'+p.name+'"><i class="fas '+(p.status==='wishlist'?'fa-heart':'fa-location-dot')+'"></i></button>').join('');
+            document.getElementById('plannerPins').innerHTML=pins;
+            document.getElementById('plannerItinerary').innerHTML=inPlan.length?inPlan.sort((a,b)=>(a.day||1)-(b.day||1)).map(p=>'<div class="planner-itinerary-row"><span class="day">Day '+(p.day||1)+'</span><div class="place"><b>'+p.name+'</b><small>'+p.location+' · '+p.time+'</small></div><button onclick="selectDreamMapPin(null,\''+p.id+'\')" aria-label="View '+p.name+'"><i class="fas fa-ellipsis-vertical"></i></button></div>').join(''):'<div class="inline-alert">Your trip plan is empty. Add destinations from wishlist, search, or explore nearby!</div>';
+            showPlannerPlace(selectedPlannerPlace,false);
+        }
+        function selectDreamMapPin(pin,id){selectedPlannerPlace=id;renderPlanner();showPlannerPlace(id,true)}
+        function showPlannerPlace(id,scroll){const p=plannerPlaces.find(x=>x.id===id),card=document.getElementById('plannerPlaceCard');if(!p){card.classList.remove('visible');return}card.classList.add('visible');card.innerHTML='<h4>'+p.name+'</h4><p>'+p.description+'</p><div class="meta"><span><i class="fas fa-location-dot"></i> '+p.location+'</span><span>'+p.distance+'</span><span>★ '+p.rating+'</span></div><div class="place-actions">'+(p.status==='wishlist'?'<button class="add" onclick="addPlannerDestination(\''+p.id+'\')">Add to Trip Plan</button>':'<button class="remove" onclick="confirmRemovePlannerDestination(\''+p.id+'\')">Remove from Plan</button>')+'</div>';if(scroll)card.scrollIntoView({behavior:'smooth',block:'nearest'})}
+        function setPlannerFilter(filter,button){plannerFilter=filter;document.querySelectorAll('#plannerFilters button').forEach(b=>b.classList.remove('active'));button.classList.add('active');renderPlanner()}
+        function locateTraveller(){showToast('Dream Map centred on your current location.')}
+        function searchPlannerDestination(){const input=document.getElementById('plannerSearch'),q=input.value.trim().toLowerCase();input.classList.remove('field-invalid');if(!q){input.classList.add('field-invalid');showToast('Enter a destination name to search.');return}const match=plannerPlaces.find(p=>p.name.toLowerCase().includes(q)||p.location.toLowerCase().includes(q));if(!match){showToast('No destinations found matching your search. Try a different keyword or explore nearby!');return}selectedPlannerPlace=match.id;plannerFilter='all';document.querySelectorAll('#plannerFilters button').forEach((b,i)=>b.classList.toggle('active',i===0));renderPlanner();showPlannerPlace(match.id,true)}
+        function exploreNearby(){const nearby=plannerPlaces.filter(p=>p.status==='wishlist').sort((a,b)=>parseFloat(a.distance)-parseFloat(b.distance));if(!nearby.length){showToast('No new nearby destinations found.');return}selectedPlannerPlace=nearby[0].id;plannerFilter='wishlist';document.querySelectorAll('#plannerFilters button').forEach((b,i)=>b.classList.toggle('active',i===2));renderPlanner();showToast('Nearby places are sorted by distance.')}
+        function promptMapLocation(){showToast('Tap an empty area of the Dream Map to add a location.')}
+        function handlePlannerMapTap(event){if(event.target.closest('.map-pin,.map-legend'))return;const map=event.currentTarget,r=map.getBoundingClientRect(),x=Math.round((event.clientX-r.left)/r.width*100),y=Math.round((event.clientY-r.top)/r.height*100),id='custom'+Date.now();plannerPlaces.push({id,name:'Pinned Location',location:'GPS '+x+'.'+y+', '+y+'.'+x,description:'A custom location selected from the Dream Map.',distance:'Nearby',rating:'New',status:'wishlist',day:null,time:'1h',x:Math.max(5,Math.min(88,x)),y:Math.max(8,Math.min(75,y))});selectedPlannerPlace=id;renderPlanner();showToast('Add this location to your trip plan?')}
+        function addPlannerDestination(id){const p=plannerPlaces.find(x=>x.id===id);if(!p)return;if(p.status==='plan'){showToast('This destination is already included in your trip plan.');return}if(plannerPlaces.filter(x=>x.status==='plan').length>=20){showToast('A trip plan can contain a maximum of 20 destinations.');return}p.status='plan';p.day=Math.ceil(plannerPlaces.filter(x=>x.status==='plan').length/3);renderPlanner();showToast('Destination added to your trip plan!')}
+        function confirmRemovePlannerDestination(id){const p=plannerPlaces.find(x=>x.id===id);if(!p)return;showPlannerDialog('Remove destination?','Remove '+p.name+' from your trip plan?','Keep','Remove',()=>removePlannerDestination(id))}
+        function removePlannerDestination(id){const p=plannerPlaces.find(x=>x.id===id);if(p){p.status='wishlist';p.day=null;selectedPlannerPlace=id;renderPlanner();showToast('Destination removed from your trip plan.')}closePlannerDialog()}
+        function planPlannerRoute(){const valid=plannerPlaces.filter(p=>p.status==='plan');if(valid.length<2){showToast('Add at least two destinations before planning a route.');return}document.getElementById('plannerRoute').style.display='block';showPlannerDialog('Efficient route found!','Would you like to reorder your itinerary?','Keep manual order','Accept route',acceptPlannerRoute)}
+        function acceptPlannerRoute(){plannerPlaces.filter(p=>p.status==='plan').forEach((p,i)=>p.day=Math.floor(i/3)+1);renderPlanner();closePlannerDialog();showToast('Efficient route accepted and itinerary reordered.')}
+        function rejectPlannerRoute(){closePlannerDialog();showToast('Manual itinerary order retained.')}
+        function showPlannerDialog(title,text,cancelLabel,confirmLabel,onConfirm){closePlannerDialog();const dialog=document.createElement('div');dialog.className='planner-route-dialog';dialog.id='plannerDialog';dialog.innerHTML='<div><h3>'+title+'</h3><p>'+text+'</p><div class="split"><button class="btn-outline" id="plannerCancel">'+cancelLabel+'</button><button class="btn-primary" id="plannerConfirm">'+confirmLabel+'</button></div></div>';document.getElementById('appContainer').appendChild(dialog);dialog.querySelector('#plannerCancel').onclick=title.indexOf('Efficient')>=0?rejectPlannerRoute:closePlannerDialog;dialog.querySelector('#plannerConfirm').onclick=onConfirm}
+        function closePlannerDialog(){const old=document.getElementById('plannerDialog');if(old)old.remove()}
+        function generatePlannerReport(){if(completedTripCount<1){showToast("You haven't completed any destinations yet. Complete your trip first to generate a report.");return}const active=tripPlans.find(p=>p.active);document.getElementById('reportTripTitle').textContent=active.name;document.getElementById('plannerReportText').textContent='From Paris landmarks to Alpine views, your journey brought together culture, discovery and one completed checkpoint. Your strongest memory was turning a planned destination into a real achievement.';navigateTo('screen-planner-report');showToast('AI travel summary generated successfully!')}
+        function downloadPlannerPdf(){const active=tripPlans.find(p=>p.active),content='MYsteryLane Trip Plan\n'+active.name+'\nGenerated: '+new Date().toLocaleDateString()+'\n\n'+plannerPlaces.filter(p=>p.status==='plan').map(p=>'Day '+p.day+': '+p.name+' — '+p.location).join('\n'),blob=new Blob([content],{type:'application/pdf'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=active.name.replace(/[^a-z0-9]/gi,'-')+'-trip-plan.pdf';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);showToast('PDF downloaded successfully!')}
+        function openTripPlans(){renderTripPlans();navigateTo('screen-trip-plans')}
+        function renderTripPlans(){document.getElementById('tripPlanList').innerHTML=tripPlans.map(p=>'<div class="trip-plan-card '+(p.active?'active':'')+'"><i class="fas fa-map"></i><div><b>'+p.name+'</b><small>'+p.count+' destinations · '+p.days+' days · '+p.id+'</small></div>'+(p.active?'<span class="planner-chip" style="background:var(--lav);color:var(--primary)">Active</span>':'<button onclick="switchTripPlan(\''+p.id+'\')">Load</button>')+'<button class="delete-plan" onclick="confirmDeleteTripPlan(\''+p.id+'\')"><i class="fas fa-trash"></i></button></div>').join('')}
+        function showCreateTripForm(){document.getElementById('createTripForm').style.display='block';document.getElementById('newTripName').focus()}
+        function hideCreateTripForm(){document.getElementById('createTripForm').style.display='none'}
+        function createTripPlan(){const name=document.getElementById('newTripName'),days=document.getElementById('newTripDays'),value=name.value.trim(),dayValue=days.value?Number(days.value):1;name.classList.remove('field-invalid');if(!value){name.classList.add('field-invalid');showToast('Please enter a trip name.');return}if(dayValue<1||dayValue>30){days.classList.add('field-invalid');showToast('Number of days must be between 1 and 30.');return}tripPlans.forEach(p=>p.active=false);tripPlans.push({id:'TRIP-'+Math.floor(1000+Math.random()*9000),name:value,days:dayValue,active:true,count:0});plannerPlaces.forEach(p=>{if(p.status==='plan'){p.status='wishlist';p.day=null}});hideCreateTripForm();renderPlanner();navigateTo('screen-trip-planner');showToast('Trip plan saved successfully!')}
+        function switchTripPlan(id){tripPlans.forEach(p=>p.active=p.id===id);renderPlanner();navigateTo('screen-trip-planner');showToast('Trip plan loaded successfully!')}
+        function confirmDeleteTripPlan(id){const p=tripPlans.find(x=>x.id===id);if(!p)return;showPlannerDialog('Delete trip plan?','Delete '+p.name+' permanently?','Cancel','Delete',()=>deleteTripPlan(id))}
+        function deleteTripPlan(id){const wasActive=tripPlans.find(p=>p.id===id)?.active;tripPlans=tripPlans.filter(p=>p.id!==id);if(wasActive&&tripPlans[0])tripPlans[0].active=true;closePlannerDialog();renderTripPlans();showToast('Trip plan deleted successfully!')}
 
         const achievementData = {
             summit:{icon:'🏔️',name:'Summit Explorer',description:'Reach your first checkpoint summit.',progress:'1 / 1',percent:100,unlocked:true,requirements:['Confirm a Blind Box destination','Reach the destination checkpoint','Upload a valid checkpoint photo']},
@@ -3457,17 +3113,27 @@
         // ============================================================
         // PUZZLE
         // ============================================================
-        function solvePuzzle() {
-            const input = document.getElementById('puzzleAnswer');
-            const answer = input.value.trim().toUpperCase();
-            if (!answer) { showToast('Please enter an answer before submitting'); return; }
-            if (answer === 'BLANC' || answer === 'MONT BLANC' || answer === 'MONTBLANC') {
-                showToast('🧠 Correct! +50 exploration points!');
-                setTimeout(() => navigateTo('screen-achievements'), 600);
-            } else {
-                showToast('Not quite — try again! Clue: "The roof of the Alps"');
-            }
-        }
+        const puzzleQuestions=[
+            {q:'Which mountain is called “the roof of the Alps”?',a:['MONT BLANC','MONTBLANC','BLANC'],hint:'It begins with M and is in France.'},
+            {q:'Which city is home to the Eiffel Tower?',a:['PARIS'],hint:'The capital of France.'},
+            {q:'True or False: George Town is a UNESCO World Heritage Site.',a:['TRUE'],hint:'Its historic core received international recognition.'},
+            {q:'Which Malaysian state is home to Mount Kinabalu?',a:['SABAH'],hint:'It is located in East Malaysia.'},
+            {q:'Unscramble: VREUOL',a:['LOUVRE'],hint:'A world-famous museum in Paris.'},
+            {q:'Which landmark has colourful steps near Kuala Lumpur?',a:['BATU CAVES','BATU'],hint:'A limestone cave and Hindu shrine.'},
+            {q:'Which lake borders Geneva?',a:['LAKE GENEVA','GENEVA'],hint:'It shares its name with the city.'},
+            {q:'True or False: Mont Blanc is in the Alps.',a:['TRUE'],hint:'It is one of Europe’s best-known peaks.'},
+            {q:'Which Malaysian city is famous for Jonker Walk?',a:['MELAKA','MALACCA'],hint:'A historic city in southern Peninsular Malaysia.'},
+            {q:'What document can the Trip Planner export?',a:['PDF'],hint:'A portable document format.'}
+        ];
+        let puzzleCategory='Guess the Word',puzzleIndex=0,puzzleScoreValue=0,puzzleSeconds=30,puzzleHints=3,puzzleHintUsed=false,puzzleTimerHandle=null,puzzleChallengesToday=0;
+        function selectPuzzleCategory(category){puzzleCategory=category;resetPuzzle();showToast(category+' challenge started');startPuzzleTimer()}
+        function resetPuzzle(){clearInterval(puzzleTimerHandle);puzzleIndex=0;puzzleScoreValue=0;puzzleSeconds=30;puzzleHints=3;puzzleHintUsed=false;renderPuzzleQuestion()}
+        function renderPuzzleQuestion(){const q=puzzleQuestions[puzzleIndex];document.getElementById('puzzlePrompt').textContent=q.q;document.getElementById('puzzleClue').textContent=puzzleCategory+' · Answer before the timer reaches zero.';document.getElementById('puzzleQuestionMeta').textContent='Question '+(puzzleIndex+1)+' / 10';document.getElementById('puzzleScore').textContent='Score '+puzzleScoreValue;document.getElementById('puzzleTimer').textContent='00:'+String(puzzleSeconds).padStart(2,'0');document.getElementById('puzzleHintStatus').textContent='Hints available: '+puzzleHints+' / 3';document.getElementById('puzzleAnswer').value=''}
+        function startPuzzleTimer(){clearInterval(puzzleTimerHandle);puzzleSeconds=30;renderPuzzleQuestion();puzzleTimerHandle=setInterval(()=>{puzzleSeconds--;document.getElementById('puzzleTimer').textContent='00:'+String(Math.max(0,puzzleSeconds)).padStart(2,'0');if(puzzleSeconds<=0){clearInterval(puzzleTimerHandle);showToast('Time is up. Moving to the next question.');recordPuzzleAnswer(false)}},1000)}
+        function usePuzzleHint(){if(puzzleHints<=0){showToast('You have reached the 3-hint limit for this challenge.');return}puzzleHints--;puzzleHintUsed=true;document.getElementById('puzzleClue').textContent='Hint: '+puzzleQuestions[puzzleIndex].hint;document.getElementById('puzzleHintStatus').textContent='Hints available: '+puzzleHints+' / 3';showToast('Hint used. The score for this question will be reduced.')}
+        function submitPuzzleAnswer(){const input=document.getElementById('puzzleAnswer');const answer=input.value.trim().toUpperCase();if(!answer){input.classList.add('field-invalid');showToast('Please enter an answer before submitting.');return}input.classList.remove('field-invalid');const correct=puzzleQuestions[puzzleIndex].a.includes(answer);recordPuzzleAnswer(correct)}
+        function recordPuzzleAnswer(correct){clearInterval(puzzleTimerHandle);if(correct){const marks=Math.max(20,50+puzzleSeconds-(puzzleHintUsed?20:0));puzzleScoreValue+=marks;showToast('Correct! +'+marks+' marks.')}else showToast('Incorrect answer. The correct answer is '+puzzleQuestions[puzzleIndex].a[0]+'.');if(puzzleIndex<9){puzzleIndex++;puzzleHintUsed=false;setTimeout(startPuzzleTimer,500)}else setTimeout(finishPuzzle,500)}
+        function finishPuzzle(){clearInterval(puzzleTimerHandle);const eligible=puzzleChallengesToday<5;const points=eligible?Math.round(puzzleScoreValue/10):0;if(eligible){explorationPoints+=points;puzzleChallengesToday++;updatePointsUI()}document.getElementById('puzzleFinalScore').textContent=puzzleScoreValue+' / 1000';document.getElementById('puzzlePointsEarned').textContent='+'+points+(eligible?'':' · Daily limit reached');navigateTo('screen-puzzle-result');showToast(eligible?'Puzzle completed and leaderboard updated.':'Result saved. Daily puzzle reward limit reached.')}
 
         // ============================================================
         // KEYBOARD SHORTCUT
@@ -3490,15 +3156,7 @@
         renderChatList();
         updateTeamStatus();
         updateRequestCounts();
-        currentRoleView = 'owner';
-        setRoleView('owner');
-        updatePendingActions();
-        updateHomePendingActions();
-        updateBannerVisibility();
-        updateHomeBannerVisibility();
-
-        // Expose simulation function for testing (click "Approve" in console)
-        window.simulateRequestStatus = simulateRequestStatus;
+        renderPlanner();
 
         console.log('✦ MYsteryLane · Penang Peranakan Theme');
         console.log('🎨 Primary: #4A3A6B | Accent: #C97A5A | Background: #FBF6EF');
@@ -3506,12 +3164,6 @@
         console.log('   • Public/Private: Request to join → Owner approval');
         console.log('   • Owner: Manage requests in Team Requests screen');
         console.log('   • After approval: Access trip details and missions');
-        console.log('🔄 Toggle between Owner and Member views in Trip Details');
-        console.log('📋 New features:');
-        console.log('   • Cancel Request button (appears when pending)');
-        console.log('   • Member List screen with roles');
-        console.log('   • Status banners for approval/rejection feedback');
-        console.log('💡 To test approval flow, run: simulateRequestStatus("approved") or simulateRequestStatus("rejected") in console');
     </script>
 
 </body>
