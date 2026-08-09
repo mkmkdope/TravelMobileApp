@@ -198,6 +198,10 @@
         .btn-ghost:hover {
             background: var(--bg-card-hover);
         }
+        .btn-ghost.active {
+            background: var(--primary);
+            color: #fff;
+        }
 
         .btn-success {
             background: #2e7d5e;
@@ -2812,6 +2816,12 @@
         .split>* {
             flex: 1;
         }
+
+        /* Goal type buttons */
+        .goal-type-btn.active {
+            background: var(--primary);
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -3128,6 +3138,35 @@
                 <p style="color:var(--text-muted);font-size:12px;text-align:center;margin-top:8px;">
                     Solo is default — switch anytime
                 </p>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- SCREEN: GOAL SETTING (SOLO)                                   -->
+            <!-- ============================================================ -->
+            <div class="screen" id="screen-goal-setting">
+                <div class="page-header">
+                    <button class="back-btn" onclick="navigateTo('screen-mode-select')"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Set Your Solo Goal</h2>
+                </div>
+                <div class="card" style="background:linear-gradient(135deg,rgba(74,58,107,0.04),rgba(201,122,90,0.04));border:1px solid rgba(74,58,107,0.08);">
+                    <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">Choose what you want to achieve on this trip. We'll track your progress in the team status area.</p>
+                    <div style="margin-bottom:16px;">
+                        <label style="color:var(--text-muted);font-size:13px;display:block;margin-bottom:6px;">Goal Type</label>
+                        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                            <button class="btn-ghost goal-type-btn active" data-goal="landmarks" onclick="selectGoalType('landmarks',this)"><i class="fas fa-map-pin"></i> Visit Landmarks</button>
+                            <button class="btn-ghost goal-type-btn" data-goal="missions" onclick="selectGoalType('missions',this)"><i class="fas fa-flag-checkered"></i> Complete Missions</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label style="color:var(--text-muted);font-size:13px;display:block;margin-bottom:6px;">Target Number</label>
+                        <div style="display:flex;align-items:center;gap:14px;">
+                            <input type="range" min="1" max="10" value="3" step="1" id="goalTargetSlider" style="flex:1;accent-color:var(--primary);" oninput="document.getElementById('goalTargetDisplay').textContent=this.value" />
+                            <span id="goalTargetDisplay" style="font-weight:700;font-size:24px;color:var(--primary);min-width:36px;text-align:center;">3</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="saveGoal()"><i class="fas fa-check"></i> Start Adventure</button>
+                <p style="color:var(--text-muted);font-size:12px;text-align:center;margin-top:8px;">You can change your goal later from the home screen.</p>
             </div>
 
             <!-- ============================================================ -->
@@ -3842,6 +3881,7 @@
                     </div>
                 </div>
 
+                <!-- Team Status Card with Goal Progress -->
                 <div class="card" style="margin-top:16px;border:1px solid rgba(201,122,90,0.06);cursor:pointer;" onclick="navigateTo('screen-trip-detail')">
                     <div class="flex-between">
                         <span style="color:var(--text-muted);"><i class="fas fa-users"></i> Team Status</span>
@@ -3851,9 +3891,9 @@
                         <span class="badge-gold" style="background:var(--bg-card);color:var(--text-muted);"><i class="fas fa-user"></i> You</span>
                         <span style="color:var(--text-muted);font-size:13px;" id="teamStatusSub">+ join a team to collaborate</span>
                     </div>
-                    <div style="margin-top:6px;">
+                    <div style="margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                         <span class="team-status-badge solo" id="teamStatusBadge">SOLO</span>
-                        <span style="color:var(--text-muted);font-size:10px;margin-left:6px;" id="teamLangDisplay">🇬🇧 English</span>
+                        <span style="color:var(--text-muted);font-size:10px;" id="teamLangDisplay">🇬🇧 English</span>
                     </div>
                 </div>
 
@@ -3910,6 +3950,14 @@
             { name: 'Sam Miles', initials: 'SM', time: '12 minutes ago' },
             { name: 'Taylor Chen', initials: 'TC', time: '28 minutes ago' }
         ];
+
+        // ============================================================
+        // GOAL SETTING STATE
+        // ============================================================
+        let goalType = 'landmarks';          // 'landmarks' or 'missions'
+        let goalTarget = 3;
+        let goalProgress = 0;
+        let goalCompleted = false;
 
         // ============================================================
         // CHAT DATA
@@ -4009,6 +4057,9 @@
                 }
                 if (screenId === 'screen-trip-detail') {
                     renderTeamMembers();
+                }
+                if (screenId === 'screen-home') {
+                    updateTeamStatus();
                 }
             }
         }
@@ -4207,13 +4258,7 @@
 
         function confirmMode() {
             if (selectedMode === 'solo') {
-                currentTeam = 'Solo Mode';
-                currentTeamMembers = 1;
-                currentTeamMembersList = [{ name: userName, initials: userName.split(' ').map(p => p[0]).join('')
-                    .substring(0, 2).toUpperCase(), isOwner: true }];
-                updateTeamStatus();
-                showToast('Solo mode selected — starting adventure!');
-                navigateTo('screen-home');
+                navigateTo('screen-goal-setting');
             } else if (selectedMode === 'private') {
                 const code = Math.floor(1000000 + Math.random() * 9000000).toString();
                 document.getElementById('groupCodeDisplay').textContent = code;
@@ -4223,6 +4268,54 @@
             } else if (selectedMode === 'auto') {
                 navigateTo('screen-auto-match');
             }
+        }
+
+        // ============================================================
+        // GOAL FUNCTIONS
+        // ============================================================
+        function selectGoalType(type, btn) {
+            document.querySelectorAll('.goal-type-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            goalType = type;
+        }
+
+        function saveGoal() {
+            const slider = document.getElementById('goalTargetSlider');
+            goalTarget = parseInt(slider.value, 10);
+            goalProgress = 0;
+            goalCompleted = false;
+            showToast('Goal set: ' + (goalType === 'landmarks' ? 'Visit ' : 'Complete ') + goalTarget +
+                (goalType === 'landmarks' ? ' landmarks' : ' missions'));
+            updateTeamStatus();
+            navigateTo('screen-home');
+        }
+
+        function updateGoalProgress(increment = 1) {
+            if (goalCompleted) return;
+            goalProgress = Math.min(goalProgress + increment, goalTarget);
+            if (goalProgress >= goalTarget) {
+                goalCompleted = true;
+                showToast('🎉 Goal achieved! You\'re amazing!');
+            }
+            updateTeamStatus();
+        }
+
+        function getGoalDisplayText() {
+            if (currentTeam !== 'Solo Mode') return '';
+            const action = goalType === 'landmarks' ? 'Visit' : 'Complete';
+            const label = goalType === 'landmarks' ? 'landmarks' : 'missions';
+            return `${action} ${goalTarget} ${label} · ${goalProgress}/${goalTarget}`;
+        }
+
+        function getGoalProgressPercent() {
+            if (currentTeam !== 'Solo Mode' || goalTarget === 0) return 0;
+            return Math.min((goalProgress / goalTarget) * 100, 100);
+        }
+
+        function getGoalStatusEmoji() {
+            if (goalCompleted) return '🎉';
+            if (goalProgress === 0) return '⏳';
+            return '🔥';
         }
 
         // ============================================================
@@ -4293,7 +4386,6 @@
                 showToast('Please enter a valid 7-digit code');
                 return;
             }
-            // Check if team is full (simulated)
             if (currentTeamMembers >= teamCapacity) {
                 showToast('This team has reached its maximum capacity of ' + teamCapacity + ' members.');
                 return;
@@ -4310,7 +4402,6 @@
         // PUBLIC TEAM
         // ============================================================
         function requestToJoin(teamName) {
-            // Check capacity
             const teamEl = document.querySelector('.team-list-item .team-info .name');
             if (teamEl && teamEl.textContent.includes(teamName)) {
                 const membersEl = teamEl.closest('.team-list-item').querySelector('.members');
@@ -4342,7 +4433,6 @@
                 return;
             }
 
-            // Check uniqueness (simulated)
             const existingTeams = ['Global Explorers', 'Summit Hunters', 'Island Tribe', 'Cultural Nomads'];
             if (existingTeams.some(t => t.toLowerCase() === name.toLowerCase())) {
                 showToast('A team with this name already exists. Please choose a different name.');
@@ -4384,7 +4474,6 @@
             const name = requestItem.querySelector('.name').textContent;
             const initials = name.split(' ').map(p => p[0]).join('').substring(0, 2).toUpperCase();
 
-            // Check capacity
             if (currentTeamMembers >= teamCapacity) {
                 showToast('Team is full! Cannot approve more members.');
                 return;
@@ -4397,12 +4486,10 @@
             updateRequestCounts();
             showToast('✅ ' + name + ' approved — they can now join the team');
 
-            // Add to team members
             currentTeamMembers++;
             currentTeamMembersList.push({ name: name, initials: initials, isOwner: false });
             renderTeamMembers();
 
-            // Add to chat
             const chatId = 'chat' + Date.now();
             chatData[chatId] = {
                 id: chatId,
@@ -4461,14 +4548,12 @@
                         </div>
                     `).join('');
 
-            // Update count
             const countEl = document.getElementById('teamMemberCount');
             if (countEl) countEl.textContent = members.length + ' / ' + teamCapacity;
 
             const detailMembers = document.getElementById('tripDetailMembers');
             if (detailMembers) detailMembers.textContent = members.length;
 
-            // Update capacity bar
             const fill = document.getElementById('teamCapacityFill');
             const label = document.getElementById('teamCapacityLabel');
             if (fill) fill.style.width = (members.length / teamCapacity * 100) + '%';
@@ -4494,7 +4579,7 @@
         }
 
         // ============================================================
-        // UPDATE TEAM STATUS
+        // UPDATE TEAM STATUS (with Goal Progress for Solo)
         // ============================================================
         function updateTeamStatus() {
             const label = document.getElementById('teamStatusLabel');
@@ -4528,13 +4613,32 @@
                 langDisplay.textContent = langMap[teamLanguage] || '🇬🇧 English';
             }
 
-            if (sub) {
-                if (currentTeam === 'Solo Mode') {
-                    sub.textContent = '+ join a team to collaborate';
-                } else if (currentTeam.includes('Pending')) {
-                    sub.textContent = '⏳ Waiting for owner approval...';
-                } else {
-                    sub.textContent = '🎯 Active team — tap to view trip details';
+            // --- Goal progress for solo mode ---
+            if (currentTeam === 'Solo Mode') {
+                const progressPercent = getGoalProgressPercent();
+                const goalText = getGoalDisplayText();
+                const emoji = getGoalStatusEmoji();
+                if (sub) {
+                    sub.innerHTML = `
+                        <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
+                            <span style="font-weight:600;color:var(--primary);">🎯 ${goalText}</span>
+                            <span style="font-size:11px;color:var(--text-muted);">${Math.round(progressPercent)}%</span>
+                        </div>
+                        <div style="height:4px;background:rgba(74,58,107,0.08);border-radius:10px;margin-top:4px;max-width:200px;">
+                            <div style="height:100%;width:${progressPercent}%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:10px;transition:width 0.4s;"></div>
+                        </div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:3px;">
+                            ${goalCompleted ? '✅ Goal achieved! Amazing work!' : (goalProgress === 0 ? 'Start your adventure to make progress.' : 'Keep going, you\'re on track!')}
+                        </div>
+                    `;
+                }
+            } else {
+                if (sub) {
+                    if (currentTeam.includes('Pending')) {
+                        sub.textContent = '⏳ Waiting for owner approval...';
+                    } else {
+                        sub.textContent = '🎯 Active team — tap to view trip details';
+                    }
                 }
             }
         }
@@ -4609,7 +4713,6 @@
         }
 
         function selectMatch(name) {
-            // Check capacity
             if (currentTeamMembers >= teamCapacity) {
                 showToast('You are already in a team at maximum capacity (' + teamCapacity + ' members).');
                 return;
@@ -4620,13 +4723,11 @@
 
             showToast('📨 Team request sent to ' + name);
 
-            // Simulate acceptance after delay
             setTimeout(() => {
                 const initials = match.initials;
                 currentTeamMembers++;
                 currentTeamMembersList.push({ name: match.name, initials: initials, isOwner: false });
 
-                // Create chat
                 const chatId = 'chat' + Date.now();
                 chatData[chatId] = {
                     id: chatId,
@@ -4807,7 +4908,6 @@
                 distance: '4.6 km', popularity: 'Popular', reward: '+140 pts', completed: false }
         };
 
-        // One Map Hub serves both modules.
         let mapReturnScreen = 'screen-trip-planner';
 
         function updateMapHubCopy() {
@@ -4951,6 +5051,8 @@
             if (!destRevealed) { showToast('Reveal a destination first'); return; }
             missionEntry = 'blind';
             prepareMission();
+            // Update goal progress for solo mode
+            if (currentTeam === 'Solo Mode') updateGoalProgress();
             navigateTo('screen-mission');
             showToast('Mystery destination successfully saved to your journey!');
         }
@@ -4981,6 +5083,8 @@
                 if (!missionRewardClaimed) { explorationPoints += 120;
                     missionRewardClaimed = true;
                     updatePointsUI(); }
+                // Update goal progress for solo mode
+                if (currentTeam === 'Solo Mode') updateGoalProgress();
                 navigateTo('screen-mission-result');
             }, 800);
         }
@@ -5658,6 +5762,7 @@
         console.log('   • After approval: Access trip details and missions');
         console.log('🤝 Auto-Match: Find travel buddies by city, language, and level');
         console.log('📊 Team capacity: max ' + teamCapacity + ' members');
+        console.log('🎯 Solo Goal Setting: Set personal goals and track progress in team status');
     </script>
 
 </body>
