@@ -30,6 +30,9 @@
             --shadow-btn: 0 6px 24px rgba(201, 122, 90, 0.25);
             --shadow-btn-hover: 0 8px 32px rgba(201, 122, 90, 0.35);
             --radius: 20px;
+            --success: #2e7d5e;
+            --danger: #c0392b;
+            --warning: #e67e22;
         }
 
         * {
@@ -318,7 +321,6 @@
         .page-header {
             display: flex;
             align-items: center;
-
             gap: 12px;
             margin-bottom: 22px;
         }
@@ -638,7 +640,6 @@
             color: var(--text-muted);
             font-size: 10px;
         }
-
 
         /* ----- REQUEST LIST ----- */
         .request-item {
@@ -960,7 +961,6 @@
             border: none;
             color: #fff;
             font-weight: 700;
-
             font-size: 18px;
             padding: 16px 40px;
             border-radius: 60px;
@@ -1256,6 +1256,72 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        /* ----- STATUS BANNER (Visual Feedback) ----- */
+        .status-banner {
+            padding: 12px 16px;
+            border-radius: 14px;
+            margin-bottom: 16px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid var(--border);
+            animation: slideDown 0.4s ease;
+        }
+        .status-banner.show {
+            display: flex;
+        }
+        .status-banner .icon {
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        .status-banner .content {
+            flex: 1;
+        }
+        .status-banner .content .title {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text);
+        }
+        .status-banner .content .sub {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .status-banner .dismiss {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .status-banner .dismiss:hover {
+            color: var(--text);
+        }
+
+        .status-banner.pending {
+            background: rgba(201, 122, 90, 0.08);
+            border-color: rgba(201, 122, 90, 0.2);
+        }
+        .status-banner.approved {
+            background: rgba(46, 125, 94, 0.08);
+            border-color: rgba(46, 125, 94, 0.2);
+        }
+        .status-banner.rejected {
+            background: rgba(192, 57, 43, 0.08);
+            border-color: rgba(192, 57, 43, 0.2);
+        }
+
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .glow-btn {
             background: var(--primary);
             border: none;
@@ -1286,7 +1352,6 @@
             .phone {
                 border-radius: 28px;
                 height: 100vh;
-
                 max-height: 100vh;
             }
             .phone::before {
@@ -1328,6 +1393,67 @@
         .screen-container {
             scrollbar-width: thin;
             scrollbar-color: rgba(74, 58, 107, 0.2) transparent;
+        }
+
+        /* Role toggle button styles */
+        .role-toggle-btn {
+            flex: 1;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            background: transparent;
+            color: var(--text-muted);
+        }
+        .role-toggle-btn.active {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 2px 12px rgba(74, 58, 107, 0.2);
+        }
+        .role-toggle-btn:not(.active):hover {
+            background: var(--bg-card-hover);
+        }
+
+        /* Member list item */
+        .member-list-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-light);
+            transition: 0.2s;
+        }
+        .member-list-item .member-info {
+            flex: 1;
+        }
+        .member-list-item .member-info .name {
+            color: var(--text);
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .member-list-item .member-info .role {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        .member-list-item .role-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 30px;
+        }
+        .member-list-item .role-badge.owner {
+            background: rgba(74, 58, 107, 0.12);
+            color: var(--primary);
+        }
+        .member-list-item .role-badge.member {
+            background: rgba(74, 58, 107, 0.05);
+            color: var(--text-muted);
         }
     </style>
 </head>
@@ -1620,7 +1746,7 @@
                 <div class="card">
                     <label style="color:var(--text-muted);font-size:13px;display:block;margin-bottom:6px;">Enter 7-digit group code</label>
                     <div class="join-code-input">
-                        <input class="input-field" type="text" placeholder="•••••••" id="joinCodeInput" maxlength="7" style="text-align:center;font-size:20px;letter-spacing:4px;font-weight:700;" />
+                        <input class="input-field" type="text" placeholder="e.g. MYST-202" id="joinCodeInput" maxlength="8" style="text-align:center;font-size:20px;letter-spacing:2px;font-weight:700;" />
                     </div>
                     <p style="color:var(--text-muted);font-size:11px;margin-top:6px;text-align:center;">Enter the code shared by your team organizer</p>
                 </div>
@@ -1629,7 +1755,6 @@
                 </button>
                 <p style="color:var(--text-muted);font-size:12px;text-align:center;margin-top:8px;">Your request will be sent to the team owner for approval</p>
                 <button class="btn-outline mt-12" onclick="navigateTo('screen-private-group')">
-
                     <i class="fas fa-arrow-left"></i> Back
                 </button>
             </div>
@@ -1639,7 +1764,7 @@
             <!-- ============================================================ -->
             <div class="screen" id="screen-owner-approval">
                 <div class="page-header">
-                    <button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button>
+                    <button class="back-btn" onclick="navigateTo('screen-trip-detail')"><i class="fas fa-arrow-left"></i></button>
                     <h2>Team Requests</h2>
                     <span style="color:var(--text-muted);font-size:12px;" id="requestCount">3 pending</span>
                 </div>
@@ -1712,7 +1837,7 @@
                     </div>
                     <div class="team-meta">
                         <div class="members">👥 24 members</div>
-                        <button class="join-btn" onclick="requestToJoin('Global Explorers')">Request to Join</button>
+                        <button class="join-btn" onclick="requestToJoin('Global Explorers', this)">Request to Join</button>
                     </div>
                 </div>
 
@@ -1723,7 +1848,7 @@
                     </div>
                     <div class="team-meta">
                         <div class="members">👥 18 members</div>
-                        <button class="join-btn" onclick="requestToJoin('Summit Hunters')">Request to Join</button>
+                        <button class="join-btn" onclick="requestToJoin('Summit Hunters', this)">Request to Join</button>
                     </div>
                 </div>
 
@@ -1734,7 +1859,7 @@
                     </div>
                     <div class="team-meta">
                         <div class="members">👥 12 members</div>
-                        <button class="join-btn" onclick="requestToJoin('Island Tribe')">Request to Join</button>
+                        <button class="join-btn" onclick="requestToJoin('Island Tribe', this)">Request to Join</button>
                     </div>
                 </div>
 
@@ -1745,7 +1870,7 @@
                     </div>
                     <div class="team-meta">
                         <div class="members">👥 9 members</div>
-                        <button class="join-btn" onclick="requestToJoin('Cultural Nomads')">Request to Join</button>
+                        <button class="join-btn" onclick="requestToJoin('Cultural Nomads', this)">Request to Join</button>
                     </div>
                 </div>
 
@@ -1797,15 +1922,87 @@
             </div>
 
             <!-- ============================================================ -->
-            <!-- SCREEN: TRIP DETAIL (after joining/creating team)            -->
+            <!-- SCREEN: TEAM MEMBERS                                          -->
+            <!-- ============================================================ -->
+            <div class="screen" id="screen-team-members">
+                <div class="page-header">
+                    <button class="back-btn" onclick="navigateTo('screen-trip-detail')"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Team Members</h2>
+                    <span style="color:var(--text-muted);font-size:12px;" id="memberCountLabel">3 members</span>
+                </div>
+
+                <div id="memberListContainer">
+                    <!-- Dynamically rendered -->
+                    <div class="member-list-item">
+                        <div class="avatar">AR</div>
+                        <div class="member-info">
+                            <div class="name">Alex Rivera</div>
+                            <div class="role">👑 Team Owner</div>
+                        </div>
+                        <span class="role-badge owner">OWNER</span>
+                    </div>
+                    <div class="member-list-item">
+                        <div class="avatar" style="background:var(--accent);">JD</div>
+                        <div class="member-info">
+                            <div class="name">Jamie Doe</div>
+                            <div class="role">Member since Mar 12</div>
+                        </div>
+                        <span class="role-badge member">MEMBER</span>
+                    </div>
+                    <div class="member-list-item">
+                        <div class="avatar" style="background:var(--primary-light);">SM</div>
+                        <div class="member-info">
+                            <div class="name">Sam Miles</div>
+                            <div class="role">Member since Mar 10</div>
+                        </div>
+                        <span class="role-badge member">MEMBER</span>
+                    </div>
+                    <div class="member-list-item">
+                        <div class="avatar" style="background:#6B8FA0;">TC</div>
+                        <div class="member-info">
+                            <div class="name">Taylor Chen</div>
+                            <div class="role">Member since Mar 8</div>
+                        </div>
+                        <span class="role-badge member">MEMBER</span>
+                    </div>
+                </div>
+
+                <button class="btn-outline mt-12" onclick="navigateTo('screen-trip-detail')">
+                    <i class="fas fa-arrow-left"></i> Back to Trip Details
+                </button>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- SCREEN: TRIP DETAIL (with Owner/Member Toggle)               -->
             <!-- ============================================================ -->
             <div class="screen" id="screen-trip-detail">
                 <div class="page-header">
                     <button class="back-btn" onclick="navigateTo('screen-home')"><i class="fas fa-arrow-left"></i></button>
                     <h2>Trip Details</h2>
-                    <span class="header-action" onclick="showToast('Share trip with team')"><i class="fas fa-share-alt"></i></span>
+                    <span class="header-action" onclick="navigateTo('screen-team-members')"><i class="fas fa-users"></i></span>
                 </div>
 
+                <!-- ===== STATUS BANNER (Visual Feedback) ===== -->
+                <div id="statusBanner" class="status-banner">
+                    <span class="icon" id="bannerIcon">✅</span>
+                    <div class="content">
+                        <div class="title" id="bannerTitle">Request Approved!</div>
+                        <div class="sub" id="bannerSub">You can now join the team chat and start exploring.</div>
+                    </div>
+                    <button class="dismiss" onclick="dismissBanner()"><i class="fas fa-times"></i></button>
+                </div>
+
+                <!-- ===== ROLE TOGGLE (Showcases both views) ===== -->
+                <div style="display:flex; gap:6px; margin-bottom:16px; background:var(--bg-card); padding:5px; border-radius:60px; border:1px solid var(--border);">
+                    <button class="role-toggle-btn active" id="ownerViewBtn" onclick="setRoleView('owner')">
+                        👑 Owner View
+                    </button>
+                    <button class="role-toggle-btn" id="memberViewBtn" onclick="setRoleView('member')">
+                        👤 Member View
+                    </button>
+                </div>
+
+                <!-- ===== TRIP CARD ===== -->
                 <div class="trip-detail-card">
                     <div class="trip-header">
                         <h3 id="tripDetailTeamName">🌏 Global Explorers</h3>
@@ -1816,65 +2013,77 @@
                     <div class="trip-dest">
                         <div class="dest-item">
                             <span class="icon">🗼</span>
-                            <div class="info">
-                                <div class="name">Eiffel Tower</div>
-                                <div class="addr">Paris, France</div>
-                            </div>
+                            <div class="info"><div class="name">Eiffel Tower</div><div class="addr">Paris, France</div></div>
                             <span class="day">Day 1</span>
                         </div>
                         <div class="dest-item">
                             <span class="icon">🎨</span>
-                            <div class="info">
-                                <div class="name">Louvre Museum</div>
-                                <div class="addr">Paris, France</div>
-                            </div>
+                            <div class="info"><div class="name">Louvre Museum</div><div class="addr">Paris, France</div></div>
                             <span class="day">Day 1</span>
                         </div>
                         <div class="dest-item">
                             <span class="icon">🏔️</span>
-                            <div class="info">
-                                <div class="name">Mont Blanc</div>
-                                <div class="addr">Chamonix, France</div>
-                            </div>
+                            <div class="info"><div class="name">Mont Blanc</div><div class="addr">Chamonix, France</div></div>
                             <span class="day">Day 2</span>
                         </div>
                         <div class="dest-item">
                             <span class="icon">🌊</span>
-                            <div class="info">
-                                <div class="name">Lake Geneva</div>
-                                <div class="addr">Switzerland</div>
-                            </div>
+                            <div class="info"><div class="name">Lake Geneva</div><div class="addr">Switzerland</div></div>
                             <span class="day">Day 3</span>
                         </div>
                     </div>
 
                     <div class="trip-footer">
-                        <div class="stat">
-                            <div class="num">4</div>
-                            <div class="label">Destinations</div>
-                        </div>
-                        <div class="stat">
-                            <div class="num">3</div>
-                            <div class="label">Days</div>
-                        </div>
-                        <div class="stat">
-                            <div class="num" id="tripDetailMembers">24</div>
-                            <div class="label">Team Members</div>
-                        </div>
-                        <div class="stat">
-                            <div class="num">🏆</div>
-                            <div class="label">Rank #42</div>
-                        </div>
+                        <div class="stat"><div class="num">4</div><div class="label">Destinations</div></div>
+                        <div class="stat"><div class="num">3</div><div class="label">Days</div></div>
+                        <div class="stat"><div class="num" id="tripDetailMembers">4</div><div class="label">Team Members</div></div>
+                        <div class="stat"><div class="num">🏆</div><div class="label">Rank #42</div></div>
                     </div>
                 </div>
 
-                <!-- Owner Actions -->
-                <div style="margin-bottom:12px;">
-                    <button class="btn-primary" style="background:var(--accent);box-shadow:0 6px 24px rgba(201,122,90,0.2);" onclick="navigateTo('screen-owner-approval')">
-                        <i class="fas fa-user-check"></i> Manage Join Requests
+                <!-- ===== OWNER-ONLY ACTIONS ===== -->
+                <div id="ownerActions" style="display:block; margin-bottom:12px;">
+                    <!-- Private Code Display -->
+                    <div style="background:var(--bg-card); border-radius:14px; padding:14px; margin-bottom:14px; border:1px dashed var(--primary);">
+                        <div style="color:var(--text-muted); font-size:12px;">🔑 Share this code with friends to join</div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+                            <span style="font-weight:800; font-size:20px; letter-spacing:2px; color:var(--primary);" id="displayActiveCode">MYST-202</span>
+                            <button class="btn-ghost" onclick="copyDisplayCode()"><i class="fas fa-copy"></i> Copy</button>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary" style="background:var(--accent); box-shadow:0 6px 24px rgba(201,122,90,0.2);" onclick="navigateTo('screen-owner-approval')">
+                        <i class="fas fa-user-check"></i> Manage Join Requests (<span id="pendingCountBadge">3</span>)
                     </button>
                 </div>
 
+                <!-- ===== MEMBER-ONLY ACTIONS ===== -->
+                <div id="memberActions" style="display:none; gap:10px; margin-bottom:12px; flex-wrap:wrap;">
+                    <button class="btn-outline" style="flex:1;" onclick="navigateTo('screen-team-members')">
+                        <i class="fas fa-users"></i> View Members (<span id="memberCountBadge">4</span>)
+                    </button>
+                    <button class="btn-outline" style="flex:1; border-color:rgba(200,60,60,0.2); color:#c0392b;" onclick="leaveTeam()">
+                        <i class="fas fa-sign-out-alt"></i> Leave Team
+                    </button>
+                </div>
+
+                <!-- ===== CANCEL REQUEST BUTTON (for pending status) ===== -->
+                <div id="pendingActions" style="display:none; margin-bottom:12px;">
+                    <div style="background:rgba(201,122,90,0.06); border-radius:14px; padding:14px; border:1px solid rgba(201,122,90,0.15); margin-bottom:12px;">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <span style="font-size:24px;">⏳</span>
+                            <div style="flex:1;">
+                                <div style="font-weight:600; color:var(--text);">Waiting for Approval</div>
+                                <div style="font-size:12px; color:var(--text-muted);">Your request is pending. Cancel it anytime.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-danger" onclick="cancelJoinRequest()" style="width:100%;">
+                        <i class="fas fa-times"></i> Cancel Join Request
+                    </button>
+                </div>
+
+                <!-- ===== SHARED ACTIONS ===== -->
                 <button class="btn-primary" onclick="navigateTo('screen-mission')">
                     <i class="fas fa-flag-checkered"></i> Start First Mission
                 </button>
@@ -1950,7 +2159,6 @@
                     <div style="display:flex;justify-content:space-between;color:var(--text-muted);font-size:13px;">
                         <span>Exploration Radius</span>
                         <span id="radiusLabel">10 km</span>
-
                     </div>
                     <input type="range" min="5" max="20" value="10" step="1" style="width:100%;margin-top:6px;accent-color:var(--primary);background:rgba(74,58,107,0.06);height:4px;border-radius:10px;"
                     oninput="document.getElementById('radiusLabel').textContent = this.value + ' km'" />
@@ -2163,6 +2371,16 @@
                     </div>
                 </div>
 
+                <!-- ===== STATUS BANNER on Home ===== -->
+                <div id="homeStatusBanner" class="status-banner" style="display:none;">
+                    <span class="icon" id="homeBannerIcon">✅</span>
+                    <div class="content">
+                        <div class="title" id="homeBannerTitle">Request Approved!</div>
+                        <div class="sub" id="homeBannerSub">You can now join the team chat and start exploring.</div>
+                    </div>
+                    <button class="dismiss" onclick="dismissHomeBanner()"><i class="fas fa-times"></i></button>
+                </div>
+
                 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:18px;">
                     <div style="background:var(--bg-card);border-radius:14px;padding:12px 8px;text-align:center;">
                         <div style="font-size:20px;font-weight:700;color:var(--text);">4</div>
@@ -2212,6 +2430,22 @@
                     </div>
                 </div>
 
+                <!-- ===== CANCEL REQUEST CARD (on Home) ===== -->
+                <div id="homePendingActions" style="display:none; margin-top:12px;">
+                    <div class="card" style="border:1px solid rgba(201,122,90,0.2); background:rgba(201,122,90,0.04);">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <span style="font-size:24px;">⏳</span>
+                            <div style="flex:1;">
+                                <div style="font-weight:600; color:var(--text);">Pending Approval</div>
+                                <div style="font-size:12px; color:var(--text-muted);">Your request is awaiting owner approval.</div>
+                            </div>
+                            <button class="btn-danger" style="width:auto; padding:6px 16px; font-size:12px;" onclick="cancelJoinRequest()">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <div style="display:flex;justify-content:space-around;padding:16px 0 6px;border-top:1px solid var(--border);margin-top:12px;">
                     <span style="color:var(--primary);font-size:13px;font-weight:600;"><i class="fas fa-home"></i> Home</span>
                     <span style="color:var(--text-muted);font-size:13px;cursor:pointer;" onclick="navigateTo('screen-trip-planner')"><i class="fas fa-map"></i> Planner</span>
@@ -2235,7 +2469,7 @@
         let isLoggedIn = false;
         let currentChatId = null;
         let currentTeam = 'Solo Mode';
-        let currentTeamMembers = 0;
+        let currentTeamMembers = 4;
         let pendingRequests = 3;
         let approvedRequests = 5;
         let rejectedRequests = 2;
@@ -2245,6 +2479,17 @@
         let redrawsRemaining = 3;
         let wishlist = [];
         let destinationIndex = 0;
+        let isTeamOwner = true;
+        let joinRequestStatus = null; // 'pending' | 'approved' | 'rejected' | null
+        let bannerDismissed = false;
+
+        // Mock team members
+        const teamMembers = [
+            { name: 'Alex Rivera', initials: 'AR', role: 'owner', joined: 'Mar 1' },
+            { name: 'Jamie Doe', initials: 'JD', role: 'member', joined: 'Mar 12' },
+            { name: 'Sam Miles', initials: 'SM', role: 'member', joined: 'Mar 10' },
+            { name: 'Taylor Chen', initials: 'TC', role: 'member', joined: 'Mar 8' }
+        ];
 
         // ============================================================
         // CHAT DATA
@@ -2254,7 +2499,7 @@
                 id: 'chat1',
                 name: 'Mystery Squad',
                 type: 'private',
-                members: 3,
+                members: 4,
                 avatar: 'MS',
                 lastMessage: 'I\'ll share the checkpoint location in 10 min',
                 timestamp: '10:50 AM',
@@ -2284,7 +2529,6 @@
                 ]
             },
             'chat3': {
-
                 id: 'chat3',
                 name: 'Alpine Adventures',
                 type: 'private',
@@ -2336,6 +2580,18 @@
                 }
                 if (screenId === 'screen-owner-approval') {
                     updateRequestCounts();
+                }
+                if (screenId === 'screen-trip-detail') {
+                    setRoleView(currentRoleView);
+                    updatePendingActions();
+                    updateBannerVisibility();
+                }
+                if (screenId === 'screen-team-members') {
+                    renderMemberList();
+                }
+                if (screenId === 'screen-home') {
+                    updateHomePendingActions();
+                    updateHomeBannerVisibility();
                 }
             }
         }
@@ -2508,10 +2764,17 @@
             };
             currentTeam = groupName + ' (Private)';
             currentTeamMembers = 1;
+            isTeamOwner = true;
+            joinRequestStatus = null;
+            bannerDismissed = false;
             updateTeamStatus();
             showToast('Group "' + groupName + '" created! Code: ' + code);
             updateChatFab();
             showTripDetail(groupName, 'Private Team', 1);
+            currentRoleView = 'owner';
+            setRoleView('owner');
+            updatePendingActions();
+            updateBannerVisibility();
             navigateTo('screen-trip-detail');
         }
 
@@ -2526,30 +2789,57 @@
 
         function joinWithCode() {
             const code = document.getElementById('joinCodeInput').value.trim();
-            if (!code || code.length < 7) {
-                showToast('Please enter a valid 7-digit code');
+            const validCode = document.getElementById('groupCodeDisplay')?.textContent || 'MYST-202';
+            
+            if (!code) {
+                showToast('Please enter a valid code');
                 return;
             }
+            
+            if (code !== validCode) {
+                showToast('❌ Invalid code. Please check with your team owner.');
+                return;
+            }
+            
             // Send request to owner (simulated)
             showToast('📨 Join request sent to team owner for approval');
-            // Simulate pending request
             pendingRequests++;
             updateRequestCounts();
-            // Navigate to home with pending status
             currentTeam = 'Pending Approval (Private)';
+            isTeamOwner = false;
+            joinRequestStatus = 'pending';
+            bannerDismissed = false;
             updateTeamStatus();
+            currentRoleView = 'member';
+            setRoleView('member');
+            updatePendingActions();
+            updateBannerVisibility();
+            updateHomePendingActions();
             navigateTo('screen-home');
         }
 
         // ============================================================
         // PUBLIC TEAM
         // ============================================================
-        function requestToJoin(teamName) {
+        function requestToJoin(teamName, btn) {
+            if (btn) {
+                btn.textContent = 'Pending ⏳';
+                btn.className = 'join-btn pending';
+                btn.disabled = true;
+            }
             showToast('📨 Join request sent to "' + teamName + '" owner for approval');
             pendingRequests++;
             updateRequestCounts();
             currentTeam = 'Pending Approval: ' + teamName;
+            isTeamOwner = false;
+            joinRequestStatus = 'pending';
+            bannerDismissed = false;
             updateTeamStatus();
+            currentRoleView = 'member';
+            setRoleView('member');
+            updatePendingActions();
+            updateBannerVisibility();
+            updateHomePendingActions();
             navigateTo('screen-home');
         }
 
@@ -2580,10 +2870,17 @@
             };
             currentTeam = name + ' (Public)';
             currentTeamMembers = 1;
+            isTeamOwner = true;
+            joinRequestStatus = null;
+            bannerDismissed = false;
             updateTeamStatus();
             showToast('🎉 Team "' + name + '" created!');
             updateChatFab();
             showTripDetail(name, 'Public Team', 1);
+            currentRoleView = 'owner';
+            setRoleView('owner');
+            updatePendingActions();
+            updateBannerVisibility();
             navigateTo('screen-trip-detail');
         }
 
@@ -2597,8 +2894,16 @@
             requestItem.style.pointerEvents = 'none';
             pendingRequests--;
             approvedRequests++;
+            currentTeamMembers++;
             updateRequestCounts();
             showToast('✅ ' + name + ' approved — they can now join the team');
+            
+            // Update member count on trip detail
+            const membersEl = document.getElementById('tripDetailMembers');
+            if (membersEl) membersEl.textContent = currentTeamMembers;
+            const badgeEl = document.getElementById('memberCountBadge');
+            if (badgeEl) badgeEl.textContent = currentTeamMembers;
+            
             // Add to chat
             const chatId = 'chat' + Date.now();
             chatData[chatId] = {
@@ -2634,12 +2939,13 @@
             const approvedEl = document.getElementById('approvedCount');
             const rejectedEl = document.getElementById('rejectedCount');
             const requestCountEl = document.getElementById('requestCount');
+            const pendingBadge = document.getElementById('pendingCountBadge');
             
             if (pendingEl) pendingEl.textContent = pendingRequests;
             if (approvedEl) approvedEl.textContent = approvedRequests;
             if (rejectedEl) rejectedEl.textContent = rejectedRequests;
-
             if (requestCountEl) requestCountEl.textContent = pendingRequests + ' pending';
+            if (pendingBadge) pendingBadge.textContent = pendingRequests;
         }
 
         // ============================================================
@@ -2649,6 +2955,16 @@
             document.getElementById('tripDetailTeamName').textContent = teamName;
             document.getElementById('tripDetailDesc').textContent = teamType + ' · ' + members + ' members';
             document.getElementById('tripDetailMembers').textContent = members;
+            document.getElementById('memberCountBadge').textContent = members;
+            
+            const codeDisplay = document.getElementById('displayActiveCode');
+            if (codeDisplay) {
+                codeDisplay.textContent = document.getElementById('groupCodeDisplay')?.textContent || 'MYST-202';
+            }
+            
+            const badge = document.getElementById('pendingCountBadge');
+            if (badge) badge.textContent = pendingRequests || 0;
+            
             const statusBadge = document.getElementById('tripDetailStatus');
             if (currentTeam.includes('Pending')) {
                 statusBadge.textContent = '⏳ Pending Approval';
@@ -2657,6 +2973,218 @@
                 statusBadge.textContent = '✅ Approved';
                 statusBadge.className = 'status-badge approved';
             }
+        }
+
+        // ============================================================
+        // ROLE TOGGLE LOGIC
+        // ============================================================
+        let currentRoleView = 'owner';
+
+        function setRoleView(role) {
+            currentRoleView = role;
+            
+            const ownerBtn = document.getElementById('ownerViewBtn');
+            const memberBtn = document.getElementById('memberViewBtn');
+            
+            if (role === 'owner') {
+                ownerBtn.classList.add('active');
+                memberBtn.classList.remove('active');
+                document.getElementById('ownerActions').style.display = 'block';
+                document.getElementById('memberActions').style.display = 'none';
+            } else {
+                memberBtn.classList.add('active');
+                ownerBtn.classList.remove('active');
+                document.getElementById('ownerActions').style.display = 'none';
+                document.getElementById('memberActions').style.display = 'flex';
+            }
+        }
+
+        // ============================================================
+        // PENDING ACTIONS (Cancel Request)
+        // ============================================================
+        function updatePendingActions() {
+            const pendingActions = document.getElementById('pendingActions');
+            if (pendingActions) {
+                if (joinRequestStatus === 'pending' && currentTeam.includes('Pending')) {
+                    pendingActions.style.display = 'block';
+                } else {
+                    pendingActions.style.display = 'none';
+                }
+            }
+        }
+
+        function updateHomePendingActions() {
+            const homePending = document.getElementById('homePendingActions');
+            if (homePending) {
+                if (joinRequestStatus === 'pending' && currentTeam.includes('Pending')) {
+                    homePending.style.display = 'block';
+                } else {
+                    homePending.style.display = 'none';
+                }
+            }
+        }
+
+        function cancelJoinRequest() {
+            if (confirm('Are you sure you want to cancel your join request?')) {
+                joinRequestStatus = null;
+                currentTeam = 'Solo Mode';
+                isTeamOwner = false;
+                updateTeamStatus();
+                showToast('❌ Join request cancelled.');
+                updatePendingActions();
+                updateHomePendingActions();
+                navigateTo('screen-home');
+            }
+        }
+
+        // ============================================================
+        // STATUS BANNER (Visual Feedback)
+        // ============================================================
+        function updateBannerVisibility() {
+            const banner = document.getElementById('statusBanner');
+            if (!banner) return;
+            
+            const icon = document.getElementById('bannerIcon');
+            const title = document.getElementById('bannerTitle');
+            const sub = document.getElementById('bannerSub');
+            
+            if (joinRequestStatus === 'approved' && !bannerDismissed) {
+                banner.className = 'status-banner approved show';
+                icon.textContent = '✅';
+                title.textContent = 'Request Approved!';
+                sub.textContent = 'You can now join the team chat and start exploring.';
+                banner.style.display = 'flex';
+            } else if (joinRequestStatus === 'rejected' && !bannerDismissed) {
+                banner.className = 'status-banner rejected show';
+                icon.textContent = '❌';
+                title.textContent = 'Request Declined';
+                sub.textContent = 'The team owner has declined your request.';
+                banner.style.display = 'flex';
+            } else {
+                banner.style.display = 'none';
+                banner.className = 'status-banner';
+            }
+        }
+
+        function updateHomeBannerVisibility() {
+            const banner = document.getElementById('homeStatusBanner');
+            if (!banner) return;
+            
+            const icon = document.getElementById('homeBannerIcon');
+            const title = document.getElementById('homeBannerTitle');
+            const sub = document.getElementById('homeBannerSub');
+            
+            if (joinRequestStatus === 'approved' && !bannerDismissed) {
+                banner.className = 'status-banner approved show';
+                icon.textContent = '✅';
+                title.textContent = 'Request Approved!';
+                sub.textContent = 'You can now join the team chat and start exploring.';
+                banner.style.display = 'flex';
+            } else if (joinRequestStatus === 'rejected' && !bannerDismissed) {
+                banner.className = 'status-banner rejected show';
+                icon.textContent = '❌';
+                title.textContent = 'Request Declined';
+                sub.textContent = 'The team owner has declined your request.';
+                banner.style.display = 'flex';
+            } else {
+                banner.style.display = 'none';
+                banner.className = 'status-banner';
+            }
+        }
+
+        function dismissBanner() {
+            bannerDismissed = true;
+            document.getElementById('statusBanner').style.display = 'none';
+        }
+
+        function dismissHomeBanner() {
+            bannerDismissed = true;
+            document.getElementById('homeStatusBanner').style.display = 'none';
+        }
+
+        // Simulate approval/rejection for the user's own request
+        function simulateRequestStatus(status) {
+            joinRequestStatus = status;
+            bannerDismissed = false;
+            if (status === 'approved') {
+                currentTeam = 'Mystery Squad (Private)';
+                isTeamOwner = false;
+                currentTeamMembers = 4;
+                updateTeamStatus();
+                showToast('🎉 Your request was approved!');
+            } else if (status === 'rejected') {
+                showToast('❌ Your request was declined.');
+            }
+            updateBannerVisibility();
+            updateHomeBannerVisibility();
+            updatePendingActions();
+            updateHomePendingActions();
+        }
+
+        // ============================================================
+        // MEMBER LIST
+        // ============================================================
+        function renderMemberList() {
+            const container = document.getElementById('memberListContainer');
+            if (!container) return;
+            
+            const countLabel = document.getElementById('memberCountLabel');
+            if (countLabel) countLabel.textContent = teamMembers.length + ' members';
+            
+            let html = '';
+            teamMembers.forEach(member => {
+                const isOwner = member.role === 'owner';
+                const roleLabel = isOwner ? '👑 Team Owner' : 'Member since ' + member.joined;
+                const badgeClass = isOwner ? 'owner' : 'member';
+                const badgeText = isOwner ? 'OWNER' : 'MEMBER';
+                const avatarBg = isOwner ? 'var(--primary)' : (member.initials === 'JD' ? 'var(--accent)' : (member.initials === 'SM' ? 'var(--primary-light)' : '#6B8FA0'));
+                
+                html += `
+                    <div class="member-list-item">
+                        <div class="avatar" style="background:${avatarBg};">${member.initials}</div>
+                        <div class="member-info">
+                            <div class="name">${member.name}</div>
+                            <div class="role">${roleLabel}</div>
+                        </div>
+                        <span class="role-badge ${badgeClass}">${badgeText}</span>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // ============================================================
+        // MEMBER ACTIONS
+        // ============================================================
+        function viewMembers() {
+            navigateTo('screen-team-members');
+        }
+
+        function leaveTeam() {
+            if (confirm('Are you sure you want to leave this team?')) {
+                currentTeam = 'Solo Mode';
+                currentTeamMembers = 0;
+                isTeamOwner = false;
+                joinRequestStatus = null;
+                bannerDismissed = false;
+                updateTeamStatus();
+                showToast('You left the team.');
+                updatePendingActions();
+                updateHomePendingActions();
+                navigateTo('screen-home');
+            }
+        }
+
+        // ============================================================
+        // COPY DISPLAY CODE
+        // ============================================================
+        function copyDisplayCode() {
+            const code = document.getElementById('displayActiveCode').textContent;
+            navigator.clipboard?.writeText(code).then(() => {
+                showToast('📋 Code copied: ' + code);
+            }).catch(() => {
+                showToast('📋 Code: ' + code);
+            });
         }
 
         // ============================================================
@@ -2674,7 +3202,8 @@
                 } else if (currentTeam.includes('Pending')) {
                     sub.textContent = '⏳ Waiting for owner approval...';
                 } else {
-                    sub.textContent = '🎯 Active team — tap to view trip details';
+                    const roleBadge = isTeamOwner ? '👑 Owner' : '👤 Member';
+                    sub.textContent = '🎯 ' + roleBadge + ' — tap to view trip details';
                 }
             }
         }
@@ -2961,6 +3490,15 @@
         renderChatList();
         updateTeamStatus();
         updateRequestCounts();
+        currentRoleView = 'owner';
+        setRoleView('owner');
+        updatePendingActions();
+        updateHomePendingActions();
+        updateBannerVisibility();
+        updateHomeBannerVisibility();
+
+        // Expose simulation function for testing (click "Approve" in console)
+        window.simulateRequestStatus = simulateRequestStatus;
 
         console.log('✦ MYsteryLane · Penang Peranakan Theme');
         console.log('🎨 Primary: #4A3A6B | Accent: #C97A5A | Background: #FBF6EF');
@@ -2968,6 +3506,12 @@
         console.log('   • Public/Private: Request to join → Owner approval');
         console.log('   • Owner: Manage requests in Team Requests screen');
         console.log('   • After approval: Access trip details and missions');
+        console.log('🔄 Toggle between Owner and Member views in Trip Details');
+        console.log('📋 New features:');
+        console.log('   • Cancel Request button (appears when pending)');
+        console.log('   • Member List screen with roles');
+        console.log('   • Status banners for approval/rejection feedback');
+        console.log('💡 To test approval flow, run: simulateRequestStatus("approved") or simulateRequestStatus("rejected") in console');
     </script>
 
 </body>
