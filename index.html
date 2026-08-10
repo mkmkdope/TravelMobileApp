@@ -3324,6 +3324,7 @@
         .split>* {
             flex: 1;
         }
+        .forgot-password-link{display:block;margin:-8px 4px 12px auto;border:0;background:transparent;color:var(--primary);font-size:11px;font-weight:700}.password-reset-hero{text-align:center;padding:12px 18px 20px}.password-reset-hero>span{width:76px;height:76px;border-radius:24px;background:var(--primary-light);color:var(--primary);display:grid;place-items:center;margin:0 auto 15px;font-size:28px}.password-reset-hero h3{font-size:21px;margin:0 0 7px}.password-reset-hero p{font-size:11px;line-height:1.55;color:var(--text-muted);margin:0}.reset-label{display:block;color:var(--text-muted);font-size:11px;font-weight:700;margin-bottom:6px}.reset-note{display:flex;gap:7px;background:rgba(74,58,107,.06);color:var(--text-muted);font-size:9px;line-height:1.4;border-radius:11px;padding:10px;margin-top:12px}.reset-code-card{background:linear-gradient(135deg,#4a3a6b,#735c91);color:#fff;border-radius:19px;padding:17px;margin-bottom:14px;text-align:center}.reset-code-card small,.reset-code-card b,.reset-code-card span{display:block}.reset-code-card small{font-size:7px;letter-spacing:.13em;opacity:.7}.reset-code-card b{font-size:13px;margin:5px 0 10px}.reset-code-card span{font-size:10px;background:rgba(255,255,255,.13);border-radius:10px;padding:8px}.password-field-wrap{position:relative}.password-field-wrap .input-field{padding-right:45px}.password-field-wrap button{position:absolute;right:5px;top:5px;width:38px;height:38px;border:0;border-radius:12px;background:transparent;color:var(--text-muted)}.password-rules{display:grid;gap:4px;margin:10px 3px 0}.password-rules span{font-size:8px;color:var(--text-muted)}.password-rules span:before{content:'✓';color:#2e7d5e;margin-right:6px;font-weight:900}
     </style>
 </head>
 <body>
@@ -3403,10 +3404,27 @@
                     <label style="color:var(--text-muted);font-size:13px;display:block;margin-bottom:4px;">Password</label>
                     <input class="input-field" type="password" placeholder="········" id="loginPass" value="password123" />
                 </div>
+                <button class="forgot-password-link" onclick="openForgotPassword()">Forgot password?</button>
                 <button class="btn-primary" onclick="handleLogin()"><i class="fas fa-arrow-right"></i> Login</button>
                 <p style="color:var(--text-muted);font-size:13px;text-align:center;margin-top:14px;">
                     New here? <span style="color:var(--primary);cursor:pointer;" onclick="navigateTo('screen-register')">Create Account</span>
                 </p>
+            </div>
+
+            <div class="screen" id="screen-forgot-password">
+                <div class="page-header"><button class="back-btn" onclick="navigateTo('screen-login')"><i class="fas fa-arrow-left"></i></button><h2>Forgot Password</h2></div>
+                <div class="password-reset-hero"><span><i class="fas fa-lock"></i></span><h3>Reset your password</h3><p>Enter your registered email. Supabase will send a secure password-reset link.</p></div>
+                <div class="card"><label class="reset-label">Registered Email</label><input class="input-field" type="email" id="forgotEmail" placeholder="alex@example.com"><div class="reset-note"><i class="fas fa-shield-halved"></i> Check your inbox and open the Supabase verification link to continue.</div></div>
+                <button class="btn-primary" onclick="sendPasswordResetEmail()"><i class="fas fa-envelope"></i> Send Verification Email</button>
+                <button class="btn-ghost" style="width:100%;margin-top:8px" onclick="navigateTo('screen-login')">Back to Login</button>
+            </div>
+
+            <div class="screen" id="screen-reset-password">
+                <div class="page-header"><button class="back-btn" onclick="navigateTo('screen-forgot-password')"><i class="fas fa-arrow-left"></i></button><h2>Create New Password</h2></div>
+                <div class="reset-code-card"><small>EMAIL VERIFIED</small><b id="resetEmailDisplay">alex@example.com</b><span><i class="fas fa-circle-check"></i> Secure Supabase reset session active</span></div>
+                <div class="card"><label class="reset-label">New Password</label><div class="password-field-wrap"><input class="input-field" type="password" id="resetNewPassword" placeholder="Enter new password"><button onclick="togglePasswordVisibility('resetNewPassword',this)"><i class="fas fa-eye"></i></button></div><div class="password-rules"><span>At least 8 characters</span><span>Uppercase & lowercase</span><span>Number & special character</span></div><div class="mt-12"></div><label class="reset-label">Confirm New Password</label><div class="password-field-wrap"><input class="input-field" type="password" id="resetConfirmPassword" placeholder="Repeat new password"><button onclick="togglePasswordVisibility('resetConfirmPassword',this)"><i class="fas fa-eye"></i></button></div></div>
+                <button class="btn-primary" onclick="resetUserPassword()"><i class="fas fa-check-circle"></i> Change Password</button>
+                <button class="btn-ghost" style="width:100%;margin-top:8px" onclick="navigateTo('screen-forgot-password')">Send verification email again</button>
             </div>
 
             <!-- ============================================================ -->
@@ -4053,6 +4071,8 @@
         // STATE
         // ============================================================
         let currentScreen = 'screen-welcome';
+        let userPassword = 'password123';
+        let passwordResetEmail = '';
         let selectedMode = 'solo';
         let userName = 'Alex Rivera';
         let userEmail = 'alex@example.com';
@@ -4222,6 +4242,7 @@
             userName = name;
             userEmail = email;
             userPhone = phone;
+            userPassword = pass;
             isLoggedIn = false;
             updateProfileUI();
             updateChatFab();
@@ -4241,13 +4262,53 @@
                 showToast('Please complete all fields.'); return; }
             if (!/^\S+@\S+\.\S+$/.test(email)) { showToast('Please enter a valid email address'); return; }
             if (email.toLowerCase() !== userEmail.toLowerCase()) { showToast('This email is not registered.'); return; }
-            if (pass !== 'password123' && pass !== document.getElementById('regPass').value) { showToast(
-                    'Incorrect email or password.'); return; }
+            if (pass !== userPassword) { showToast('Incorrect email or password.'); return; }
             isLoggedIn = true;
             updateProfileUI();
             updateChatFab();
             showToast('Welcome back!');
             navigateTo('screen-home');
+        }
+
+        function openForgotPassword() {
+            const email = document.getElementById('loginEmail').value.trim();
+            document.getElementById('forgotEmail').value = email || userEmail;
+            navigateTo('screen-forgot-password');
+        }
+
+        function sendPasswordResetEmail() {
+            const input = document.getElementById('forgotEmail'), email = input.value.trim();
+            input.classList.remove('field-invalid');
+            if (!email) { input.classList.add('field-invalid'); showToast('Please enter your registered email address.'); return; }
+            if (!/^\S+@\S+\.\S+$/.test(email)) { input.classList.add('field-invalid'); showToast('Please enter a valid email address.'); return; }
+            if (email.toLowerCase() !== userEmail.toLowerCase()) { input.classList.add('field-invalid'); showToast('No account was found with this email address.'); return; }
+            passwordResetEmail = email;
+            document.getElementById('resetEmailDisplay').textContent = email;
+            document.getElementById('resetNewPassword').value = '';
+            document.getElementById('resetConfirmPassword').value = '';
+            navigateTo('screen-reset-password');
+            showToast('Supabase verification email sent. Open the secure reset link to continue.');
+        }
+
+        function togglePasswordVisibility(inputId, button) {
+            const input = document.getElementById(inputId);
+            input.type = input.type === 'password' ? 'text' : 'password';
+            button.querySelector('i').className = input.type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
+        }
+
+        function resetUserPassword() {
+            const passwordInput = document.getElementById('resetNewPassword'), confirmInput = document.getElementById('resetConfirmPassword');
+            const password = passwordInput.value, confirmation = confirmInput.value;
+            [passwordInput,confirmInput].forEach(input => input.classList.remove('field-invalid'));
+            if (!password || !confirmation) { if(!password)passwordInput.classList.add('field-invalid');if(!confirmation)confirmInput.classList.add('field-invalid');showToast('Please enter and confirm your new password.');return; }
+            if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/.test(password)) { passwordInput.classList.add('field-invalid');showToast('Password must have at least 8 characters with uppercase, lowercase, number and special character.');return; }
+            if (password !== confirmation) { confirmInput.classList.add('field-invalid');showToast('New password and confirmation do not match.');return; }
+            if (password === userPassword) { passwordInput.classList.add('field-invalid');showToast('New password must be different from your current password.');return; }
+            userPassword = password;
+            document.getElementById('loginEmail').value = passwordResetEmail || userEmail;
+            document.getElementById('loginPass').value = '';
+            navigateTo('screen-login');
+            showToast('Password changed successfully. Log in with your new password.');
         }
 
         function handleLogout() { isLoggedIn = false;
