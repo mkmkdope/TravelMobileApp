@@ -2206,6 +2206,29 @@
             font-size: 11px;
             color: var(--text-muted);
         }
+        .planner-route-card { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 14px; margin: 12px 0; }
+        .planner-route-card h4 { font-size: 13px; margin: 0 0 4px; }
+        .planner-route-card p { color: var(--text-muted); font-size: 10px; margin: 0 0 10px; }
+        .route-preview-map { position: relative; height: 118px; overflow: hidden; border-radius: 13px; background: #e9e4df; margin-bottom: 11px; }
+        .route-preview-map:before { content: ''; position: absolute; inset: 0; background: linear-gradient(35deg, transparent 46%, rgba(255,255,255,.9) 47% 51%, transparent 52%), linear-gradient(125deg, transparent 44%, rgba(255,255,255,.7) 45% 48%, transparent 49%); background-size: 120px 90px, 95px 110px; }
+        .route-preview-line { position: absolute; left: 12%; top: 35%; width: 73%; height: 38%; border: 2px dashed var(--primary); border-color: var(--primary) transparent var(--primary) var(--primary); border-radius: 55% 45% 50% 42%; transform: rotate(8deg); }
+        .route-stop { position: absolute; z-index: 1; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: var(--primary); color: #fff; font-size: 9px; font-weight: 800; box-shadow: 0 2px 7px rgba(44,26,46,.25); }
+        .route-preview-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .route-preview-actions button { border-radius: 12px; padding: 10px 6px; font-size: 10px; font-weight: 800; }
+        .planner-menu-actions { display: grid; gap: 8px; margin-top: 14px; }
+        .planner-menu-actions button { width: 100%; border-radius: 12px; padding: 11px; font-size: 11px; font-weight: 800; }
+        .planner-edit-fields { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0; }
+        .planner-edit-fields label { display:block; color:var(--text-muted); font-size:9px; font-weight:800; letter-spacing:.05em; }
+        .planner-edit-fields select { width:100%; margin-top:6px; border:1px solid var(--border); border-radius:11px; background:#fff; padding:10px 8px; color:var(--text); font-weight:700; }
+        .planner-management-dialog { place-items: center; padding: 24px; }
+        .planner-management-dialog>div { max-width: 340px; background:#fff !important; opacity:1; box-shadow:0 18px 44px rgba(44,26,46,.25); }
+        .route-ready-card { background: rgba(46,125,94,.07); border-color: rgba(46,125,94,.28); }
+        .route-ready-card .route-stops { display:flex; flex-wrap:wrap; gap:5px; margin:12px 0; }
+        .route-ready-card .route-stops span { padding:5px 8px; border-radius:10px; background:#fff; color:var(--text-secondary); font-size:9px; font-weight:800; }
+        .route-card-top { display:flex; align-items:center; gap:10px; }
+        .route-card-icon { width:34px; height:34px; display:grid; place-items:center; border-radius:11px; background:#2e7d5e; color:#fff; }
+        .route-card-top b,.route-card-top small { display:block; }
+        .route-card-top small { margin-top:3px; color:var(--text-muted); font-size:10px; }
 
         .profile-photo-wrap {
             position: relative;
@@ -3532,7 +3555,7 @@
             <div class="screen" id="screen-planner-report">
                 <div class="page-header"><button class="back-btn" onclick="navigateTo('screen-trip-planner')"><i class="fas fa-arrow-left"></i></button><h2>Travel Story</h2></div>
                 <div class="planner-report-hero"><i class="fas fa-wand-magic-sparkles"></i><small>AI TRAVEL SUMMARY</small><h3 id="reportTripTitle">European Dream</h3><p id="plannerReportText"></p></div>
-                <div class="report-memory"><b>Trip highlights</b><div><span>4</span> places planned</div><div><span>1</span> mission completed</div><div><span>2</span> countries explored</div></div>
+                <div class="report-memory" id="reportHighlights"><b>Trip highlights</b><div><span>4</span> places planned</div><div><span>1</span> mission completed</div><div><span>2</span> countries explored</div></div>
                 <button class="btn-outline" onclick="downloadPlannerPdf()"><i class="fas fa-file-pdf"></i> Download Trip PDF</button>
             </div>
 
@@ -5340,6 +5363,13 @@
         function renderPlanner() {
             const active = tripPlans.find(p => p.active) || tripPlans[0];
             if (!active) return;
+            // Do not retain a trip-plan selection on the Mission tab.
+            if (plannerFilter === 'mission' && !plannerMissionPins.some(p => p.id === selectedPlannerPlace)) {
+                selectedPlannerPlace = 'mission-summit';
+            }
+            if (plannerFilter !== 'mission' && selectedPlannerPlace.startsWith('mission-')) {
+                selectedPlannerPlace = 'eiffel';
+            }
             document.getElementById('plannerTripName').textContent = active.name;
             const inPlan = plannerPlaces.filter(p => p.status === 'plan');
             document.getElementById('plannerDestinationCount').textContent = inPlan.length;
@@ -5347,6 +5377,13 @@
             const routeMinutes = Math.max(0, (inPlan.length - 1) * 45);
             const routeTime = formatRouteTime(routeMinutes);
             document.getElementById('plannerDuration').textContent = plannerRoutePlanned ? routeTime : 'Plan route';
+            const routeHelp = document.getElementById('plannerRouteHelp');
+            const routeCard = document.getElementById('plannerRouteCard');
+            if (routeHelp && (!routeCard || routeCard.style.display === 'none')) {
+                routeHelp.textContent = inPlan.length < 2
+                    ? 'Add at least two places to calculate an efficient route.'
+                    : 'Ready to calculate an efficient route for your planned places.';
+            }
 
             const mapPinsContainer = document.getElementById('plannerPins');
             if (mapPinsContainer) {
@@ -5375,7 +5412,7 @@
                             <div class="planner-itinerary-row">
                                 <span class="day">Day ${p.day||1}</span>
                                 <div class="place"><b>${p.name}</b><small>${p.location} · ${p.time}</small></div>
-                                <button onclick="selectDreamMapPin(null,'${p.id}')" aria-label="View ${p.name}"><i class="fas fa-ellipsis-vertical"></i></button>
+                                <button onclick="openItineraryItemMenu('${p.id}')" aria-label="Manage ${p.name}" title="Move or remove ${p.name}"><i class="fas fa-ellipsis-vertical"></i></button>
                             </div>
                         `
                     ).join('') :
@@ -5395,6 +5432,72 @@
             selectedPlannerPlace = id;
             renderPlanner();
             showPlannerPlace(id, true);
+        }
+
+        // The three-dot control opens an explicit management menu.
+        function openItineraryItemMenu(id) {
+            const place = plannerPlaces.find(p => p.id === id && p.status === 'plan');
+            if (!place) return;
+            closePlannerDialog();
+            const dialog = document.createElement('div');
+            dialog.className = 'planner-route-dialog planner-management-dialog';
+            dialog.id = 'plannerDialog';
+            dialog.innerHTML = `<div><h3>Manage ${place.name}</h3><p>Choose an action for this Day ${place.day} stop.</p><div class="planner-menu-actions"><button class="btn-outline" id="plannerCancel">Cancel</button><button class="btn-outline" id="plannerEdit">Edit</button><button class="btn-primary" id="plannerRemove">Remove from plan</button></div></div>`;
+            document.getElementById('appContainer').appendChild(dialog);
+            dialog.querySelector('#plannerCancel').onclick = closePlannerDialog;
+            dialog.querySelector('#plannerEdit').onclick = () => showItineraryPositionEditor(id);
+            dialog.querySelector('#plannerRemove').onclick = () => confirmRemovePlannerDestination(id);
+        }
+
+        function showItineraryPositionEditor(id) {
+            const place = plannerPlaces.find(p => p.id === id && p.status === 'plan');
+            const dialog = document.getElementById('plannerDialog');
+            const planned = plannerPlaces.filter(p => p.status === 'plan');
+            const maxDay = Math.max(...planned.map(p => p.day || 1));
+            const dayOptions = Array.from({ length: maxDay + 1 }, (_, i) => i + 1).filter(day => day === place.day || planned.filter(p => p.day === day && p.id !== id).length < 3).map(day => `<option value="${day}" ${day === place.day ? 'selected' : ''}>Day ${day}</option>`).join('');
+            dialog.querySelector('div').innerHTML = `<h3>Edit ${place.name}</h3><p>Select a day and sequence. Each day can contain a maximum of three places.</p><div class="planner-edit-fields"><label>DAY<select id="editStopDay">${dayOptions}</select></label><label>SEQUENCE<select id="editStopSequence"></select></label></div><div class="planner-menu-actions"><button class="btn-outline" id="plannerBack">Back</button><button class="btn-primary" id="plannerSavePosition">Save changes</button></div>`;
+            updateEditorSequences(id);
+            dialog.querySelector('#plannerBack').onclick = () => openItineraryItemMenu(id);
+            dialog.querySelector('#editStopDay').onchange = () => updateEditorSequences(id);
+            dialog.querySelector('#plannerSavePosition').onclick = () => movePlannerStopToDay(id, Number(document.getElementById('editStopDay').value), Number(document.getElementById('editStopSequence').value));
+        }
+
+        function updateEditorSequences(id) {
+            const day = Number(document.getElementById('editStopDay').value);
+            const count = plannerPlaces.filter(p => p.status === 'plan' && p.id !== id && p.day === day).length;
+            document.getElementById('editStopSequence').innerHTML = Array.from({ length: count + 1 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
+        }
+
+        function movePlannerStopToDay(id, day, sequence) {
+            const place = plannerPlaces.find(p => p.id === id);
+            const ordered = plannerPlaces.filter(p => p.status === 'plan' && p.id !== id);
+            const sameDay = ordered.filter(p => p.day === day);
+            const before = sameDay[sequence - 1];
+            let index = before ? ordered.indexOf(before) : -1;
+            if (index < 0) {
+                const previousDay = ordered.map((p, i) => ({ p, i })).filter(x => x.p.day < day).pop();
+                index = previousDay ? previousDay.i + 1 : 0;
+            }
+            place.day = day;
+            ordered.splice(index, 0, place);
+            plannerPlaces = [...ordered, ...plannerPlaces.filter(p => p.status !== 'plan')];
+            markRouteNeedsRecalculation();
+            renderPlanner();
+            closePlannerDialog();
+            showToast(`${place.name} moved to Day ${day}, sequence ${sequence}.`);
+        }
+
+        function movePlannerStop(id, position) {
+            const place = plannerPlaces.find(p => p.id === id);
+            const ordered = plannerPlaces.filter(p => p.status === 'plan' && p.id !== id);
+            const reference = ordered[Math.min(position, ordered.length - 1)];
+            ordered.splice(position, 0, place);
+            place.day = reference.day;
+            plannerPlaces = [...ordered, ...plannerPlaces.filter(p => p.status !== 'plan')];
+            markRouteNeedsRecalculation();
+            renderPlanner();
+            closePlannerDialog();
+            showToast(`${place.name} moved. Replan the route when you finish editing.`);
         }
 
         function showPlannerPlace(id, scroll) {
@@ -5427,6 +5530,7 @@
 
         function setPlannerFilter(filter, button) {
             plannerFilter = filter;
+            selectedPlannerPlace = filter === 'mission' ? 'mission-summit' : 'eiffel';
             document.querySelectorAll('#plannerFilters button').forEach(b => b.classList.remove('active'));
             button.classList.add('active');
             updateMapHubCopy();
@@ -5477,7 +5581,7 @@
             const x = Math.round((event.clientX - rect.left) / rect.width * 100);
             const y = Math.round((event.clientY - rect.top) / rect.height * 100);
             const id = 'custom' + Date.now();
-            const nextDay = Math.ceil((plannerPlaces.filter(p => p.status === 'plan').length + 1) / 3);
+            const nextDay = getSuggestedPlannerDay();
             plannerPlaces.push({
                 id,
                 name: 'Pinned Location',
@@ -5497,7 +5601,14 @@
             document.querySelectorAll('#plannerFilters button').forEach((b, i) => b.classList.toggle('active', i === 1));
             updateMapHubCopy();
             renderPlanner();
-            showToast('Destination added to trip plan!');
+            showToast(`Destination added to Day ${nextDay}.`);
+        }
+
+        function getSuggestedPlannerDay() {
+            const planned = plannerPlaces.filter(p => p.status === 'plan');
+            if (!planned.length) return 1;
+            const lastDay = Math.max(...planned.map(p => p.day || 1));
+            return planned.filter(p => (p.day || 1) === lastDay).length < 3 ? lastDay : lastDay + 1;
         }
 
         function addPlannerDestination(id) {
@@ -5505,11 +5616,12 @@
             if (!p) return;
             if (p.status === 'plan') { showToast('Already in plan.'); return; }
             if (plannerPlaces.filter(x => x.status === 'plan').length >= 20) { showToast('Max 20 destinations.'); return; }
+            const suggestedDay = getSuggestedPlannerDay();
             p.status = 'plan';
-            p.day = Math.ceil(plannerPlaces.filter(x => x.status === 'plan').length / 3);
-            plannerRoutePlanned = false;
+            p.day = suggestedDay;
+            markRouteNeedsRecalculation();
             renderPlanner();
-            showToast('Added to trip plan!');
+            showToast(`Added to Day ${suggestedDay}.`);
         }
 
         function confirmRemovePlannerDestination(id) {
@@ -5523,7 +5635,7 @@
             const p = plannerPlaces.find(x => x.id === id);
             if (p) { p.status = 'wishlist';
                 p.day = null;
-                plannerRoutePlanned = false;
+                markRouteNeedsRecalculation();
                 selectedPlannerPlace = id;
                 renderPlanner();
                 showToast('Removed from plan.'); }
@@ -5533,24 +5645,71 @@
         function planPlannerRoute() {
             const valid = plannerPlaces.filter(p => p.status === 'plan');
             if (valid.length < 2) { showToast('Add at least two destinations.'); return; }
-            showPlannerDialog('Efficient route found!', 'Reorder your itinerary based on optimal travel time?',
-                'Keep manual', 'Accept route', () => {
-                    plannerPlaces.filter(p => p.status === 'plan').forEach((p, i) => p.day = Math.floor(i / 3) +
-                        1);
-                    plannerRoutePlanned = true;
-                    renderPlanner();
-                    closePlannerDialog();
-                    showToast('Route accepted and itinerary reordered.');
-                });
+            const routeTime = formatRouteTime((valid.length - 1) * 45);
+            const card = document.getElementById('plannerRouteCard');
+            const help = document.getElementById('plannerRouteHelp');
+            if (!card) return;
+            card.style.display = 'block';
+            card.classList.remove('route-ready-card');
+            card.innerHTML = `<h4>Suggested route</h4><p>${valid.length} stops · estimated travel time ${routeTime}. Review the numbered route before deciding.</p><div class="route-preview-map"><div class="route-preview-line"></div>${valid.map((p, i) => `<span class="route-stop" style="left:${12 + (i * 22)}%;top:${i % 2 ? 18 : 62}%">${i + 1}</span>`).join('')}</div><div class="route-preview-actions"><button class="btn-outline" onclick="rejectPlannerRoute()">Reject efficient route</button><button class="btn-primary" onclick="acceptPlannerRoute()">Accept efficient route</button></div>`;
+            if (help) help.textContent = 'Route preview shown. Choose whether to keep your current itinerary order.';
+            card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            showToast('Efficient route found. Review the preview.');
+        }
+
+        function rejectPlannerRoute() {
+            plannerRoutePlanned = true;
+            renderPlanner();
+            const card = document.getElementById('plannerRouteCard');
+            card.querySelector('.route-preview-actions').innerHTML = '<button class="btn-outline" style="grid-column:1 / -1" onclick="planPlannerRoute()">Replan route</button>';
+            card.innerHTML += '<p><b>Route preview rejected.</b> Your existing itinerary order was kept.</p>';
+            document.getElementById('plannerRouteHelp').textContent = 'Your manual itinerary was kept.';
+            showToast('Your itinerary order was kept.');
+        }
+
+        function acceptPlannerRoute() {
+            plannerPlaces.filter(p => p.status === 'plan').forEach((p, i) => p.day = Math.floor(i / 3) + 1);
+            plannerRoutePlanned = true;
+            renderPlanner();
+            showRouteReadyCard();
+            document.getElementById('plannerRouteButton').style.display = 'none';
+            document.getElementById('plannerRouteHelp').textContent = 'Route ready. Review the stop order or adjust it manually.';
+            showToast('Route accepted and itinerary reordered.');
+        }
+
+        function showRouteReadyCard() {
+            const stops = plannerPlaces.filter(p => p.status === 'plan');
+            const time = formatRouteTime((stops.length - 1) * 45);
+            const card = document.getElementById('plannerRouteCard');
+            card.style.display = 'block';
+            card.classList.add('route-ready-card');
+            card.innerHTML = `<div class="route-card-top"><span class="route-card-icon"><i class="fas fa-route"></i></span><div><b>Route ready · ${time}</b><small>Estimated travel between ${stops.length} stops. Visit times are not included.</small></div></div><div class="route-stops">${stops.map((p, i) => `<span>${i + 1}. ${p.name}</span>`).join('')}</div><button class="btn-outline" style="width:100%;margin-top:8px" onclick="adjustPlannerRoute()">Adjust itinerary</button>`;
+        }
+
+        function adjustPlannerRoute() {
+            markRouteNeedsRecalculation();
+            document.getElementById('plannerRouteCard').style.display = 'none';
+            document.getElementById('plannerRouteButton').style.display = 'flex';
+            document.getElementById('plannerRouteHelp').textContent = 'Manual editing enabled. Plan the route again after you finish changing stops.';
+            showToast('You can now adjust your itinerary manually.');
+        }
+
+        function markRouteNeedsRecalculation() {
+            plannerRoutePlanned = false;
+            const card = document.getElementById('plannerRouteCard');
+            if (card) card.style.display = 'none';
         }
 
         function generatePlannerReport() {
             if (completedTripCount < 1) { showToast(
                     'Complete your trip first to generate a report.'); return; }
             const active = tripPlans.find(p => p.active);
+            const inPlan = plannerPlaces.filter(p => p.status === 'plan');
+            const countries = new Set(inPlan.map(p => p.location.includes('Switzerland') ? 'Switzerland' : 'France'));
             document.getElementById('reportTripTitle').textContent = active.name;
             document.getElementById('plannerReportText').textContent =
-                'From Paris landmarks to Alpine views, your journey brought together culture, discovery and one completed checkpoint. Your strongest memory was turning a planned destination into a real achievement.';
+                `From Paris landmarks to Alpine views, your journey brought together ${inPlan.length} planned places, discovery and one completed checkpoint. Your strongest memory was turning a planned destination into a real achievement.`;
+            document.getElementById('reportHighlights').innerHTML = `<b>Trip highlights</b><div><span>${inPlan.length}</span> places planned</div><div><span>1</span> mission completed</div><div><span>${countries.size}</span> countries explored</div>`;
             navigateTo('screen-planner-report');
             showToast('AI travel summary generated!');
         }
