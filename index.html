@@ -3534,7 +3534,7 @@
                 </div>
                 <div class="planner-map-actions" id="plannerMapActions">
                     <button onclick="exploreNearby()"><i class="fas fa-compass"></i> Explore nearby</button>
-                    <button onclick="promptMapLocation()"><i class="fas fa-map-pin"></i> Add on map</button>
+                    <button onclick="promptMapLocation()"><i class="fas fa-map-pin"></i> Add to trip plan</button>
                 </div>
                 <div class="checkpoint-preview planner-place-card" id="plannerPlaceCard"></div>
             </div>
@@ -5442,7 +5442,7 @@
             const dialog = document.createElement('div');
             dialog.className = 'planner-route-dialog planner-management-dialog';
             dialog.id = 'plannerDialog';
-            dialog.innerHTML = `<div><h3>Manage ${place.name}</h3><p>Choose an action for this Day ${place.day} stop.</p><div class="planner-menu-actions"><button class="btn-outline" id="plannerCancel">Cancel</button><button class="btn-outline" id="plannerEdit">Edit</button><button class="btn-primary" id="plannerRemove">Remove from plan</button></div></div>`;
+            dialog.innerHTML = `<div><h3>Manage ${place.name}</h3><p>Choose an action for this Day ${place.day} stop.</p><div class="planner-menu-actions"><button class="btn-outline" id="plannerCancel">Cancel</button><button class="btn-outline" id="plannerEdit">Edit Position</button><button class="btn-primary" id="plannerRemove">Remove from plan</button></div></div>`;
             document.getElementById('appContainer').appendChild(dialog);
             dialog.querySelector('#plannerCancel').onclick = closePlannerDialog;
             dialog.querySelector('#plannerEdit').onclick = () => showItineraryPositionEditor(id);
