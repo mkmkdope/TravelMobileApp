@@ -1435,23 +1435,22 @@
 
             <div class="screen" id="screen-forgot-password">
                 <div class="page-header"><button class="back-btn" onclick="navigateTo('screen-login')"><i class="fas fa-arrow-left"></i></button><h2>Forgot Password</h2></div>
-                <div class="password-reset-hero"><span><i class="fas fa-lock"></i></span><h3>Reset your password</h3><p>Enter your registered email address. We will send you a six-digit verification code.</p></div>
-                <div class="card"><label class="reset-label">Registered Email</label><input class="input-field" type="email" id="forgotEmail" placeholder="alex@example.com"><div class="reset-note"><i class="fas fa-shield-halved"></i> For this prototype, the verification code will appear on screen.</div></div>
-                <button class="btn-primary" onclick="sendPasswordResetCode()"><i class="fas fa-paper-plane"></i> Send Reset Code</button>
+                <div class="password-reset-hero"><span><i class="fas fa-lock"></i></span><h3>Reset your password</h3><p>Enter your registered email address. Supabase will send you a secure password-reset link.</p></div>
+                <div class="card"><label class="reset-label">Registered Email</label><input class="input-field" type="email" id="forgotEmail" placeholder="alex@example.com"><div class="reset-note"><i class="fas fa-shield-halved"></i> Check your inbox and open the Supabase verification link to continue.</div></div>
+                <button class="btn-primary" onclick="sendPasswordResetEmail()"><i class="fas fa-envelope"></i> Send Verification Email</button>
                 <button class="btn-ghost" style="width:100%;margin-top:8px" onclick="navigateTo('screen-login')">Back to Login</button>
             </div>
 
             <div class="screen" id="screen-reset-password">
                 <div class="page-header"><button class="back-btn" onclick="navigateTo('screen-forgot-password')"><i class="fas fa-arrow-left"></i></button><h2>Create New Password</h2></div>
-                <div class="reset-code-card"><small>VERIFICATION CODE SENT TO</small><b id="resetEmailDisplay">alex@example.com</b><span>Demo code: <strong>123456</strong></span></div>
+                <div class="reset-code-card"><small>EMAIL VERIFIED</small><b id="resetEmailDisplay">alex@example.com</b><span><i class="fas fa-circle-check"></i> Secure Supabase reset session active</span></div>
                 <div class="card">
-                    <label class="reset-label">6-digit Verification Code</label><input class="input-field reset-code-input" inputmode="numeric" maxlength="6" id="resetCode" placeholder="000000">
-                    <div class="mt-12"></div><label class="reset-label">New Password</label><div class="password-field-wrap"><input class="input-field" type="password" id="resetNewPassword" placeholder="Enter new password"><button onclick="togglePasswordVisibility('resetNewPassword',this)" aria-label="Show new password"><i class="fas fa-eye"></i></button></div>
+                    <label class="reset-label">New Password</label><div class="password-field-wrap"><input class="input-field" type="password" id="resetNewPassword" placeholder="Enter new password"><button onclick="togglePasswordVisibility('resetNewPassword',this)" aria-label="Show new password"><i class="fas fa-eye"></i></button></div>
                     <div class="password-rules"><span>At least 8 characters</span><span>Uppercase & lowercase</span><span>Number & special character</span></div>
                     <div class="mt-12"></div><label class="reset-label">Confirm New Password</label><div class="password-field-wrap"><input class="input-field" type="password" id="resetConfirmPassword" placeholder="Repeat new password"><button onclick="togglePasswordVisibility('resetConfirmPassword',this)" aria-label="Show confirmation password"><i class="fas fa-eye"></i></button></div>
                 </div>
                 <button class="btn-primary" onclick="resetUserPassword()"><i class="fas fa-check-circle"></i> Change Password</button>
-                <button class="btn-ghost" style="width:100%;margin-top:8px" onclick="sendPasswordResetCode()">Resend verification code</button>
+                <button class="btn-ghost" style="width:100%;margin-top:8px" onclick="navigateTo('screen-forgot-password')">Send verification email again</button>
             </div>
 
             <!-- ============================================================ -->
@@ -2528,7 +2527,7 @@
             navigateTo('screen-forgot-password');
         }
 
-        function sendPasswordResetCode() {
+        function sendPasswordResetEmail() {
             const input = document.getElementById('forgotEmail');
             const email = input.value.trim();
             input.classList.remove('field-invalid');
@@ -2537,11 +2536,10 @@
             if (email.toLowerCase() !== userEmail.toLowerCase()) { input.classList.add('field-invalid'); showToast('No account was found with this email address.'); return; }
             passwordResetEmail = email;
             document.getElementById('resetEmailDisplay').textContent = email;
-            document.getElementById('resetCode').value = '';
             document.getElementById('resetNewPassword').value = '';
             document.getElementById('resetConfirmPassword').value = '';
             navigateTo('screen-reset-password');
-            showToast('Verification code sent. Use 123456 for this prototype.');
+            showToast('Supabase verification email sent. Open the secure reset link to continue.');
         }
 
         function togglePasswordVisibility(inputId, button) {
@@ -2551,13 +2549,11 @@
         }
 
         function resetUserPassword() {
-            const codeInput = document.getElementById('resetCode');
             const passwordInput = document.getElementById('resetNewPassword');
             const confirmInput = document.getElementById('resetConfirmPassword');
-            const code = codeInput.value.trim(), password = passwordInput.value, confirmation = confirmInput.value;
-            [codeInput,passwordInput,confirmInput].forEach(input => input.classList.remove('field-invalid'));
-            if (!code || !password || !confirmation) { if(!code)codeInput.classList.add('field-invalid');if(!password)passwordInput.classList.add('field-invalid');if(!confirmation)confirmInput.classList.add('field-invalid');showToast('Please complete all password reset fields.');return; }
-            if (!/^\d{6}$/.test(code) || code !== '123456') { codeInput.classList.add('field-invalid'); showToast('The verification code is incorrect or has expired.'); return; }
+            const password = passwordInput.value, confirmation = confirmInput.value;
+            [passwordInput,confirmInput].forEach(input => input.classList.remove('field-invalid'));
+            if (!password || !confirmation) { if(!password)passwordInput.classList.add('field-invalid');if(!confirmation)confirmInput.classList.add('field-invalid');showToast('Please enter and confirm your new password.');return; }
             if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/.test(password)) { passwordInput.classList.add('field-invalid'); showToast('Password must contain at least 8 characters, including uppercase, lowercase, number and special character.'); return; }
             if (password !== confirmation) { confirmInput.classList.add('field-invalid'); showToast('New password and confirmation password do not match.'); return; }
             if (password === userPassword) { passwordInput.classList.add('field-invalid'); showToast('Your new password must be different from your current password.'); return; }
